@@ -10,6 +10,11 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js"></script>
+		<link rel="stylesheet" href="assets/css/slider.css" />
+		
 	</head>
 	<body class="is-preload">
 
@@ -18,14 +23,15 @@
 				<header>
 					<span class="image avatar"><img src="images/avatar.jpg" alt="" /></span>
 					<h1 id="logo"><a href="#">Andrea Gemelli</a></h1>
-					<p>Ph.D. Student @ University of Florence<br>Document Analysis, GNNs and NLP</p>
+					<p>Ph.D. Student @ University of Florence<br>Document Understanding, GNNs and NLP</p>
 				</header>
 				<nav id="nav">
 					<ul>
-						<li><a href="#aboutme" class="active">About Me</a></li>
-						<li><a href="#publications">Publications</a></li>
-						<li><a href="#beyondml">Beyond ML</a></li>
-						<li><a href="#contacts">Contacts</a></li>
+						<li><a href="#aboutme" class="active">👨🏻‍💻 About Me</a></li>
+						<li><a href="#publications">📚 Publications</a></li>
+						<li><a href="#blog">✍🏼 Blog</a></li>
+						<li><a href="#beyondml">🎉 Beyond ML</a></li>
+						<li><a href="#contacts">👤 Contacts</a></li>
 					</ul>
 				</nav>
 				<footer>
@@ -49,9 +55,14 @@
 										<p>Nice to meet you 👋! I'm Andrea, a ML practitioner and enthusiastic traveler.</p>
 									</header>
 									<blockquote>"[...] And if you find her poor, Ithaka won’t have fooled you. Wise as you will have become, so full of experience, you’ll have understood by then what these Ithakas mean." - Ithaka, C. P. Cavafy</blockquote>
-									<p>I'm a passionate person who loves to study and discorver: it is impressive the amount of things we don't know, isn't it? I've started a PhD about Graph Neural Networks and Document Analysis in 2020, based in <i>Universtà degli Studi di Firenze</i>, Florence. I'm actually working as a Visiting Researcher at the <i>Computer Vision Center</i> (CVC) in Barcelona, for a joint program between our labs. 
+									<p>I'm a passionate person who loves to study and discorver: it is impressive the amount of things we don't know, isn't it? I've started a PhD about <b>Graph Neural Networks</b> and <b>Document Understanding</b> in 2020, based in <i>Universtà degli Studi di Firenze</i>, Florence. I'm actually working as a Visiting Researcher at the <i>Computer Vision Center</i> (CVC) in Barcelona, for a joint program between our labs. 
 										I love travelling, meeting people and discover different cultures. When I'm not working, I really enjoy reading, playing or watching films.</p>
-									<p style="text-align: center;">For all the details about my career, you can download my Curriculum Vitae.<br><br><a href="./files/CV.pdf" download="CV.pdf" class="button primary icon solid fa-download">CV.pdf</a></p>
+									<p style="text-align: center;">For all the details about my career, you can download my Curriculum Vitae. <br>For insights about my Ph.D., you can download my annual report progresses.
+										<ul class="actions fit small">
+											<li><a href="./files/CV.pdf" download="CV.pdf" class="button primary fit small icon solid fa-download">CV.pdf</a></li>
+											<li><a href="./files/phd.pdf" download="phd.pdf" class="button fit small icon solid fa-download">PHD.pdf</a></li>
+										</ul>
+									</p>
 									
 
 								</div>
@@ -60,80 +71,113 @@
 						<!-- Two -->
 							<section id="publications">
 								<div class="container">
-									<h3>Publications</h3>
-									<p>Here I list the publications I have done so far. They mainly involve the application of Graph Neural Networks and NLP techniques to the domain of Document Analysis.</p>
-									<div class="features">
-										<article>
-										<a href="#" class="image"><img src="images/paper3.png" alt="" /></a>
-										<div class="inner">
-											<h4>Doc2Graph: a Task Agnostic Document Understanding Framework based on Graph Neural Networks</h4>
-											<p>Authors: <b>Andrea Gemelli</b>, S. Biswas, E. Civitelli, J. Llados and S. Marinai<br>Workshop: TiE @ <b>ECCV 2022</b> </p>
-											<ul class="actions fit small">
-												<li><a href="https://arxiv.org/abs/2208.11168" class="button primary fit small" target="_blank">Paper</a></li>
-												<li><a href="#" class="button fit small">Code</a></li>
-											</ul></p>
+									<h3>📚 Publications</h3>
+									<p>Here I list the publications I have done so far. They mainly involve the application of Graph Neural Networks and NLP techniques to the domain of Document Understanding.</p>
+									<div class="row" style="text-align: center;">
+										<div class="col-4 col-6-xsmall" style="text-align: center;">
+											<img src="icons/hastag.png" width="50" height="50"> <h4>4 publications</h4>
 										</div>
-									</article>
-									<article>
-										<a href="#" class="image"><img src="images/paper4.png" alt="" /></a>
-										<div class="inner">
-											<h4>Automatic generation of scientific papers for data augmentation in document layout analysis</h4>
-											<p>Authors: L. Pisaneschi, <b>Andrea Gemelli</b>, and S. Marinai<br>(under review)</p>
-											<ul class="actions fit small">
-												<li><a href="#" class="button primary fit small">Paper</a></li>
-												<li><a href="#" class="button fit small">Code</a></li>
-											</ul></p>
+										<div class="col-4 col-6-xsmall" style="text-align: center;">
+											<img src="icons/star.png" width="50" height="50"> <h4>1 top conference</h4>
 										</div>
-									</article>
-										<article>
-											<a href="#" class="image"><img src="images/paper1.jpg" alt="" /></a>
-											<div class="inner">
-												<h4>Graph Neural Networks and Representation Embedding for Table Extraction in PDF Documents</h4>
-												<p>Authors: <b>Andrea Gemelli</b>, E. Vivoli and S. Marinai<br>Conference: <b>ICPR 2022</b> </p>
-												<ul class="actions fit small">
-													<li><a href="https://arxiv.org/abs/2208.11203" class="button primary fit small" target="_blank">Paper</a></li>
-													<li><a href="#" class="button fit small">Code</a></li>
-												</ul></p>
+										<div class="col-4 col-6-xsmall" style="text-align: center;">
+											<img src="icons/journal.png" width="50" height="50"> <h4>1 journal</h4>
+										</div>
+									</div>
+										
+									<br>
+									<div class="blog-slider">
+										<div class="blog-slider__wrp swiper-wrapper">
+										  <div class="blog-slider__item swiper-slide">
+											<div class="blog-slider__img">
+									  
+											  <img src="images/paper3.png" alt="">
 											</div>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/paper2.jpg" alt="" /></a>
-											<div class="inner">
-												<h4>Data augmentation on graphs for table type classification</h4>
-												<p>Authors: D. Del Bimbo, <b>Andrea Gemelli</b> and S. Marinai <br>Workshop: <b>S+SSPR 2022</b> </p>
-												<ul class="actions fit small">
-													<li><a href="https://arxiv.org/abs/2208.11210" class="button primary fit small" target="_blank">Paper</a></li>
-													<li><a href="#" class="button fit small">Code</a></li>
-												</ul>
+											<div class="blog-slider__content">
+											  <span class="blog-slider__code">October 2022</span>
+											  <div class="blog-slider__title">Doc2Graph: a Task Agnostic Document Understanding Framework based on Graph Neural Networks</div>
+											  <div class="blog-slider__text"><p>Authors: <b style="color: #003c8f;">Andrea Gemelli</b>, S. Biswas, E. Civitelli, J. Llados and S. Marinai<br>Workshop: TiE @ <b style="color: #003c8f;">ECCV 2022</b> </p> </div>
+											  <a href="https://arxiv.org/abs/2208.11168" class="blog-slider__button" target="_blank">Paper</a>
 											</div>
-										</article>
-									</div> 
+										  </div>
+										  <div class="blog-slider__item swiper-slide">
+											<div class="blog-slider__img">
+											  <img src="images/paper4.png" alt="">
+											</div>
+											<div class="blog-slider__content">
+											  <span class="blog-slider__code">July 2022</span>
+											  <div class="blog-slider__title">Automatic generation of scientific papers for data augmentation in document layout analysis</div>
+											  <div class="blog-slider__text"><p>Authors: L. Pisaneschi, <b style="color: #003c8f;">Andrea Gemelli</b>, and S. Marinai<br>(under review)</p></div>
+											  <a href="https://github.com/pisalore/master_thesis" class="blog-slider__button" target="_blank">Code</a>
+											</div>
+										  </div>
+									  
+										  <div class="blog-slider__item swiper-slide">
+											<div class="blog-slider__img">
+											  <img src="images/paper1.jpg" alt="">
+											</div>
+											<div class="blog-slider__content">
+											  <span class="blog-slider__code">January 2022</span>
+											  <div class="blog-slider__title">Graph Neural Networks and Representation Embedding for Table Extraction in PDF Documents</div>
+											  <div class="blog-slider__text"><p>Authors: <b style="color: #003c8f;">Andrea Gemelli</b>, E. Vivoli and S. Marinai<br>Conference: <b style="color: #003c8f;">ICPR 2022</b> </p></div>
+											  <a href="https://arxiv.org/abs/2208.11203" class="blog-slider__button" target="_blank">Paper</a>
+											</div>
+										  </div>
+
+										  <div class="blog-slider__item swiper-slide">
+											<div class="blog-slider__img">
+											  <img src="images/paper2.jpg" alt="">
+											</div>
+											<div class="blog-slider__content">
+											  <span class="blog-slider__code">July 2022</span>
+											  <div class="blog-slider__title">Data augmentation on graphs for table type classification</div>
+											  <div class="blog-slider__text"><p>Authors: D. Del Bimbo, <b style="color: #003c8f;">Andrea Gemelli</b> and S. Marinai <br>Workshop: <b style="color: #003c8f;">S+SSPR 2022</b> </p></div>
+											  <a href="https://arxiv.org/abs/2208.11210" class="blog-slider__button" target="_blank">Paper</a>
+											  <a href="https://github.com/AILab-UniFI/DA-GraphTab" class="blog-slider__button" target="_blank">Code</a>
+											</div>
+										  </div>
+									  
+										</div>
+										<div class="blog-slider__pagination"></div>
+									  </div>
+									
 								</div>
+								<br>
+							</section>
+
+							<section id="blog">
+								<div class="container">
+									<h3>✍🏼 Blog</h3>
+									<p>(Coming soon!) I'm planning to start a series of posts on my <img src="icons/medium.png" width="15" height="15"> <a href="https://medium.com/@a_gemelli" target="_blank">Medium</a> profile! <br>I'll talk about what interests me more about ML and what I've found out there: follow me to stay updated.</p>
+									
 							</section>
 
 							<section id="beyondml">
 								<div class="container">
-									<h3>Beyond ML</h3>
+									<h3>🎉 Beyond ML</h3>
 									
 									<div class="row">
 										<div class="col-6 col-12-xsmall">
 											<h4>🎵 Music</h4>
-											I founded <b>Triple Trouble</b> back in 2015 with my friends and together we made 2 albums and had a lot of unforgettable experiences.
-											Check out our music on <a href="https://open.spotify.com/artist/2UkKbkBLjml3qGCklQ9qCf?si=cJ_lXrMUS3ic8XTAdkaFHA" target="_blank">Spotify</a>.
+											I founded <b>Triple Trouble</b> back in 2015 with my friends and together we made two albums and had a lot of unforgettable experiences.
+											Check out our music on <img src="icons/spotify.png" width="15" height="15"> <a href="https://open.spotify.com/artist/2UkKbkBLjml3qGCklQ9qCf?si=cJ_lXrMUS3ic8XTAdkaFHA" target="_blank">Spotify</a>.
+											<br>If you want to listen / discover more, check out my <img src="icons/linktree.png" width="15" height="20"> <a href="https://linktr.ee/andrea.gemelli" target="_blank">LnkTree</a> instead.
 										</div>
 										<div class="col-6 col-12-xsmall">
 											<h4>🙏🏽 Volunteering</h4>
 											I have been one of the founders of <b>Solo Tu Puoi Farlo</b> ("only you can do it"): our group have organized fundraisings, awareness campaigns and food collections for years.
-											You can find all the insights and contacts on our <a href="https://www.instagram.com/solotupuoifarlo/" target="_blank">Instagram Page</a>.
+											You can find all the insights and contacts on our <img src="icons/instagram.png" width="15" height="15"> <a href="https://www.instagram.com/solotupuoifarlo/" target="_blank">Page</a>.
 										</div>
 										<div class="col-6 col-12-xsmall">
+											<br>
 											<h4>🌍 Traveling</h4>
 											Everytime I have the chance I try to explore new parts of the world: it is an hard journey to complete it all.
-											In the mean time I really like to keep track of the places I have touched. Check out my map <a href="#">here</a>.
+											In the mean time I really like to keep track of the places I have touched. Check out my map 🗺 <a href="https://www.google.com/maps/d/u/0/edit?mid=1QFMIHKu4j58YuBdDXCydE2dGY4vdHLQ&usp=sharing" target="_blank">here</a>.
 										</div>
 										<div class="col-6 col-12-xsmall">
+											<br>
 											<h4>👨🏻‍💻 Develop</h4>
-											I had the pleasure to develope the webpage of a 3D professional graphic designer, both to show his works and shorten the path within its client. You can find the website <a href="https://www.calvetti3d.com/" target="_blank">here</a>.	
+											I had the pleasure to develope the webpage of a 3D professional graphic designer, both to show his works and shorten the path within its client. You can find the website 🔗 <a href="https://www.calvetti3d.com/" target="_blank">here</a>.	
 										</div>
 									</div>
 								</div>
@@ -142,21 +186,27 @@
 						<!-- Three -->
 							<section id="contacts">
 								<div class="container">
-									<h3>Contacts</h3>
+									<h3>👤 Contacts</h3>
 									<p>If you want to reach me to get to know each other, here you can find listed all my contacts:</p>
-									
+
+									<div class="row">
 										<div class="col-6 col-12-xsmall" style="text-align: center;">
+											<h4>Socials</h4>
 											<a href="https://www.linkedin.com/in/andrea-gemelli/" class="icon solid" target="_blank"><img src="icons/linkedin.png" width="50" height="50"></a>
 											<a href="https://twitter.com/Andr3aGemelli" class="icon brands" target="_blank"><img src="icons/twitter.png" width="50" height="50"></a>
 											<a href="https://github.com/andreagemelli" class="icon brands" target="_blank"><img src="icons/github.png" width="50" height="50"></a>
+										</div>
+										<div class="col-6 col-12-xsmall" style="text-align: center;">
+											<h4>Research</h4>
 											<a href="https://orcid.org/0000-0002-6149-8282" class="icon brands" target="_blank"><img src="icons/orcid.png" width="50" height="50"></a>
 											<a href="https://scholar.google.com/citations?user=8AeCCO0AAAAJ&hl=en&oi=ao" class="icon brands" target="_blank"><img src="icons/google-scholar.png" width="50" height="50"></a>
 											<a href="mailto:gemelli.andrea@hotmail.com" class="icon brands" target="_blank"><img src="icons/email.png" width="50" height="50"></a>
 										</div>
+								
 									
 								</div>
+
 							</section>
-							
 
 				<!-- Footer -->
 					<section id="footer">
@@ -167,8 +217,6 @@
 						</div>
 					</section>
 
-			</div>
-
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
@@ -176,6 +224,7 @@
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
+			<script src="assets/js/slider.js"></script>
 			<script src="assets/js/main.js"></script>
 
 	</body>
