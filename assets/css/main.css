@@ -29,6 +29,22 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;}
 
+footer .icons a{
+	border: 1px solid white;
+	border-radius: 50%;
+	line-height: 36px;
+	text-align: center;
+	font-weight: 600;
+	width: 38px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	color: white;
+}
+
+footer .icons a:hover{
+	background-color: #5e92f3 !important;
+}
+
 body {
 	line-height: 1;
 }
@@ -2870,6 +2886,8 @@ input, select, textarea {
 					color: inherit;
 				}
 
+		
+
 /* XLarge */
 
 	@media screen and (max-width: 1680px) {
@@ -2903,7 +2921,7 @@ input, select, textarea {
 		/* Main */
 
 			#main > section > .container {
-				padding: 4em 0 2em 0;
+				padding: 2em 0 2em 0;
 			}
 
 	}

@@ -14,6 +14,8 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js"></script>
 		<link rel="stylesheet" href="assets/css/slider.css" />
+		<script src="https://kit.fontawesome.com/e6d515d276.js" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="assets/css/form.css">
 		
 	</head>
 	<body class="is-preload">
@@ -31,13 +33,14 @@
 						<li><a href="#publications">📚 Publications</a></li>
 						<li><a href="#blog">✍🏼 Blog</a></li>
 						<li><a href="#beyondml">🎉 Beyond ML</a></li>
-						<li><a href="#contacts">👤 Contacts</a></li>
+						<li><a href="#contacts">📬 Keep in touch!</a></li>
 					</ul>
 				</nav>
 				<footer>
-					<a class="icon brands" href="https://www.google.com/maps/place/Scuola+di+Ingegneria/@43.7984901,11.2530255,15z/data=!4m2!3m1!1s0x0:0xba309bcae581bf28?sa=X&ved=2ahUKEwjy1a_2tOD5AhWWMVkFHS7SCJoQ_BJ6BAhLEAU" target="_blank"><img src="icons/location-sign.png" height="15" width="15" style="vertical-align: center;"> Florence, Italy</a>
-					<br>
-					<a class="icon brands" href="mailto:gemelli.andrea@hotmail.com"><img src="icons/envelope-2.png" height="11" width="15"> gemelli.andrea@hotmail.com</a>
+					<div class="icons">
+						<a href="https://www.google.com/maps/place/Scuola+di+Ingegneria/@43.7984901,11.2530255,15z/data=!4m2!3m1!1s0x0:0xba309bcae581bf28?sa=X&ved=2ahUKEwjy1a_2tOD5AhWWMVkFHS7SCJoQ_BJ6BAhLEAU" target="_blank"class="fa-sharp fa-solid fa-location-dot" style="color: white;"></a>
+						<a href="mailto:gemelli.andrea@hotmail.com" class="fa-solid fa-envelope" style="color: white;"></a>
+					</div>
 				</footer>
 			</section>
 
@@ -72,7 +75,7 @@
 							<section id="publications">
 								<div class="container">
 									<h3>📚 Publications</h3>
-									<p>Here I list the publications I have done so far. They mainly involve the application of Graph Neural Networks and NLP techniques to the domain of Document Understanding.</p>
+									<p>Here I list the publications I have done so far: check out my <img src="icons/google-scholar.png" width="15" height="15"> <a href="https://scholar.google.com/citations?user=8AeCCO0AAAAJ&hl=en&oi=ao" target="_blank">Scholar</a> profile for more. They mainly involve the application of Graph Neural Networks and NLP techniques to the domain of Document Understanding.</p>
 									<div class="row" style="text-align: center;">
 										<div class="col-4" style="text-align: center;">
 											<img src="icons/hastag.png" width="50" height="50"> <h4>4 publications</h4>
@@ -91,7 +94,7 @@
 										  <div class="blog-slider__item swiper-slide">
 											<div class="blog-slider__img">
 									  
-											  <img src="images/paper3.png" alt="">
+											  <img src="images/eccv.png" alt="">
 											</div>
 											<div class="blog-slider__content">
 											  <span class="blog-slider__code">October 2022</span>
@@ -99,12 +102,30 @@
 											  <div class="blog-slider__text"><p>Authors: <b style="color: #003c8f;">Andrea Gemelli</b>, S. Biswas, E. Civitelli, J. Llados and S. Marinai<br>Workshop: TiE @ <b style="color: #003c8f;">ECCV 2022</b> </p> </div>
 											  <ul class="actions small">
 												<li><a href="https://arxiv.org/abs/2208.11168" class="button primary small"target="_blank">Paper</a></li>
+												<li><a href="./files/ECCV_ePoster_Doc2Graph.pdf" download="ECCV_poster.pdf" class="button primary small"target="_blank">Poster</a></li>
 												</ul>
 											</div>
 										  </div>
+
 										  <div class="blog-slider__item swiper-slide">
 											<div class="blog-slider__img">
-											  <img src="images/paper4.png" alt="">
+											  <img src="images/icpr.png" alt="">
+											</div>
+											<div class="blog-slider__content">
+											  <span class="blog-slider__code">January 2022</span>
+											  <div class="blog-slider__title">Graph Neural Networks and Representation Embedding for Table Extraction in PDF Documents</div>
+											  <div class="blog-slider__text"><p>Authors: <b style="color: #003c8f;">Andrea Gemelli</b>, E. Vivoli and S. Marinai<br>Conference: <b style="color: #003c8f;">ICPR 2022</b> </p></div>
+											  
+											  <ul class="actions small">
+												<li><a href="https://arxiv.org/abs/2208.11203" class="button primary small" target="_blank">Paper</a></li>
+												<li><a href="./files/ICPR_Poster.pdf" download="ICPR_poster" class="button primary small" target="_blank">Poster</a></li>
+												</ul>
+											</div>
+										  </div>
+
+										  <div class="blog-slider__item swiper-slide">
+											<div class="blog-slider__img">
+											  <img src="images/journal.png" alt="">
 											</div>
 											<div class="blog-slider__content">
 											  <span class="blog-slider__code">July 2022</span>
@@ -115,25 +136,10 @@
 												</ul>
 											</div>
 										  </div>
-									  
-										  <div class="blog-slider__item swiper-slide">
-											<div class="blog-slider__img">
-											  <img src="images/paper1.jpg" alt="">
-											</div>
-											<div class="blog-slider__content">
-											  <span class="blog-slider__code">January 2022</span>
-											  <div class="blog-slider__title">Graph Neural Networks and Representation Embedding for Table Extraction in PDF Documents</div>
-											  <div class="blog-slider__text"><p>Authors: <b style="color: #003c8f;">Andrea Gemelli</b>, E. Vivoli and S. Marinai<br>Conference: <b style="color: #003c8f;">ICPR 2022</b> </p></div>
-											  
-											  <ul class="actions small">
-												<li><a href="https://arxiv.org/abs/2208.11203" class="button primary small" target="_blank">Paper</a></li>
-												</ul>
-											</div>
-										  </div>
 
 										  <div class="blog-slider__item swiper-slide">
 											<div class="blog-slider__img">
-											  <img src="images/paper2.jpg" alt="">
+											  <img src="images/sspr.png" alt="">
 											</div>
 											<div class="blog-slider__content">
 											  <span class="blog-slider__code">July 2022</span>
@@ -171,7 +177,7 @@
 											<h4>🎵 Music</h4>
 											I founded <b>Triple Trouble</b> back in 2015 with my friends and together we made two albums and had a lot of unforgettable experiences.
 											Check out our music on <img src="icons/spotify.png" width="15" height="15"> <a href="https://open.spotify.com/artist/2UkKbkBLjml3qGCklQ9qCf?si=cJ_lXrMUS3ic8XTAdkaFHA" target="_blank">Spotify</a>.
-											<br>If you want to listen / discover more, check out my <img src="icons/linktree.png" width="15" height="20"> <a href="https://linktr.ee/andrea.gemelli" target="_blank">LnkTree</a> instead.
+											<br>If you want to listen / discover more, check out my <img src="icons/linktree.png" width="15" height="20"> <a href="https://linktr.ee/andrea.gemelli" target="_blank">Linktree</a> instead.
 										</div>
 										
 										<div class="col-6 col-12-xsmall">
@@ -199,26 +205,46 @@
 						<!-- Three -->
 							<section id="contacts">
 								<div class="container">
-									<h3>👤 Contacts</h3>
-									<p>If you want to reach me to get to know each other, here you can find listed all my contacts:</p>
+									<h3>📬 Keep in touch!</h3>
+										<form action="https://formsubmit.co/gemelli.andrea@hotmail.com" method="POST" >
+											
+											<div class="full">
+											  <div class="item">
+												<label for="name">NAME</label>
+												<input type="text" name="name" id="name">
+											  </div>
+											  <div class="item">
+												<label for="email">EMAIL</label>
+												<input type="text" name="email" id="email">
+											  </div>
+											  <div class="item">
+												<input type="hidden" name="_captcha" value="false">
+											  </div>
+											  <div class="item">
+												<input type="hidden" name="_next" value="https://andreagemelli.github.io/#contacts">
+											  </div>
+											</div>
+											<div class="full">
+											  <label for="message">MESSAGE</label>
+											  <textarea type="text" name="message" id = "message"></textarea>
+											</div>
+											<div class="action">
+											  <input type="submit" value = "SEND MESSAGE" onclick="popup()">
+											  <input type="reset" value = "RESET">
+											</div>
+											<div class="icons">
+												<a href="https://www.linkedin.com/in/andrea-gemelli/" class = "fa fa-linkedin"></a>
+												<a href="https://github.com/andreagemelli" class = "fa fa-github"></a>
+												<a href="https://twitter.com/Andr3aGemelli" class = "fa fa-twitter"></a>
+												<a href="https://www.instagram.com/_andrewtwins/" class = "fa fa-instagram"></a>
+												<a href="https://orcid.org/0000-0002-6149-8282" class = "fa-brands fa-orcid"></a>
+												<a href="https://www.buymeacoffee.com/andrea.gemelli" class = "fa-solid fa-mug-hot"></a>
+											  </div>
+											
+										  </form>
 
-									<div class="row">
-										<div class="col-6 col-12-xsmall" style="text-align: center;">
-											<h4>Socials</h4>
-											<a href="https://www.linkedin.com/in/andrea-gemelli/" class="icon solid" target="_blank"><img src="icons/linkedin.png" width="50" height="50"></a>
-											<a href="https://twitter.com/Andr3aGemelli" class="icon brands" target="_blank"><img src="icons/twitter.png" width="50" height="50"></a>
-											<a href="https://github.com/andreagemelli" class="icon brands" target="_blank"><img src="icons/github.png" width="50" height="50"></a>
-										</div>
-										<div class="col-6 col-12-xsmall" style="text-align: center;">
-											<h4>Research</h4>
-											<a href="https://orcid.org/0000-0002-6149-8282" class="icon brands" target="_blank"><img src="icons/orcid.png" width="50" height="50"></a>
-											<a href="https://scholar.google.com/citations?user=8AeCCO0AAAAJ&hl=en&oi=ao" class="icon brands" target="_blank"><img src="icons/google-scholar.png" width="50" height="50"></a>
-											<a href="mailto:gemelli.andrea@hotmail.com" class="icon brands" target="_blank"><img src="icons/email.png" width="50" height="50"></a>
-										</div>
-									
-									
 								</div>
-								<br>
+								
 								</div>
 
 							</section>
@@ -241,6 +267,11 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/slider.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				function popup() {
+				  alert("Message sent! 🎉");
+				}
+				</script>
 
 	</body>
 </html>
