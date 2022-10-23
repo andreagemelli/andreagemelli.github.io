@@ -2797,6 +2797,9 @@ input, select, textarea {
 			-ms-flex-grow: 1;
 			flex-grow: 1;
 		}
+			#header > nav script{
+				data-x-margin: 300;
+			}
 
 			#header > nav ul {
 				list-style: none;
