@@ -1,11 +1,11 @@
 ---
-title: "Career"
+title: "About me"
 summary: about me
 hidemeta: true
 disableShare: true
 ---
 
-## About me
+## Career
 
 I pursued a **Master Degree in Computer Science and Engineering** at the **University of Florence**, graduating with full marks in October 2020. During my Master's studies, I participated in two Erasmus programs, one at **Ghent University** in Belgium and another at the **University of La Rochelle**'s L3i research group. During my studies, I also gained industry experience as a data scientist at [Alias2k](https://alias2k.com/en/about-us/), developing AI solutions to enhance the company's products.
 
@@ -15,33 +15,33 @@ After succesfully concluded my PhD with the **Doctor Europaeus** title, I joined
 
 ---
 
-## Technologies
+### Technologies
 
-### 🤖 Machine Learning
+#### 🤖 Machine Learning
 
-Transormers, PyTorch, Scikit-Learn, Weights & Bias
+Transormers, PyTorch, Scikit-Learn, Pandas, Numpy, Weights & Bias
 
-### ☁️ Cloud
+#### ☁️ Cloud
 
-AWS, Docker, Github
+AWS, Docker, ArangoDB
 
-### 🔭 Not-ML
+#### 🔭 Misc
 
-Angular, Latex
+Python, Latex, Angular, C++, HTML, CSS, TypeScript, git, linux, bash
 
 
 ---
-## Places & Languages
-### 📍 Lived in:
-- Figline V.no & Montevarchi (🇮🇹) until 2023
-- Florence (🇮🇹) in 2021
-- Ghent (🇧🇪) from 2018 to 2019
-- La Rochelle (🇫🇷) in 2020
-- Barcelona (🇪🇸) from 2022 to 2023
-- Paris (🇫🇷) from 2024
+### Places & Languages
+#### 📍 Lived in:
+- Figline V.no & Montevarchi 🇮🇹 - until 2018
+- Ghent 🇧🇪 - from 2018 to 2019
+- La Rochelle 🇫🇷 - in 2020
+- Florence 🇮🇹 - in 2021
+- Barcelona 🇪🇸 - from 2022 to 2023
+- Paris 🇫🇷 - from 2024
 
-### 🗣️ Speaking:
+#### 🗣️ Speaking:
 - Italian 🤌🏻
-- English (C1)
-- Spanish (Fluent)
+- English C1
+- Spanish Fluent
 - French 🥖

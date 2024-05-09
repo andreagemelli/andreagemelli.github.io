@@ -1,5 +1,5 @@
-baseURL: "https://andreagemelli.github.io/"
-title: Andrea Gemelli
+baseURL: "https://andreagemelli.me/"
+title: 🤌🏻 Andrea Gemelli
 description: "This is my portfolio"
 paginate: 5
 theme: [PaperMod]
@@ -18,7 +18,7 @@ languages:
         
       menu:
         main:
-          - name: Career
+          - name: About me
             url: about
             weight: 5
           - name: Publications
@@ -39,13 +39,14 @@ params:
   defaultTheme: auto # to switch between dark or light according to browser theme
   displayFullLangName: true
   ShowShareButtons: true
+  env: production
 
   profileMode:
     enabled: true
     title: "Nice to meet you! 🤗" # optional default will be site title
     subtitle: "PhD 📚 | AI/ML Scientist 🤓 | Dev 👨🏻‍💻 | Musician 🎸 | Nerd 🎮"
-    imageUrl: "me.jpg" # optional
-    imageTitle: "me" # optional
+    imageUrl: "img/me.jpg" # optional
+    imageTitle: "🤌🏻" # optional
     imageWidth: 300 # custom size
     imageHeight: 300 # custom size
 
@@ -59,7 +60,7 @@ params:
     - name: "x"
       url: "https://twitter.com/_andreagemelli"
     - name: "scholar"
-      url: "https://scholar.google.com/citations?hl=it&user=8AeCCO0AAAAJ"
+      url: "http://tiny.cc/myscholar"
 
 outputs:
   home:
