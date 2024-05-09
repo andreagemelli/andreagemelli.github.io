@@ -1,0 +1,72 @@
+baseURL: "https://andreagemelli.github.io/"
+title: Andrea Gemelli
+description: "This is my portfolio"
+paginate: 5
+theme: [PaperMod]
+languageCode: en-us
+
+enableEmoji: true
+
+languages:
+  en:
+      languageName: "english"
+      weight: 1
+      taxonomies:
+        category: categories
+        tag: tags
+        series: series
+        
+      menu:
+        main:
+          - name: Career
+            url: about
+            weight: 5
+          - name: Publications
+            url: publications
+            weight: 10
+          - name: AI Notes
+            url: archives
+            weight: 15
+            
+      params:
+        languageAltTitle: English
+      
+
+params:
+
+  description: "My Portfolio"
+  author: Andrea Gemelli
+  defaultTheme: auto # to switch between dark or light according to browser theme
+  displayFullLangName: true
+  ShowShareButtons: true
+
+  profileMode:
+    enabled: true
+    title: "Nice to meet you! 🤗" # optional default will be site title
+    subtitle: "PhD 📚 | AI/ML Scientist 🤓 | Dev 👨🏻‍💻 | Musician 🎸 | Nerd 🎮"
+    imageUrl: "me.jpg" # optional
+    imageTitle: "me" # optional
+    imageWidth: 300 # custom size
+    imageHeight: 300 # custom size
+
+  socialIcons: # optional
+    - name: "email"
+      url: "gemelli.andrea@hotmail.com"
+    - name: "linkedin"
+      url: "https://www.linkedin.com/in/andrea-gemelli/"
+    - name: "github"
+      url: "https://github.com/andreagemelli"
+    - name: "x"
+      url: "https://twitter.com/_andreagemelli"
+    - name: "scholar"
+      url: "https://scholar.google.com/citations?hl=it&user=8AeCCO0AAAAJ"
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # necessary for search
+    
+    
+
+  

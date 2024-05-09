@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on Andrea Gemelli</title>
+    <link>https://andreagemelli.github.io/posts/</link>
+    <description>Recent content in Posts on Andrea Gemelli</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 09 May 2024 11:20:13 +0200</lastBuildDate>
+    <atom:link href="https://andreagemelli.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>To blog or not to blog!</title>
+      <link>https://andreagemelli.github.io/posts/hello-world/</link>
+      <pubDate>Thu, 09 May 2024 11:20:13 +0200</pubDate>
+      <guid>https://andreagemelli.github.io/posts/hello-world/</guid>
+      <description>Wondering if opening a blog makes sense (spoiler, no!)</description>
+    </item>
+  </channel>
+</rss>
