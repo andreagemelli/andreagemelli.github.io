@@ -43,8 +43,11 @@ params:
 
   profileMode:
     enabled: true
-    title: "Nice to meet you! 🤗" # optional default will be site title
-    subtitle: "PhD 📚 | AI/ML Scientist 🤓 | Dev 👨🏻‍💻 | Musician 🎸 | Nerd 🎮"
+    title: "Hey, nice to meet you! 🤗" # optional default will be site title
+    subtitle: "📍 Paris, 🇫🇷 France\n\n
+    📚 PhD & Computer Science Engineer \n\n
+    👨🏻‍💻 AI Research Scientist @ LetXbe \n\n"
+
     imageUrl: "img/me.jpg" # optional
     imageTitle: "🤌🏻" # optional
     imageWidth: 300 # custom size
@@ -61,6 +64,8 @@ params:
       url: "https://twitter.com/_andreagemelli"
     - name: "scholar"
       url: "http://tiny.cc/myscholar"
+    - name: "linktree"
+      url: "https://linktr.ee/andrea.gemelli"
 
 outputs:
   home:

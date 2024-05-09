@@ -2,25 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/</loc>
+    <loc>https://andreagemelli.me/posts/</loc>
     <lastmod>2024-05-09T11:20:13+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/hello-world/</loc>
+    <loc>https://andreagemelli.me/posts/hello-world/</loc>
     <lastmod>2024-05-09T11:20:13+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://andreagemelli.me/</loc>
     <lastmod>2024-05-09T11:20:13+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>https://andreagemelli.me/about/</loc>
   </url><url>
-    <loc>http://localhost:1313/archives/</loc>
+    <loc>https://andreagemelli.me/archives/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://andreagemelli.me/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/publications/</loc>
+    <loc>https://andreagemelli.me/publications/</loc>
   </url><url>
-    <loc>http://localhost:1313/series/</loc>
+    <loc>https://andreagemelli.me/series/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://andreagemelli.me/tags/</loc>
   </url>
 </urlset>
