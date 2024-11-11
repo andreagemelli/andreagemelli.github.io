@@ -24,9 +24,12 @@ languages:
           - name: Publications
             url: publications
             weight: 10
+          - name: Projects
+            url: projects
+            weight: 15
           - name: AI Notes
             url: archives
-            weight: 15
+            weight: 20
             
       params:
         languageAltTitle: English

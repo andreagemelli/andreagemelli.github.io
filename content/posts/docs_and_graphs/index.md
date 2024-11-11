@@ -9,7 +9,9 @@ author: 'Andrea Gemelli'
 ShowReadingTime: true
 ---
 
-How our brain processes and understands documents? It's not just about reading words sequentially - we naturally perceive relationships between different parts of a page, like how titles relate to paragraphs or how table cells connect to form meaningful structures. This intuitive way of understanding documents through relationships has inspired an exciting intersection between document analysis and graph theory, which strongly inspired my PhD thesis "Connecting the DOCS: a graph-based approach to document understanding" [^0]. This article is an introductory version of its second chapter, summarizing the key aspect and interesting spots of this niche of Document AI.
+How our brain processes and understands documents? It's not just about reading words sequentially - we naturally perceive relationships between different parts of a page, like how titles relate to paragraphs or how table cells connect to form meaningful structures. This intuitive way of understanding documents through relationships creates an exciting intersection between document analysis and graph theory, which strongly inspired my PhD thesis "Connecting the DOCS: a graph-based approach to document understanding" [^0].
+
+This article is an introductory version of its second chapter, summarizing the key aspects and interesting spots of this niche of Document AI.
 
 ## What's a Graph Anyway?
 

@@ -1,0 +1,104 @@
+/* assets/css/extended/projects.css */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem 0;
+}
+
+.project-card {
+    background: var(--entry);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.project-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+
+.project-content h2 {
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+}
+
+.project-content h2 a {
+    text-decoration: none;
+    color: var(--primary);
+}
+
+.project-description {
+    color: var(--secondary);
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.project-tag {
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Example tag colors - add more as needed */
+.tag-javascript { background: #f7df1e; color: #000; }
+.tag-python { background: #3776ab; color: #fff; }
+.tag-react { background: #61dafb; color: #000; }
+.tag-vue { background: #42b883; color: #fff; }
+.tag-golang { background: #00add8; color: #fff; }
+
+/* ML/AI Tags */
+.tag-python { background: #3776AB; color: #fff; }
+.tag-pytorch { background: #EE4C2C; color: #fff; }
+.tag-tensorflow { background: #FF6F00; color: #fff; }
+.tag-dgl { background: #008C45; color: #fff; }
+.tag-transformers { background: #FFD700; color: #000; }
+.tag-ml { background: #9C27B0; color: #fff; }
+.tag-nlp { background: #673AB7; color: #fff; }
+.tag-computer-vision { background: #3F51B5; color: #fff; }
+
+/* Web Development */
+.tag-angular { background: #DD0031; color: #fff; }
+.tag-react { background: #61DAFB; color: #000; }
+.tag-vue { background: #42B883; color: #fff; }
+.tag-typescript { background: #3178C6; color: #fff; }
+.tag-javascript { background: #F7DF1E; color: #000; }
+
+/* Categories */
+.tag-app { background: #2196F3; color: #fff; }
+.tag-game { background: #4CAF50; color: #fff; }
+.tag-web { background: #00BCD4; color: #fff; }
+.tag-research { background: #795548; color: #fff; }
+.tag-data-science { background: #607D8B; color: #fff; }
+.tag-tool { background: #FF5722; color: #fff; }
+.tag-api { background: #009688; color: #fff; }
+
+/* Status Tags */
+.tag-completed { background: #4CAF50; color: #fff; }
+.tag-in-progress { background: #FFC107; color: #000; }
+.tag-experimental { background: #FF9800; color: #fff; }

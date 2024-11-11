@@ -1,0 +1,27 @@
+{{- define "main" }}
+<main class="posts">
+    <h1>{{.Title}}</h1>
+    <div class="projects-grid">
+        {{- range .Pages }}
+        <article class="project-card">
+            {{- if .Params.cover.image }}
+            <div class="project-image">
+                <a href="{{ .Params.projectUrl | default .RelPermalink }}" target="_blank" rel="noopener noreferrer">
+                    <img src="{{ .Params.cover.image | absURL }}" alt="{{ .Params.cover.alt | default .Title }}">
+                </a>
+            </div>
+            {{- end }}
+            <div class="project-content">
+                <h2><a href="{{ .Params.projectUrl | default .RelPermalink }}" target="_blank" rel="noopener noreferrer">{{ .Title }}</a></h2>
+                <div class="project-tags">
+                    {{- range .Params.tags }}
+                    <span class="project-tag tag-{{ . | urlize }}">{{ . }}</span>
+                    {{- end }}
+                </div>
+                <p class="project-description">{{ .Description }}</p>
+            </div>
+        </article>
+        {{- end }}
+    </div>
+</main>
+{{- end }}
