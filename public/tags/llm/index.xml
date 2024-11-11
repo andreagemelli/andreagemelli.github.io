@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Llm on Andrea Gemelli</title>
+    <link>http://localhost:1313/tags/llm/</link>
+    <description>Recent content in Llm on Andrea Gemelli</description>
+    <generator>Hugo -- 0.123.8</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 06 Jun 2024 11:00:00 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/llm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduction to RAG</title>
+      <link>http://localhost:1313/posts/rag/</link>
+      <pubDate>Thu, 06 Jun 2024 11:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/rag/</guid>
+      <description>An introduction to Retrieval Augmented Generation.</description>
+    </item>
+  </channel>
+</rss>
