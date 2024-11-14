@@ -62,7 +62,7 @@ This graph-based approach to document understanding has several key advantages:
 
 Building on these ideas, I developed Doc2Graph [^13], an open-source framework that puts these concepts into practice. Doc2Graph provides a task-agnostic approach to document understanding, allowing researchers and developers to represent any document as a graph structure. The framework is designed to be lightweight yet effective, handling multiple document understanding tasks with significantly fewer parameters than traditional approaches.
 
-Want to try it yourself? Check out the tutorial section of the [Doc2Graph repository](https://github.com/agemmell/doc2graph)!
+Want to try it yourself? Check out the tutorial section of the [Doc2Graph repository](https://github.com/andreagemelli/doc2graph)!
 
 ## The Road Ahead
 

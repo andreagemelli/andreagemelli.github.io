@@ -65,7 +65,7 @@ params:
       url: "https://github.com/andreagemelli"
     - name: "x"
       url: "https://twitter.com/_andreagemelli"
-    - name: "scholar"
+    - name: "googlescholar"
       url: "http://tiny.cc/myscholar"
     - name: "linktree"
       url: "https://linktr.ee/andrea.gemelli"
