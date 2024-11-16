@@ -43,6 +43,7 @@ params:
   displayFullLangName: true
   ShowShareButtons: true
   env: production
+  comments: true
 
   profileMode:
     enabled: true
