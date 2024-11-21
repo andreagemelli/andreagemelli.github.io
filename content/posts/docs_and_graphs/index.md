@@ -1,6 +1,6 @@
 ---
 title: 'How Documents Met Graph Theory'
-date: 2024-03-22
+date: 2024-11-11
 draft: false
 description: "An introductory blog post to GNNs and Document AI"
 ShareButtons: ['linkedin', 'x']

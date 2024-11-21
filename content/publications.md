@@ -3,6 +3,7 @@ title: "Publications" # in any language you want
 summary: "search"
 hidemeta: true
 disableShare: true
+comments: false
 ---
 ### 📣 Conference Proceedings
 ---
