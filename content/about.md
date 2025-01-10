@@ -34,7 +34,7 @@ Italian 🤌🏻, English (C1), French (B1), Spanish (B1)
 
 ---
 
-### Places & Languages
+### Places
 
 - Figline V.no & Montevarchi 🇮🇹 - until 2018
 - Ghent (Erasums+ Ghent University) 🇧🇪 - from 2018 to 2019
