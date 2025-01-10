@@ -59,6 +59,14 @@ comments: false
 
   Pattern Recognition Letters, 2023
 
+### ✍🏼 Under Review
+---
+
+- [BoundingDocs: a Unified Dataset for Document Question Answering with Spatial Annotations](https://arxiv.org/abs/2501.03403)
+  
+  Simone Giovannini, Fabio Coppini, **Andrea Gemelli**, Simone Marinai
+
+  arXiv, 2025
 
 ### 📔 PhD Thesis
 ---

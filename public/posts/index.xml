@@ -6,19 +6,19 @@
     <description>Recent content in Posts on Andrea Gemelli</description>
     <generator>Hugo -- 0.123.8</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 22 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 11 Nov 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How Documents Met Graph Theory</title>
       <link>http://localhost:1313/posts/docs_and_graphs/</link>
-      <pubDate>Fri, 22 Mar 2024 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 11 Nov 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/docs_and_graphs/</guid>
       <description>An introductory blog post to GNNs and Document AI</description>
     </item>
     <item>
       <title>Hello World!</title>
       <link>http://localhost:1313/posts/hello-world/</link>
-      <pubDate>Thu, 01 Feb 2024 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 09 May 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/hello-world/</guid>
       <description>Wondering about blogging.</description>
     </item>
