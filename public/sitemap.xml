@@ -47,6 +47,15 @@
     <loc>http://localhost:1313/posts/docs_and_graphs/</loc>
     <lastmod>2024-11-11T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/tags/hallucination/</loc>
+    <lastmod>2024-06-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/rag/</loc>
+    <lastmod>2024-06-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/rag/</loc>
+    <lastmod>2024-06-05T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/posts/hello-world/</loc>
     <lastmod>2024-05-09T00:00:00+00:00</lastmod>
   </url><url>

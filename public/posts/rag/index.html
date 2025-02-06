@@ -5,12 +5,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Introduction to RAG | Andrea Gemelli</title>
-<meta name="keywords" content="llm">
-<meta name="description" content="An introduction to Retrieval Augmented Generation.">
+<title>Introduction to Retrieval Augmented Generation | Andrea Gemelli</title>
+<meta name="keywords" content="Large Langue Models, RAG, Hallucination">
+<meta name="description" content="What is RAG and when to use it">
 <meta name="author" content="Andrea Gemelli">
 <link rel="canonical" href="http://localhost:1313/posts/rag/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.54f6d3849888d9ca90430bf3a058740e423abebb611e6332d18bf13a653ec3aa.css" integrity="sha256-VPbThJiI2cqQQwvzoFh0DkI6vrthHmMy0YvxOmU&#43;w6o=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/assets/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/assets/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/assets/favicon-32x32.png">
@@ -55,16 +55,16 @@
         }
 
     </style>
-</noscript><meta property="og:title" content="Introduction to RAG" />
-<meta property="og:description" content="An introduction to Retrieval Augmented Generation." />
+</noscript><meta property="og:title" content="Introduction to Retrieval Augmented Generation" />
+<meta property="og:description" content="What is RAG and when to use it" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/posts/rag/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-06-06T11:00:00+02:00" />
-<meta property="article:modified_time" content="2024-06-06T11:00:00+02:00" />
+<meta property="article:published_time" content="2024-06-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-06-05T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Introduction to RAG"/>
-<meta name="twitter:description" content="An introduction to Retrieval Augmented Generation."/>
+<meta name="twitter:title" content="Introduction to Retrieval Augmented Generation"/>
+<meta name="twitter:description" content="What is RAG and when to use it"/>
 
 
 <script type="application/ld+json">
@@ -81,7 +81,7 @@
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "Introduction to RAG",
+      "name": "Introduction to Retrieval Augmented Generation",
       "item": "http://localhost:1313/posts/rag/"
     }
   ]
@@ -91,17 +91,17 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Introduction to RAG",
-  "name": "Introduction to RAG",
-  "description": "An introduction to Retrieval Augmented Generation.",
+  "headline": "Introduction to Retrieval Augmented Generation",
+  "name": "Introduction to Retrieval Augmented Generation",
+  "description": "What is RAG and when to use it",
   "keywords": [
-    "llm"
+    "Large Langue Models", "RAG", "Hallucination"
   ],
-  "articleBody": "On June 5th\n",
-  "wordCount" : "3",
+  "articleBody": "Introduction Recentely my PhD supervisor called me, asking: “Would you like to come to one of my lecture and present the students an use-case of yours? You choose!”. Of course, as the avarage infamous PhD experience with supervisors, I could not say no 😂\nJokes aside, it has been not the first time I hold a lecture at the University of Florence about Natural Language Processing, but this time I wanted to talk about something kind of new: retrieval augmented generation (RAG). Another amazing acronym to make already known things look fancier and more cryptic. Let’s delve (nah, this post it is not AI generated - chill) into the topic as I did with the students.\nThese notes are made on top of my lecture slides and inspired by Mistral blog post.\nSuper-uber fast transformer recap Transformers are relatively new architectures 1 that have revolutionized not only the world of research, from NLP to computer vision 2, but also our daily lives. The secret of their success? Scaling 3 4. More parameters, more data and more GPUs going brr. Differently from RNNs or CNNs, transformers are quite more general architectures that, if fed with high volume of data, can approximate more complex patterns and distributions. Want to know more? A couple of videos I would suggest are:\n“Attention is all you need”, by Kilcher; “Let’s build GPT: from scratch, in code, spelled out.”, by Karpathy. Based on these architectures, nowadays we can use amazing closed-source models like ChatGPT and Claude by Anthorpic or open models like Le Chat by Mistral. Thanks to them, we can obtain more variate and hilarious jokes compared to the ones from Alexa, as shown below. This is due to the capability of these models to generate text, a.k.a. picking tokens from a finite set of possibilites, called vocabulary. (edit: I wrote about tokenizerss recently in another blog post of mine. Check it out!)\nWhat an amazing world we live in.\nEverything seems fantastic so far, so what can go wrong? Well, Large Language Models (LLM) may suffer of some “limitations”:\noutdated information: trained on data up to X months/years ago; hallucinations: answering questions with different and unrelated answers seen at “some point” during training; limited knowledge: data vary in time and things can change. None of us have billions of dollars to retrain an LLM every day to prevent these limitations and also it would be very inefficient. Usually there are two solutions that can help the model “behave” as expected: either fine-tuning (read this blog for more) or using Retrieval Augmented Generation (RAG).\nLet’s prompt! For the lecture, I prompted Mixtral 5 with the following question:\nquestion: \"How many moons Jupyter has?\" answer: \"As of my last training data in October 2021, Jupiter has 79 known moons\" If we look at the Jupyter wikipedia page tough, at February 5th 2024 the Jupyter confirmed moons are 95! Providing the model with the more recenet discoveries, so providing it with a context, make it answering correctily withoout the need of retraining:\nquestion_with_context: \"How many moons Jupyter has? Take into considerations that, according to wikipedia: {wiki_page}\" answer: \"According to your source, as of February 5th, 2024, Jupiter has at least 95 known moons with confirmed orbits\" So to speak, we augmented the generated answer of Mixtral, subsituting the textual content of wikipedia to the string at {wiki_page}! If we could retrieve somehow the wikipedia page automatically instead of looking manually for this information, we would have already developed a RAG pipeline!\nRetrieval Augmented Generation RAG offers a powerful approach to overcome LLM limitations, as shown before, by augmenting LLMs with external knowledge retrieval. As extensively described in the literature 6 7, the RAG system consists of three main components:\nIndexing: extraction of the raw data, conversion in full text format and segmentation into smaller parts (called chunks) This part comprehends also the crucial choice of vector representation of text, and their storage in databases, also known as embeddings and vectorDB respectively; for example, SentenceTransformers (open-source), Mistral Embeddings can be used for meaningful embeddings; FAISS (open-source), Pinecone as dbs and retrieval algorithms; Retrieval: use similarity measures to find the closest matches with the query in the DB, like cosine similarity; Generation: augment the LLM query prompt with the retrieved context, enhancing its capabilities and reducing aforementioned limitations! RAG pipeline summary 6\nConclusion Don’t always trust LLM’s outputs, either if you are just chatting with them or using them in your applications. In my experience, when resources are available, go for fine-tuning to make the models behave as you want, with your data. But, fine-tuning is not always possible and RAG is a simple yet effective solution to wrap application around black box models such as GPT or Claude.\nTo summarize, RAG:\nhelps reducing LLMs known limitations; improves LLMs outputs without the need fine-tune or align models; there is lot of research “in the middle”: which embeddings to use? what about the chunk choice? Happy learning 🤗\nReferences Vaswani, et al., “Attention is all you need”, 2017 ↩︎\nDosovitskiy, et al., “An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale”, 2020 ↩︎\nRadford, et al., “Language Models are Unsupervised Multitask Learners”, 2019 ↩︎\nOpenAI, “Language Models are Few-Shot Learners”, 2020 ↩︎\nMistral, “Mixtral of experts”, blogpost, 2024 ↩︎\nGao, et al., “Retrieval-Augmented Generation for Large Language Models: A Survey”, 2023 ↩︎ ↩︎\nLewis, et al., “Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks”, 2020 ↩︎\n",
+  "wordCount" : "899",
   "inLanguage": "en",
-  "datePublished": "2024-06-06T11:00:00+02:00",
-  "dateModified": "2024-06-06T11:00:00+02:00",
+  "datePublished": "2024-06-05T00:00:00Z",
+  "dateModified": "2024-06-05T00:00:00Z",
   "author":{
     "@type": "Person",
     "name": "Andrea Gemelli"
@@ -173,6 +173,11 @@
                 </a>
             </li>
             <li>
+                <a href="http://localhost:1313/projects" title="Projects">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li>
                 <a href="http://localhost:1313/archives" title="AI Notes">
                     <span>AI Notes</span>
                 </a>
@@ -186,29 +191,138 @@
   <header class="post-header">
     
     <h1 class="post-title entry-hint-parent">
-      Introduction to RAG
+      Introduction to Retrieval Augmented Generation
     </h1>
     <div class="post-description">
-      An introduction to Retrieval Augmented Generation.
+      What is RAG and when to use it
     </div>
-    <div class="post-meta"><span title='2024-06-06 11:00:00 +0200 CEST'>June 6, 2024</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Andrea Gemelli
+    <div class="post-meta"><span title='2024-06-05 00:00:00 +0000 UTC'>June 5, 2024</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Andrea Gemelli
 
 </div>
-  </header> 
-  <div class="post-content"><p>On June 5th</p>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#introduction" aria-label="Introduction">Introduction</a></li>
+                <li>
+                    <a href="#super-uber-fast-transformer-recap" aria-label="Super-uber fast transformer recap">Super-uber fast transformer recap</a></li>
+                <li>
+                    <a href="#lets-prompt" aria-label="Let&rsquo;s prompt!">Let&rsquo;s prompt!</a></li>
+                <li>
+                    <a href="#retrieval-augmented-generation" aria-label="Retrieval Augmented Generation">Retrieval Augmented Generation</a></li>
+                <li>
+                    <a href="#conclusion" aria-label="Conclusion">Conclusion</a></li>
+                <li>
+                    <a href="#references" aria-label="References">References</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h2>
+<p>Recentely my PhD supervisor called me, asking: &ldquo;Would you like to come to one of my lecture and present the students an use-case of yours? You choose!&rdquo;. Of course, as the avarage infamous PhD experience with supervisors, I could not say no 😂</p>
+<p>Jokes aside, it has been not the first time I hold a lecture at the University of Florence about Natural Language Processing, but this time I wanted to talk about something kind of <em>new</em>: retrieval augmented generation (RAG). Another amazing acronym to make already known things look fancier and more cryptic. Let&rsquo;s delve (nah, this post it is not AI generated - chill) into the topic as I did with the students.</p>
+<p>These notes are made on top of my <a href="/posts/rag/docs/lecture.pdf">lecture slides</a> and inspired by <a href="https://docs.mistral.ai/guides/rag/">Mistral blog post</a>.</p>
+<h2 id="super-uber-fast-transformer-recap">Super-uber fast transformer recap<a hidden class="anchor" aria-hidden="true" href="#super-uber-fast-transformer-recap">#</a></h2>
+<p>Transformers are relatively new architectures <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> that have revolutionized not only the world of research, from NLP to computer vision <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>, but also our daily lives. The secret of their success? Scaling <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>. More parameters, more data and more GPUs going <em>brr</em>. Differently from RNNs or CNNs, transformers are quite more general architectures that, if fed with high volume of data, can approximate more complex patterns and distributions. Want to know more? A couple of videos I would suggest are:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=iDulhoQ2pro">&ldquo;Attention is all you need&rdquo;</a>, by Kilcher;</li>
+<li><a href="https://www.youtube.com/watch?v=kCc8FmEb1nY">&ldquo;Let&rsquo;s build GPT: from scratch, in code, spelled out.&rdquo;</a>, by Karpathy.</li>
+</ul>
+<p>Based on these architectures, nowadays we can use amazing closed-source models like ChatGPT and Claude by Anthorpic or open models like Le Chat by Mistral. Thanks to them, we can obtain more variate and hilarious jokes compared to the ones from Alexa, as shown below. This is due to the capability of these models to <em>generate</em> text, a.k.a. picking <em>tokens</em> from a finite set of possibilites, called vocabulary. (edit: I wrote about tokenizerss recently in another <a href="https://www.andreagemelli.me/posts/tokenizers/">blog post</a> of mine. Check it out!)</p>
+<p><img loading="lazy" src="images/fun.png" alt="fun"  />
+
+<em>What an amazing world we live in.</em></p>
+<p>Everything seems fantastic so far, so what can go wrong?
+Well, Large Language Models (LLM) may suffer of some &ldquo;limitations&rdquo;:</p>
+<ul>
+<li><strong>outdated information</strong>: trained on data up to X months/years ago;</li>
+<li><strong>hallucinations</strong>: answering questions with different and unrelated answers seen at “some
+point” during training;</li>
+<li><strong>limited knowledge</strong>: data vary in time and things can change.</li>
+</ul>
+<p>None of us have billions of dollars to retrain an LLM every day to prevent these limitations and also it would be very inefficient. Usually there are two solutions that can help the model &ldquo;behave&rdquo; as expected: either fine-tuning (read <a href="https://www.philschmid.de/fine-tune-llms-in-2025">this blog</a> for more) or using Retrieval Augmented Generation (RAG).</p>
+<h2 id="lets-prompt">Let&rsquo;s prompt!<a hidden class="anchor" aria-hidden="true" href="#lets-prompt">#</a></h2>
+<p>For the lecture, I <a href="https://huggingface.co/chat/conversation/665f64d84f6689afa29b1b60">prompted</a> Mixtral <sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> with the following question:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>question: <span style="color:#e6db74">&#34;How many moons Jupyter has?&#34;</span>
+</span></span><span style="display:flex;"><span>answer: <span style="color:#e6db74">&#34;As of my last training data in October 2021, Jupiter has 79 known moons&#34;</span>
+</span></span></code></pre></div><p>If we look at the <a href="https://en.wikipedia.org/wiki/Moons_of_Jupiter">Jupyter wikipedia page</a> tough, at February 5th 2024 the Jupyter confirmed moons are 95! Providing the model with the more recenet discoveries, so providing it with a <em>context</em>, make it answering correctily withoout the need of retraining:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>question_with_context: <span style="color:#e6db74">&#34;How many moons Jupyter has? Take into considerations that, according to wikipedia: </span><span style="color:#e6db74">{wiki_page}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>answer: <span style="color:#e6db74">&#34;According to your source, as of February 5th, 2024, Jupiter has at least 95 known moons with confirmed orbits&#34;</span>
+</span></span></code></pre></div><p>So to speak, we <em>augmented the generated</em> answer of Mixtral, subsituting the textual content of wikipedia to the string at <code>{wiki_page}</code>! If we could retrieve somehow the wikipedia page automatically instead of looking manually for this information, we would have already developed a RAG pipeline!</p>
+<h2 id="retrieval-augmented-generation">Retrieval Augmented Generation<a hidden class="anchor" aria-hidden="true" href="#retrieval-augmented-generation">#</a></h2>
+<p>RAG offers a powerful approach to overcome LLM limitations, as shown before, by augmenting LLMs with external knowledge retrieval. As extensively described in the literature <sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> <sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>, the RAG system consists of three main components:</p>
+<ul>
+<li><strong>Indexing</strong>: extraction of the raw data, conversion in full text format and segmentation into smaller parts (called chunks)
+<ul>
+<li>This part comprehends also the crucial choice of vector representation of text, and their storage in databases, also known as <strong>embeddings</strong> and <strong>vectorDB</strong> respectively;</li>
+<li>for example, <a href="https://www.sbert.net/">SentenceTransformers</a> (open-source), <a href="https://docs.mistral.ai/capabilities/embeddings/">Mistral Embeddings</a> can be used for meaningful embeddings;</li>
+<li><a href="https://github.com/facebookresearch/faiss">FAISS</a> (open-source), <a href="https://www.pinecone.io/">Pinecone</a> as dbs and retrieval algorithms;</li>
+</ul>
+</li>
+<li><strong>Retrieval</strong>: use similarity measures to find the closest matches with the query in the DB, like cosine similarity;</li>
+<li><strong>Generation</strong>: augment the LLM query prompt with the retrieved context, enhancing its capabilities
+and reducing aforementioned limitations!</li>
+</ul>
+<p><img loading="lazy" src="images/rag.png" alt="rag"  />
+
+<em>RAG pipeline summary <sup id="fnref1:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></em></p>
+<h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
+<p>Don&rsquo;t always trust LLM&rsquo;s outputs, either if you are just chatting with them or using them in your applications. In my experience, when resources are available, go for fine-tuning to make the models behave as you want, with your data. But, fine-tuning is not always possible and RAG is a simple yet effective solution to wrap application around black box models such as GPT or Claude.</p>
+<p>To summarize, RAG:</p>
+<ul>
+<li>helps reducing LLMs known limitations;</li>
+<li>improves LLMs outputs without the need fine-tune or align models;</li>
+<li>there is lot of research “in the middle”: which embeddings to use? what about the chunk choice?</li>
+</ul>
+<p>Happy learning 🤗</p>
+<h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Vaswani, et al., &ldquo;Attention is all you need&rdquo;, 2017&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Dosovitskiy, et al., &ldquo;An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale&rdquo;, 2020&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Radford, et al., &ldquo;Language Models are Unsupervised Multitask Learners&rdquo;, 2019&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>OpenAI, &ldquo;Language Models are Few-Shot Learners&rdquo;, 2020&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>Mistral, &ldquo;Mixtral of experts&rdquo;, <a href="https://mistral.ai/en/news/mixtral-of-experts">blogpost</a>, 2024&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>Gao, et al., &ldquo;Retrieval-Augmented Generation for Large Language Models: A Survey&rdquo;, 2023&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>Lewis, et al., &ldquo;Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks&rdquo;, 2020&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
 
 
   </div>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/llm/">Llm</a></li>
+      <li><a href="http://localhost:1313/tags/large-langue-models/">Large Langue Models</a></li>
+      <li><a href="http://localhost:1313/tags/rag/">RAG</a></li>
+      <li><a href="http://localhost:1313/tags/hallucination/">Hallucination</a></li>
     </ul>
 
 <ul class="share-buttons">
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Introduction to RAG on x"
-            href="https://x.com/intent/tweet/?text=Introduction%20to%20RAG&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2frag%2f&amp;hashtags=llm">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Introduction to Retrieval Augmented Generation on x"
+            href="https://x.com/intent/tweet/?text=Introduction%20to%20Retrieval%20Augmented%20Generation&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2frag%2f&amp;hashtags=LargeLangueModels%2cRAG%2cHallucination">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
@@ -216,8 +330,8 @@
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Introduction to RAG on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2frag%2f&amp;title=Introduction%20to%20RAG&amp;summary=Introduction%20to%20RAG&amp;source=http%3a%2f%2flocalhost%3a1313%2fposts%2frag%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Introduction to Retrieval Augmented Generation on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2frag%2f&amp;title=Introduction%20to%20Retrieval%20Augmented%20Generation&amp;summary=Introduction%20to%20Retrieval%20Augmented%20Generation&amp;source=http%3a%2f%2flocalhost%3a1313%2fposts%2frag%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
@@ -226,12 +340,26 @@
     </li>
 </ul>
 
-  </footer>
+  </footer><script src="https://giscus.app/client.js"
+        data-repo="andreagemelli/andreagemelli.github.io"
+        data-repo-id="R_kgDOH26OFQ"
+        data-category="Q&A"
+        data-category-id="DIC_kwDOH26OFc4CkUt5"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/">Andrea Gemelli</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">Andrea Gemelli</a></span> · 
 
     <span>
         Powered by
