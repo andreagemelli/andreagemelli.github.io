@@ -5,6 +5,6 @@ description: "BoundingDocs is a new benchmark for Document Question Answering ho
 tags: ["ml", "research", "dataset"]
 cover:
     image: "/images/projects/boundingdocs.png"
-    alt: "BoundingDocs"
+    alt: "Project Preview"
 projectUrl: "https://huggingface.co/datasets/letxbe/BoundingDocs"
 ---
