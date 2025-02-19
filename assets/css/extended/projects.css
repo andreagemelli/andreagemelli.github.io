@@ -81,6 +81,10 @@
 .tag-ml { background: #9C27B0; color: #fff; }
 .tag-nlp { background: #673AB7; color: #fff; }
 .tag-computer-vision { background: #3F51B5; color: #fff; }
+.tag-dataset { background: #DD0031; color: #fff; }
+.tag-llm { background: #61DAFB; color: #fff; }
+.tag-agent { background: #42B883; color: #fff; }
+.tag-gradio { background: #F7DF1E; color: #fff; }
 
 /* Web Development */
 .tag-angular { background: #DD0031; color: #fff; }

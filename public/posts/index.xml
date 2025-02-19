@@ -31,9 +31,9 @@
     </item>
     <item>
       <title>Hello World!</title>
-      <link>http://localhost:1313/posts/hello-world/main/</link>
+      <link>http://localhost:1313/posts/hello-world/</link>
       <pubDate>Thu, 09 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/hello-world/main/</guid>
+      <guid>http://localhost:1313/posts/hello-world/</guid>
       <description>Wondering about blogging.</description>
     </item>
   </channel>

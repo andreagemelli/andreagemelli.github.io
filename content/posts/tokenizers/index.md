@@ -77,7 +77,7 @@ print(encode("I love coding in Python ❤️"))
 >> [0, 43, 3518, 20255, 295, 15255, 53341, 100, 10759]
 ```
 
-We could reduced to 6 tokens the same sentence as before, cutting out 80% of its previous lenght!
+We could reduced to 9 tokens the same sentence as before, cutting out ~65% of its previous lenght!
 
 Looking at [its vocabulary](https://huggingface.co/deepseek-ai/DeepSeek-R1/raw/main/tokenizer.json), we can find out that:
 
