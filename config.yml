@@ -59,7 +59,7 @@ params:
 
   socialIcons: # optional
     - name: "email"
-      url: "gemelli.andrea@hotmail.com"
+      url: "mailto:gemelli.andrea@hotmail.com"
     - name: "linkedin"
       url: "https://www.linkedin.com/in/andrea-gemelli/"
     - name: "github"
