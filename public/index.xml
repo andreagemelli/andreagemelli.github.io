@@ -65,6 +65,13 @@
       <description>about me</description>
     </item>
     <item>
+      <title>EasyMCP</title>
+      <link>http://localhost:1313/projects/hackaton/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/hackaton/</guid>
+      <description>An easy tool to quicly convert OpenAPI json file to MCP and integrate into Claude/Cursor/Whatever</description>
+    </item>
+    <item>
       <title>Publications</title>
       <link>http://localhost:1313/publications/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

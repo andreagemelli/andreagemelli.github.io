@@ -42,4 +42,3 @@ Italian 🤌🏻, English (C1), French (B1), Spanish (B1)
 - Florence (PhD AI Lab @ UniFI) 🇮🇹 - in 2021
 - Barcelona (Visiting Researcher @ CVC) 🇪🇸 - from 2022 to 2023
 - Paris (AI Research Scientist @ LetXbe) 🇫🇷 - from 2024
-  

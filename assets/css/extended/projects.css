@@ -65,6 +65,16 @@
     font-weight: 500;
 }
 
+.content table {
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+}
+.content table th,
+.content table td {
+word-wrap: break-word;
+}
+
 /* Example tag colors - add more as needed */
 .tag-javascript { background: #f7df1e; color: #000; }
 .tag-python { background: #3776ab; color: #fff; }
@@ -101,6 +111,8 @@
 .tag-data-science { background: #607D8B; color: #fff; }
 .tag-tool { background: #FF5722; color: #fff; }
 .tag-api { background: #009688; color: #fff; }
+.tag-mcp { background: #DD0031; color: #fff; }
+.tag-openapi { background: #61DAFB; color: #000; }
 
 /* Status Tags */
 .tag-completed { background: #4CAF50; color: #fff; }
