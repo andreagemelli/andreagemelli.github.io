@@ -74,6 +74,8 @@ params:
       url: "https://medium.com/@andrea.gemelli"
     - name: "linktree"
       url: "https://linktr.ee/andrea.gemelli"
+    - name: "cv"
+      url: "https://andreagemelli.me/cv.pdf"
 
   assets:
     disableHLJS: true # to disable highlight.js
