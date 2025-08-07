@@ -12,25 +12,41 @@ I began a 🧑🏻‍🏫 [PhD in Artificial Intelligence](https://smartcomputin
 
 After successfully concluding my PhD with the **Doctor Europaeus** title, I joined 👨🏻‍💻 [LetXBe](https://www.letxbe.ai), a Paris-based startup focused on Document Analysis and NLP, in December 2023. In my current role, I am creating innovative LLM-based and multi-modal solutions for research purposes and client requirements. I am also actively contributing to product development, leading a monthly internal reading group to foster technical team knowledge sharing and collaboration.
 
+I am passionate about 🌐 **open source development** and contributing to the research community. My projects have gathered 200+ GitHub stars, including [Doc2Graph](https://github.com/andreagemelli/doc2graph) for document information extraction and [EasyMCP](https://github.com/remorses/easymcp) for translating OpenAPI to MCP servers - which earned [3rd place at the Paris AI Hackathon](https://blog.techeurope.io/p/hackathon-paris-1). I actively review for IJDAR journal and ICDAR conference, while my research has accumulated [100+ citations on Google Scholar](http://tiny.cc/myscholar) and my Hugging Face datasets and models have reached 10k+ downloads.
+
 ---
 
 ### Tools & Languages
 
-#### 🤖 Machine Learning
+#### 🤖 Machine Learning & Dev
+PyTorch, Transformers, vLLM, DGL, Detectron2, FastAPI, Gradio
 
-Transormers, PyTorch, Scikit-Learn, Pandas, Numpy, Weights & Bias
+#### 📊 Data & MLOps
+Pandas, Scikit‑Learn, Jupyter, Tensorboard, W&B, Docker, Git
 
-#### ☁️ Cloud
+#### ☁️ Cloud & Infrastructure
+AWS (SageMaker, S3, Lambda), Scaleway
 
-AWS, Docker, ArangoDB
+#### 💻 Programming
+Python (Expert), C++, TypeScript
 
-#### 🔭 Misc
+#### 🗣️ Languages
+Italian (Native), English (C1), French (B1), Spanish (B1)
 
-Python, Latex, Angular, C++, HTML, CSS, TypeScript, git, linux, bash
+---
 
-#### 🗣️ Speaking
+### Downloads
 
-Italian 🤌🏻, English (C1), French (B1), Spanish (B1)
+{{< rawhtml >}}
+<div style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin: 2rem 0; width: 100%;">
+    <a href="/cv.pdf" target="_blank" rel="noopener" title="CV Short" style="background: var(--primary); color: var(--theme); padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: inline-block;">
+        📄 CV SHORT
+    </a>
+    <a href="/cv-long.pdf" target="_blank" rel="noopener" title="CV Long" style="background: var(--primary); color: var(--theme); padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: inline-block;">
+        📋 CV LONG
+    </a>
+</div>
+{{< /rawhtml >}}
 
 ---
 
