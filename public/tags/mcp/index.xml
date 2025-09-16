@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Mcp on Andrea Gemelli</title>
+    <title>MCP on Andrea Gemelli</title>
     <link>http://localhost:1313/tags/mcp/</link>
-    <description>Recent content in Mcp on Andrea Gemelli</description>
-    <generator>Hugo -- 0.123.8</generator>
+    <description>Recent content in MCP on Andrea Gemelli</description>
+    <generator>Hugo -- 0.150.0</generator>
     <language>en</language>
     <lastBuildDate>Mon, 26 May 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/mcp/index.xml" rel="self" type="application/rss+xml" />
@@ -14,13 +14,6 @@
       <pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/mcp/</guid>
       <description>How we won the Paris AI Hackaton</description>
-    </item>
-    <item>
-      <title>EasyMCP</title>
-      <link>http://localhost:1313/projects/hackaton/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/hackaton/</guid>
-      <description>An easy tool to quicly convert OpenAPI json file to MCP and integrate into Claude/Cursor/Whatever</description>
     </item>
   </channel>
 </rss>

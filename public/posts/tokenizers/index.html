@@ -173,13 +173,13 @@
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/projects" title="Projects">
-                    <span>Projects</span>
+                <a href="http://localhost:1313/archives" title="AI Notes">
+                    <span>AI Notes</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/archives" title="AI Notes">
-                    <span>AI Notes</span>
+                <a href="http://localhost:1313/cv.pdf" title="CV">
+                    <span>CV</span>
                 </a>
             </li>
         </ul>
@@ -231,7 +231,7 @@
   <div class="post-content"><h2 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h2>
 <p>When working with Large Language Models, we often focus on their remarkable capabilities - from writing code to explaining complex concepts. However, there&rsquo;s a crucial component that can significantly impact their behavior and performance: tokenization 🍣.</p>
 <p>As highlighted in a recent work by Garreth Lee and the Hugging Face team 🤗 <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, even state-of-the-art models can stumble on seemingly simple tasks due to tokenization choices. For instance, many models struggle with the basic question &ldquo;Which is bigger? 9.9 or 9.11&rdquo; - a failure that showcase their limitations in understanding how numbers are tokenized and represented internally.</p>
-<p><img loading="lazy" src="images/chats.png" alt="Models mistakes on &amp;ldquo;simple&amp;rdquo; questions"  />
+<p><img loading="lazy" src="images/chats.png" alt="Models mistakes on &ldquo;simple&rdquo; questions"  />
 
 <em>ChatGPT, Claude and Phi struggling with simple questions.</em></p>
 <p>Unfortunately, sometimes models are not just <em>struggling</em>. Consider the infamous case of <a href="https://www.lesswrong.com/posts/aPeJE8bSo6rAFoLqg/solidgoldmagikarp-plus-prompt-generation">SolidGoldMagikarp</a> - a string that, when input to the first ChatGPT, it could cause the model to produce nonsensical - or even harmful - outputs. This wasn&rsquo;t a failure of the model&rsquo;s understanding <em>per se</em>, but rather a reflection of an undertrained embedding vector accidentaly ended up in the vocabulary, consequently to the tokenization applied.</p>
@@ -323,7 +323,7 @@ The ones that I know, have used and suggests are the following:</p>
 <h3 id="beyond-traditional-tokenizers">Beyond traditional tokenizers<a hidden class="anchor" aria-hidden="true" href="#beyond-traditional-tokenizers">#</a></h3>
 <p>Recently a new paper from Meta led the foundations for a new adaptive approach beyhond traditional tokenizers: The Byte Latent Transformer (BLT) <sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>.</p>
 <p>Instead of using predefined tokens, it proposes to dynamically groups bytes into patches based on their information content. Citing the paper, &ldquo;patches are segmented dynamically based on the entropy of the next byte, allocating more compute and model capacity where there is more data complexity&rdquo;. This approach shows promising results, with an efficiency gains of up to 50% and &ldquo;improved robustness of BLT models to input noise and their awareness of sub-word aspects of input data that token-based llms miss&rdquo;.</p>
-<p><img loading="lazy" src="images/blt-arch.png" alt="Models mistakes on &amp;ldquo;simple&amp;rdquo; questions"  />
+<p><img loading="lazy" src="images/blt-arch.png" alt="Models mistakes on &ldquo;simple&rdquo; questions"  />
 
 <em>BLT architecture.</em></p>
 <p>As shown in the image, two lightweight local encoder / decoder are employed to transform bytes into patches dynamically, bypassing the need of a pre-trained fixed vocabulary. Than, the transformer architectures learns to predict the next <em>patch</em> given the input context directly within this embedded space.</p>

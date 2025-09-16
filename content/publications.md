@@ -59,8 +59,14 @@ comments: false
 
   Pattern Recognition Letters, 2023
 
-### ✍🏼 Under Review
+### 📚 arXiv
 ---
+
+- [Towards Reliable and Interpretable Document Question Answering via VLMs](https://arxiv.org/abs/2509.10129)
+  
+  Alessio Chen, Simone Giovannini, **Andrea Gemelli**, Fabio Coppini, Simone Marinai
+
+  arXiv, 2025
 
 - [BoundingDocs: a Unified Dataset for Document Question Answering with Spatial Annotations](https://arxiv.org/abs/2501.03403)
   

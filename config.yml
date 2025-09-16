@@ -1,7 +1,8 @@
 baseURL: "https://andreagemelli.me/"
 title: Andrea Gemelli
 description: "This is my portfolio"
-paginate: 5
+pagination:
+  pagerSize: 5
 theme: [PaperMod]
 languageCode: en-us
 
@@ -24,11 +25,11 @@ languages:
           - name: Publications
             url: publications
             weight: 10
-          - name: Projects
-            url: projects
-            weight: 15
           - name: AI Notes
             url: archives
+            weight: 15
+          - name: CV
+            url: /cv.pdf
             weight: 20
             
       params:
@@ -74,8 +75,6 @@ params:
       url: "https://medium.com/@andrea.gemelli"
     - name: "linktree"
       url: "https://linktr.ee/andrea.gemelli"
-    - name: "cv"
-      url: "https://andreagemelli.me/cv.pdf"
 
   assets:
     disableHLJS: true # to disable highlight.js
