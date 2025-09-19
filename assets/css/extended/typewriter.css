@@ -1,0 +1,67 @@
+/* Typewriter effect styles */
+.typewriter-container {
+    position: relative;
+    display: inline-block;
+    min-height: 1.2em; /* Ensure minimum height to prevent layout shift */
+}
+
+.typewriter-text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid;
+    border-color: var(--primary);
+    animation: blink-caret 1s step-end infinite;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+/* Blinking cursor animation */
+@keyframes blink-caret {
+    from, to { 
+        border-color: transparent; 
+    }
+    50% { 
+        border-color: var(--primary); 
+    }
+}
+
+/* Ensure the typewriter effect works with the existing h1 styling */
+.profile h1.typewriter-container {
+    margin: 0;
+    padding: 0;
+}
+
+/* Placeholder styles to maintain layout */
+.typewriter-placeholder {
+    visibility: hidden;
+    position: absolute;
+    white-space: nowrap;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .typewriter-text {
+        border-color: var(--primary);
+    }
+    
+    @keyframes blink-caret {
+        from, to { 
+            border-color: transparent; 
+        }
+        50% { 
+            border-color: var(--primary); 
+        }
+    }
+}
+

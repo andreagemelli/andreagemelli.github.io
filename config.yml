@@ -48,7 +48,7 @@ params:
 
   profileMode:
     enabled: true
-    title: "Hey, nice to meet you! 🤗" # optional default will be site title
+    title: "Nice to meet you! 🤗" # optional default will be site title
     subtitle: "📍 Paris, 🇫🇷 France\n\n
     📚 PhD & Computer Science Engineer \n\n
     👨🏻‍💻 AI Research Scientist @ LetXbe \n\n"
@@ -75,6 +75,7 @@ params:
       url: "https://medium.com/@andrea.gemelli"
     - name: "linktree"
       url: "https://linktr.ee/andrea.gemelli"
+      icon: "/assets/linktree.svg"
 
   assets:
     disableHLJS: true # to disable highlight.js

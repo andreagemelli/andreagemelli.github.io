@@ -1,0 +1,12 @@
+{{- /* Head custom content area start */ -}}
+{{- /*     Insert any custom code (web-analytics, resources, etc.) - it will appear in the <head></head> section of every page. */ -}}
+{{- /*     Can be overwritten by partial with the same name in the global layouts. */ -}}
+
+{{- /* Typewriter effect for profile title */ -}}
+{{- if and .IsHome site.Params.profileMode.enabled -}}
+<script defer src="{{ "js/typewriter.js" | absURL }}"></script>
+{{- end -}}
+
+{{- /* Head custom content area end */ -}}
+
+

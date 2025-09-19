@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Benchmarks on Andrea Gemelli</title>
+    <link>http://localhost:1313/tags/benchmarks/</link>
+    <description>Recent content in Benchmarks on Andrea Gemelli</description>
+    <generator>Hugo -- 0.150.0</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 03 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/benchmarks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Retrieval and Reasoning</title>
+      <link>http://localhost:1313/posts/intelligence/</link>
+      <pubDate>Thu, 03 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/intelligence/</guid>
+      <description>Are AI models really intelligent?</description>
+    </item>
+  </channel>
+</rss>
