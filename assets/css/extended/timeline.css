@@ -1,0 +1,123 @@
+/* Citation section */
+.citation-section {
+    margin: 2rem 0;
+}
+
+.citation-section blockquote {
+    margin: 0;
+    padding: 1.5rem;
+    border-left: 4px solid var(--primary);
+    background: var(--entry);
+    border-radius: 4px;
+    font-style: italic;
+    color: var(--content);
+}
+
+.citation-section blockquote p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Timeline styles */
+.timeline {
+    position: relative;
+    padding-left: 2rem;
+    margin: 2rem 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.5rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-left: 0;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -1.5rem;
+    top: 0.5rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--primary);
+    border: 2px solid var(--entry);
+    z-index: 1;
+    transform: translate(-50%, -50%);
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    padding-left: 1.75rem;
+}
+
+.timeline-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.timeline-date {
+    color: var(--secondary);
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.timeline-content {
+    color: var(--content);
+    line-height: 1.6;
+    padding-left: 1.75rem;
+}
+
+.timeline-content p {
+    margin: 0.5rem 0;
+}
+
+.timeline-content p:first-child {
+    margin-top: 0;
+}
+
+.timeline-content p:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-location {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;
+    color: var(--secondary);
+    line-height: 1.8;
+}
+
+.timeline-location .location-name {
+    font-weight: 500;
+    color: var(--content);
+}
+
+.timeline-location .location-role {
+    color: var(--secondary);
+    font-style: italic;
+}
+

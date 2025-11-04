@@ -54,7 +54,7 @@ params:
     👨🏻‍💻 AI Research Scientist @ LetXbe \n\n"
 
     imageUrl: "img/me.jpg" # optional
-    imageTitle: "🤌🏻" # optional
+    imageTitle: "🤖" # optional
     imageWidth: 300 # custom size
     imageHeight: 300 # custom size
 
