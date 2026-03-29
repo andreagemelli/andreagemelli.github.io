@@ -20,7 +20,7 @@
       <link>http://localhost:1313/posts/mcp/</link>
       <pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/mcp/</guid>
-      <description>How we won the Paris AI Hackaton</description>
+      <description>How we won the Paris AI Hackathon</description>
     </item>
     <item>
       <title>3476, 477, 12274, 112838, 248</title>
@@ -63,6 +63,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/publications/</guid>
       <description>search</description>
+    </item>
+    <item>
+      <title>Unsorted Nice Stuff</title>
+      <link>http://localhost:1313/misc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/misc/</guid>
+      <description>Little bit of everything</description>
     </item>
   </channel>
 </rss>

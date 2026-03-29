@@ -4,7 +4,7 @@ date: 2025-01-26
 draft: false
 description: "Hint: \"deepseek-ai/DeepSeek-R1\" 🤗"
 ShareButtons: ['linkedin', 'x']
-tags: ["NLP", "Large Langue Models", "Tokenizers"]
+tags: ["NLP", "Large Language Models", "Tokenizers"]
 author: 'Andrea Gemelli'
 ShowReadingTime: true
 ShowToc: true
@@ -15,18 +15,18 @@ comments: true
 
 When working with Large Language Models, we often focus on their remarkable capabilities - from writing code to explaining complex concepts. However, there's a crucial component that can significantly impact their behavior and performance: tokenization 🍣.
 
-As highlighted in a recent work by Garreth Lee and the Hugging Face team 🤗 [^0], even state-of-the-art models can stumble on seemingly simple tasks due to tokenization choices. For instance, many models struggle with the basic question "Which is bigger? 9.9 or 9.11" - a failure that showcase their limitations in understanding how numbers are tokenized and represented internally.
+As highlighted in a recent work by Garreth Lee and the Hugging Face team 🤗 [^0], even state-of-the-art models can stumble on seemingly simple tasks due to tokenization choices. For instance, many models struggle with the basic question "Which is bigger? 9.9 or 9.11" - a failure that showcases their limitations in understanding how numbers are tokenized and represented internally.
 
 ![Models mistakes on "simple" questions](images/chats.png)
 *ChatGPT, Claude and Phi struggling with simple questions.*
 
 Unfortunately, sometimes models are not just *struggling*. Consider the infamous case of [SolidGoldMagikarp](https://www.lesswrong.com/posts/aPeJE8bSo6rAFoLqg/solidgoldmagikarp-plus-prompt-generation) - a string that, when input to the first ChatGPT, it could cause the model to produce nonsensical - or even harmful - outputs. This wasn't a failure of the model's understanding *per se*, but rather a reflection of an undertrained embedding vector accidentaly ended up in the vocabulary, consequently to the tokenization applied.
 
-In these notes, I am going to review how tokenization works and which tokenizer library are available, to make informative decisions when developing language models.
+In these notes, I am going to review how tokenization works and which tokenizer libraries are available, to make informative decisions when developing language models.
 
 ## What are Tokenizers?
 
-As humans, we are born with an innate ability to acquire language and to understand its structure, which provides a blueprint for learning *any* language and generate new sentences to express ourselfs [^3].
+As humans, we are born with an innate ability to acquire language and to understand its structure, which provides a blueprint for learning *any* language and generating new sentences to express ourselves [^3].
 Unfortunately, language *"as it is"* cannot be digested by any architecture - just as images are processed as pixel values through neural networks! Tokenizers are the tools that implement a tokenization strategy, allowing to chunk the text into tokens and mapping each one into integers. Specifically:
 
 - **Tokenization** is the process of translating text into sequences of tokens - and vice versa - that produces a map between text and numbers;
@@ -77,7 +77,7 @@ print(encode("I love coding in Python ❤️"))
 >> [0, 43, 3518, 20255, 295, 15255, 53341, 100, 10759]
 ```
 
-We could reduced to 9 tokens the same sentence as before, cutting out ~65% of its previous lenght!
+We reduced the same sentence to 9 tokens, cutting out ~65% of its previous length!
 
 Looking at [its vocabulary](https://huggingface.co/deepseek-ai/DeepSeek-R1/raw/main/tokenizer.json), we can find out that:
 
@@ -105,7 +105,7 @@ Among others, the most famous are:
 
 If you want to look more into the details of these approaches, the [tokenizer summary](https://huggingface.co/docs/transformers/tokenizer_summary) made by HuggingFace it is perfect!
 
-Luckly, there are already open-source library that help you use the cited approaches without reimplementing them from scratch.
+Luckily, there are already open-source libraries that help you use the cited approaches without reimplementing them from scratch.
 The ones that I know, have used and suggests are the following:
 
 - **Tokenizers** (from HuggingFace 🤗, [link](https://github.com/huggingface/tokenizers))
@@ -123,27 +123,27 @@ The ones that I know, have used and suggests are the following:
 
 ### Beyond traditional tokenizers
 
-Recently a new paper from Meta led the foundations for a new adaptive approach beyhond traditional tokenizers: The Byte Latent Transformer (BLT) [^1].
+Recently a new paper from Meta laid the foundations for a new adaptive approach beyond traditional tokenizers: The Byte Latent Transformer (BLT) [^1].
 
 Instead of using predefined tokens, it proposes to dynamically groups bytes into patches based on their information content. Citing the paper, "patches are segmented dynamically based on the entropy of the next byte, allocating more compute and model capacity where there is more data complexity". This approach shows promising results, with an efficiency gains of up to 50% and "improved robustness of BLT models to input noise and their awareness of sub-word aspects of input data that token-based llms miss".
 
 ![Models mistakes on "simple" questions](images/blt-arch.png)
 *BLT architecture.*
 
-As shown in the image, two lightweight local encoder / decoder are employed to transform bytes into patches dynamically, bypassing the need of a pre-trained fixed vocabulary. Than, the transformer architectures learns to predict the next *patch* given the input context directly within this embedded space.
+As shown in the image, two lightweight local encoder / decoder are employed to transform bytes into patches dynamically, bypassing the need of a pre-trained fixed vocabulary. Then, the transformer architecture learns to predict the next *patch* given the input context directly within this embedded space.
 
-An [offial repository](https://github.com/facebookresearch/blt) is already out, but to see its application at scale we still have to wait!
+An [official repository](https://github.com/facebookresearch/blt) is already out, but to see its application at scale we still have to wait!
 
 ## Conclusions
 
-Language models capabilities are boundend to, if not limited by, their plugged in tokenizers.
-The choice of the tokenization strategy and vocabulary size is as important as pre-training and allignment techinques. Key takeaways include:
+Language model capabilities are bounded by, if not limited by, their tokenizers.
+The choice of tokenization strategy and vocabulary size is as important as pre-training and alignment techniques. Key takeaways include:
 
-- Misbeahviours on corner cases are usually highly due to tokenization;
+- Misbehaviours on corner cases are usually largely due to tokenization;
 - General tokenizers may require adjustments on specific downstream tasks to improve model capabilities, such as in math [^0];
 - The vocabulary size should be carefully chosen w.r.t. model training dimension to avoid under-trained tokens;
 - Non-English languages may share common tokens with english, but special tokens should be added to consider multi-language applications [^7];
-- Emerging approaches like BLT suggests we might move soon beyond traditional tokenization;
+- Emerging approaches like BLT suggest we might move soon beyond traditional tokenization;
 
 As we continue to improve language models, tokenization remains a critical area for innovation
 The recent success of approaches like BLT's dynamic patching suggests that moving beyond fixed pre-trained vocabularies might be the key to build more efficient and capable models.

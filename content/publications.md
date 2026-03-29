@@ -47,6 +47,12 @@ comments: false
 ### 📜 Journal Papers
 ---
 
+- [BoundingDocs: a Unified Dataset for Document Question Answering with Spatial Annotations](https://link.springer.com/article/10.1007/s10032-025-00563-5)
+  
+  Simone Giovannini, Fabio Coppini, **Andrea Gemelli**, Simone Marinai
+
+  International Journal on Document Analysis and Recognition (IJDAR), 2025
+
 - [Datasets and annotations for layout analysis of scientific articles](https://link.springer.com/article/10.1007/s10032-024-00461-2)
   
   **Andrea Gemelli**, Simone Marinai, Lorenzo Pisaneschi, Francesco Santoni 
@@ -65,12 +71,6 @@ comments: false
 - [Towards Reliable and Interpretable Document Question Answering via VLMs](https://arxiv.org/abs/2509.10129)
   
   Alessio Chen, Simone Giovannini, **Andrea Gemelli**, Fabio Coppini, Simone Marinai
-
-  arXiv, 2025
-
-- [BoundingDocs: a Unified Dataset for Document Question Answering with Spatial Annotations](https://arxiv.org/abs/2501.03403)
-  
-  Simone Giovannini, Fabio Coppini, **Andrea Gemelli**, Simone Marinai
 
   arXiv, 2025
 

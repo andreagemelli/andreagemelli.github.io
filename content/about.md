@@ -9,7 +9,7 @@ comments: false
 {{< rawhtml >}}
 <div class="citation-section">
   <blockquote>
-    <p>I am passionate about 🌐 <strong>open source development</strong> and contributing to the research community. My projects have gathered 200+ GitHub stars, including <a href="https://github.com/andreagemelli/doc2graph">Doc2Graph</a> for document information extraction and <a href="https://github.com/remorses/easymcp">EasyMCP</a> for translating OpenAPI to MCP servers - which earned <a href="https://blog.techeurope.io/p/hackathon-paris-1">3rd place at the Paris AI Hackathon</a>. I am an active reviewier for academic journals in NLP and Computer Vision, while my research has accumulated <a href="http://tiny.cc/myscholar">100+ citations on Google Scholar</a> and ours Hugging Face datasets and models have reached <a href="https://huggingface.co/letxbe">15k+ downloads</a>.</p>
+    <p>I am passionate about 🌐 <strong>open source development</strong> and contributing to the research community. My projects have gathered 200+ GitHub stars, including <a href="https://github.com/andreagemelli/doc2graph">Doc2Graph</a> for document information extraction and <a href="https://github.com/remorses/easymcp">EasyMCP</a> for translating OpenAPI to MCP servers - which earned <a href="https://blog.techeurope.io/p/hackathon-paris-1">3rd place at the Paris AI Hackathon</a>. I am an active reviewer for academic journals in NLP and Computer Vision, while my research has accumulated <a href="http://tiny.cc/myscholar">150+ citations on Google Scholar</a> and our Hugging Face datasets and models have reached <a href="https://huggingface.co/letxbe">20k+ downloads</a>.</p>
   </blockquote>
 </div>
 {{< /rawhtml >}}
@@ -18,7 +18,7 @@ comments: false
 <div class="timeline">
   <div class="timeline-item">
     <div class="timeline-header">
-      <h3 class="timeline-title">LetXBe</h3>
+      <h3 class="timeline-title">Letxbe</h3>
       <span class="timeline-date">2023 - Ongoing</span>
     </div>
     <div class="timeline-content">
@@ -66,14 +66,17 @@ comments: false
 
 ### Tools & Languages
 
-#### 🤖 Machine Learning & Dev
-PyTorch, Transformers, vLLM, DGL, Detectron2, FastAPI, FastMCP, Gradio
+#### 🤖 Machine Learning
+PyTorch, Numpy, Transformers, vLLM, Gradio, Pandas, Scikit‑Learn
 
-#### 📊 Data & MLOps
-Pandas, Scikit‑Learn, Jupyter, Tensorboard, W&B, Docker, Git
+#### 🚀 Agentic
+Claude Code & Ollama
+
+#### 📊 Dev & MLOps
+UV (ruff & ty), Git, Docker, FastAPI, FastMCP, Training Eval Monitoring (Tensorboard & CometML)
 
 #### ☁️ Cloud & Infrastructure
-AWS (SageMaker, S3, Lambda), Scaleway
+Google Cloud (Vertex AI, VMs, Buckets), AWS (SageMaker, S3, Lambda), Scaleway
 
 #### 💻 Programming
 Python (Expert), C++, TypeScript

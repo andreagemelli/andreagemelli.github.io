@@ -2,9 +2,9 @@
 title: 'OpenAPI vs MCP ⚔️'
 date: 2025-05-26
 draft: false
-description: "How we won the Paris AI Hackaton"
+description: "How we won the Paris AI Hackathon"
 ShareButtons: ['linkedin', 'x']
-tags: ["Large Langue Models", "MCP", "OpenAPI"]
+tags: ["Large Language Models", "MCP", "OpenAPI"]
 author: 'Andrea Gemelli'
 ShowReadingTime: true
 ShowToc: true

@@ -65,9 +65,7 @@ Deep dives into current challenges and cutting-edge research: from interpretabil
 
 **Thinking Machines** ([thinkingmachines.ai](https://thinkingmachines.ai/)): Mira Murati's recent project [^6] started with **super interesting blog posts** solving complex LLM problems. The first one, [Defeating Nondeterminism in LLM Inference](https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/), tackles *LLM non-determinism*, a problem engineers have tried to solve with *temperature 0* and a lot of praying 🙏.
 
-**FineWeb dataset** ([HuggingFace blog post](https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1)): We always focus on *architectures* and *optimization*, but rarely give importance to *data*, especially *open access* for *reproducibility*. The HF blog post transparently presents the **complexity** of collecting, filtering, and using huge datasets, and how *data mix* impacts *model behavior*. See how different *data mixes* trained SmolLM3 in stages ([blog post](https://huggingface.co/blog/smollm3#690adeb3dec96ebcb525bf13)) to enhance grammar, math, coding, reasoning, and coherency.
-
-**Bonus**: Two recent HF guidebooks (which I still need to read) seem promising: [Evaluation Guidebook](https://huggingface.co/spaces/OpenEvals/evaluation-guidebook) and [Smol Training Playbook](https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook).
+**FineWeb dataset** ([HuggingFace blog post](https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1)): We always focus on *architectures* and *optimization*, but rarely give importance to *data*, especially when talking about *open access* for *reproducibility*. The HF blog post transparently presents the **complexity** of collecting, filtering, and using huge datasets, and how *data mix* impacts *model behavior*. See how different *data mixes* trained SmolLM3 in stages ([blog post](https://huggingface.co/blog/smollm3#690adeb3dec96ebcb525bf13)) to enhance grammar, math, coding, reasoning, and coherency.
 
 ### YouTube videos 🎥
 

@@ -13,4 +13,4 @@ During my journey through the fascinating artificial intelligence world, I have 
 
 ![adventure](images/adventure.png)
 
-I honestly don’t have a plan but (occasionally, with no schedule, reminders, spam, subscriptions or whatsoever) I will upload in this space of mine *things* which will include thoughts, rather than “guides” or “how to”, taken notes, rather than curated blog posts, and lists of resources I use on a daily base.
+I honestly don’t have a plan but (occasionally, with no schedule, reminders, spam, subscriptions or whatsoever) I will upload in this space of mine *things* which will include thoughts, rather than “guides” or “how to”, taken notes, rather than curated blog posts, and lists of resources I use on a daily basis.

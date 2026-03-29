@@ -4,7 +4,7 @@ date: 2024-06-05
 draft: false
 description: "What is RAG and when to use it"
 ShareButtons: ['linkedin', 'x']
-tags: ["Large Langue Models", "RAG", "Hallucination"]
+tags: ["Large Language Models", "RAG", "Hallucination"]
 author: 'Andrea Gemelli'
 ShowReadingTime: true
 ShowToc: true
@@ -13,7 +13,7 @@ comments: true
 
 ## Introduction
 
-Recentely my PhD supervisor called me, asking: "Would you like to come to one of my lecture and present the students an use-case of yours? You choose!". Of course, as the avarage infamous PhD experience with supervisors, I could not say no 😂
+Recently my PhD supervisor called me, asking: "Would you like to come to one of my lectures and present the students a use-case of yours? You choose!". Of course, as the average infamous PhD experience with supervisors, I could not say no 😂
 
 Jokes aside, it has been not the first time I hold a lecture at the University of Florence about Natural Language Processing, but this time I wanted to talk about something kind of *new*: retrieval augmented generation (RAG). Another amazing acronym to make already known things look fancier and more cryptic. Let's delve (nah, this post it is not AI generated - chill) into the topic as I did with the students.
 
@@ -26,13 +26,13 @@ Transformers are relatively new architectures [^0] that have revolutionized not 
 - ["Attention is all you need"](https://www.youtube.com/watch?v=iDulhoQ2pro), by Kilcher;
 - ["Let's build GPT: from scratch, in code, spelled out."](https://www.youtube.com/watch?v=kCc8FmEb1nY), by Karpathy.
 
-Based on these architectures, nowadays we can use amazing closed-source models like ChatGPT and Claude by Anthorpic or open models like Le Chat by Mistral. Thanks to them, we can obtain more variate and hilarious jokes compared to the ones from Alexa, as shown below. This is due to the capability of these models to *generate* text, a.k.a. picking *tokens* from a finite set of possibilites, called vocabulary. (edit: I wrote about tokenizerss recently in another [blog post](https://www.andreagemelli.me/posts/tokenizers/) of mine. Check it out!)
+Based on these architectures, nowadays we can use amazing closed-source models like ChatGPT and Claude by Anthropic or open models like Le Chat by Mistral. Thanks to them, we can obtain more varied and hilarious jokes compared to the ones from Alexa, as shown below. This is due to the capability of these models to *generate* text, a.k.a. picking *tokens* from a finite set of possibilities, called vocabulary. (edit: I wrote about tokenizers recently in another [blog post](https://www.andreagemelli.me/posts/tokenizers/) of mine. Check it out!)
 
 ![fun](images/fun.png)
 *What an amazing world we live in.*
 
 Everything seems fantastic so far, so what can go wrong?
-Well, Large Language Models (LLM) may suffer of some "limitations":
+Well, Large Language Models (LLM) may suffer from some "limitations":
 
 - **outdated information**: trained on data up to X months/years ago;
 - **hallucinations**: answering questions with different and unrelated answers seen at “some
@@ -50,14 +50,14 @@ question: "How many moons Jupyter has?"
 answer: "As of my last training data in October 2021, Jupiter has 79 known moons"
 ```
 
-If we look at the [Jupyter wikipedia page](https://en.wikipedia.org/wiki/Moons_of_Jupiter) tough, at February 5th 2024 the Jupyter confirmed moons are 95! Providing the model with the more recenet discoveries, so providing it with a *context*, make it answering correctily withoout the need of retraining:
+If we look at the [Jupiter wikipedia page](https://en.wikipedia.org/wiki/Moons_of_Jupiter) though, at February 5th 2024 the confirmed Jupiter moons are 95! Providing the model with the more recent discoveries, so providing it with a *context*, makes it answer correctly without the need of retraining:
 
 ```python
 question_with_context: "How many moons Jupyter has? Take into considerations that, according to wikipedia: {wiki_page}"
 answer: "According to your source, as of February 5th, 2024, Jupiter has at least 95 known moons with confirmed orbits"
 ```
 
-So to speak, we *augmented the generated* answer of Mixtral, subsituting the textual content of wikipedia to the string at `{wiki_page}`! If we could retrieve somehow the wikipedia page automatically instead of looking manually for this information, we would have already developed a RAG pipeline!
+So to speak, we *augmented the generated* answer of Mixtral, substituting the textual content of wikipedia to the string at `{wiki_page}`! If we could retrieve somehow the wikipedia page automatically instead of looking manually for this information, we would have already developed a RAG pipeline!
 
 ## Retrieval Augmented Generation
 

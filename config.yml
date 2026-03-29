@@ -25,12 +25,15 @@ languages:
           - name: Publications
             url: publications
             weight: 10
-          - name: AI Notes
-            url: archives
+          - name: Misc
+            url: misc
             weight: 15
+          - name: Blog
+            url: archives
+            weight: 20
           - name: CV
             url: /cv.pdf
-            weight: 20
+            weight: 25
             
       params:
         languageAltTitle: English
@@ -48,10 +51,10 @@ params:
 
   profileMode:
     enabled: true
-    title: "Nice to meet you! 🤗" # optional default will be site title
+    title: "Nice to meet you!" # optional default will be site title
     subtitle: "📍 Paris, 🇫🇷 France\n\n
     📚 PhD & Computer Science Engineer \n\n
-    👨🏻‍💻 AI Research Scientist @ LetXbe \n\n"
+    👨🏻‍💻 AI Research Scientist @ Letxbe \n\n"
 
     imageUrl: "img/me.jpg" # optional
     imageTitle: "🤖" # optional
@@ -69,13 +72,14 @@ params:
       url: "http://tiny.cc/myscholar"
     - name: "x"
       url: "https://twitter.com/_andreagemelli"
-    - name: "bluesky"
-      url: "https://bsky.app/profile/andreagemelli.bsky.social"
     - name: "medium"
       url: "https://medium.com/@andrea.gemelli"
     - name: "linktree"
       url: "https://linktr.ee/andrea.gemelli"
       icon: "/assets/linktree.svg"
+    - name: "huggingface"
+      url: "https://huggingface.co/andreagemelli"
+      icon: "/assets/huggingface.png"
 
   assets:
     disableHLJS: true # to disable highlight.js

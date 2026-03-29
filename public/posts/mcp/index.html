@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>OpenAPI vs MCP ⚔️ | Andrea Gemelli</title>
-<meta name="keywords" content="Large Langue Models, MCP, OpenAPI">
-<meta name="description" content="How we won the Paris AI Hackaton">
+<meta name="keywords" content="Large Language Models, MCP, OpenAPI">
+<meta name="description" content="How we won the Paris AI Hackathon">
 <meta name="author" content="Andrea Gemelli">
 <link rel="canonical" href="http://localhost:1313/posts/mcp/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.180b3c718411a9ff591d81ed0496be48307ceac3f0b0bbfc6b4c1c3f7bca0685.css" integrity="sha256-GAs8cYQRqf9ZHYHtBJa&#43;SDB86sPwsLv8a0wcP3vKBoU=" rel="preload stylesheet" as="style">
@@ -56,7 +56,7 @@
 
     </style>
 </noscript><meta property="og:title" content="OpenAPI vs MCP ⚔️" />
-<meta property="og:description" content="How we won the Paris AI Hackaton" />
+<meta property="og:description" content="How we won the Paris AI Hackathon" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/posts/mcp/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2025-05-26T00:00:00+00:00" />
@@ -64,7 +64,7 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="OpenAPI vs MCP ⚔️"/>
-<meta name="twitter:description" content="How we won the Paris AI Hackaton"/>
+<meta name="twitter:description" content="How we won the Paris AI Hackathon"/>
 
 
 <script type="application/ld+json">
@@ -93,9 +93,9 @@
   "@type": "BlogPosting",
   "headline": "OpenAPI vs MCP ⚔️",
   "name": "OpenAPI vs MCP ⚔️",
-  "description": "How we won the Paris AI Hackaton",
+  "description": "How we won the Paris AI Hackathon",
   "keywords": [
-    "Large Langue Models", "MCP", "OpenAPI"
+    "Large Language Models", "MCP", "OpenAPI"
   ],
   "articleBody": "Introduction If you’ve been following the evolution of API development and AI integration, you’ve likely encountered two important but fundamentally different approaches: OpenAPI and MCP (Model Context Protocol) 🤖. While they might seem similar at first glance—both deal with connecting systems and enabling integrations—they serve very different purposes in today’s tech landscape.\nOpenAPI vs MCP What is OpenAPI? 📋 OpenAPI (formerly known as Swagger) is a specification for describing REST APIs that defines a standard, programming language-agnostic interface description for HTTP APIs. Think of it as a universal language that tells developers exactly how to interact with an API—what endpoints are available, what data to send, and what to expect in return 💬.\nThe OpenAPI Initiative maintains this open standard, with comprehensive documentation available at spec.openapis.org and learning resources at learn.openapis.org.\nHere’s a simple OpenAPI specification example:\nopenapi: 3.0.0 info: title: Weather API version: 1.0.0 paths: /weather: get: summary: Get current weather parameters: - name: city in: query required: true schema: type: string responses: '200': description: Weather data content: application/json: schema: type: object properties: temperature: type: number condition: type: string This specification tells any developer (or tool) exactly how to fetch weather data from this API. It’s documentation, validation, and a contract all rolled into one ✅.\nEnter MCP: Model Context Protocol ⚡ MCP represents a newer paradigm designed specifically for AI agents and language models. Introduced by Anthropic in November 2024, MCP creates a standardized way for AI systems to interact with external tools and data sources. As described in the official MCP documentation, it serves as “a USB-C port for AI applications” 🔌.\nThe key difference? OpenAPI describes how humans (or their applications) should call APIs, while MCP describes how AI agents should access and use tools 🎯.\nMCP has gained rapid adoption across the industry, with major AI providers including OpenAI and Google DeepMind adopting the protocol 🌟. The MCP specification provides comprehensive technical details for implementers.\nHere’s what an MCP tool definition might look like:\n// MCP Server Example const server = new MCPServer({ name: \"weather-tools\", version: \"1.0.0\" }); server.addTool({ name: \"get_weather\", description: \"Get current weather for a city\", inputSchema: { type: \"object\", properties: { city: { type: \"string\", description: \"City name to get weather for\" } }, required: [\"city\"] }, handler: async (args) =\u003e { // Fetch weather data return { temperature: 22, condition: \"sunny\", city: args.city }; } }); When to Use Which? 🤔 Choose OpenAPI when:\nBuilding traditional web APIs for human developers Need broad ecosystem support and tooling Working with existing REST-based architectures Requiring detailed API documentation for teams Choose MCP when:\nBuilding tools specifically for AI agents Want AI systems to discover and use capabilities dynamically Need context-aware, conversational interactions Developing in AI-first environments The Translation Challenge 🌉 Here’s where things get interesting for developers: many existing systems have robust OpenAPI specifications, but to leverage AI agents effectively, we need MCP compatibility. This creates a translation problem—how do you bridge these two worlds?\nConverting between OpenAPI and MCP isn’t just about changing formats; it requires understanding the semantic differences:\n# OpenAPI endpoint GET /users/{id}/orders?status=pending # Might become MCP tool { \"name\": \"get_user_pending_orders\", \"description\": \"Retrieve pending orders for a specific user\", \"parameters\": { \"user_id\": \"string\", \"include_details\": \"boolean\" } } The MCP version is more descriptive and context-aware, helping AI agents understand not just how to call the function, but when and why it might be useful 🧠.\nThe Community Perspective 💬 The developer community has been actively discussing the implications of these two approaches. As one developer noted in a DEV Community discussion: “Having a stateful 1:1 mapped client-server connection like MCP defines it just to get the weather in a certain city is a bit of an overkill. And if it is just a small stateless REST API, providing an OpenAPI runner is good enough. But once you have a more complex use case that involves state or require a deep interaction between the LLM and the application, MCP can be a great fit.”\nThe conversation on social platforms reflects this pragmatic approach—developers are recognizing that both protocols have their place, with discussions on LinkedIn highlighting how “open, modular protocols like MCP lower friction, speed up experimentation and create the conditions for early network effects.”\nMaking the Translation Easy 🛠️ Converting between these specifications manually is time-consuming and error-prone. That’s why we built EasyMCP (EasyMCP on GitHub), a tool that automatically translates OpenAPI specifications to MCP format, making it simple for developers to bring their existing APIs into the AI ecosystem 🚀.\nOur solution ranked 3rd 🥉 at the Paris AI Hackathon 🏆 organized by TechEurope and sponsored by big players such as HuggingFace, Mistral AI and ElevenLabs, demonstrating the real need for this kind of translation layer in today’s rapidly evolving AI landscape.\nLooking Forward 🔮 Both OpenAPI and MCP will likely coexist, serving their respective ecosystems. OpenAPI continues to be the gold standard for human-to-system API communication, with its extensive tooling ecosystem and mature development practices. Meanwhile, MCP is emerging as the standard for AI-to-system integration, with Microsoft announcing MCP support in Windows 11 and Copilot Studio integration.\nThe real opportunity lies in creating seamless bridges between these worlds—enabling organizations to leverage their existing OpenAPI investments while unlocking the power of AI-driven automation through MCP 🔗.\nAdditional Resources: 📚\nOpenAPI Specification - Official specification Model Context Protocol Documentation - Complete MCP guide OpenAPI Tools - Comprehensive tooling ecosystem MCP GitHub Organization - SDKs and reference implementations ",
   "wordCount" : "907",
@@ -173,8 +173,13 @@
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/archives" title="AI Notes">
-                    <span>AI Notes</span>
+                <a href="http://localhost:1313/misc" title="Misc">
+                    <span>Misc</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archives" title="Blog">
+                    <span>Blog</span>
                 </a>
             </li>
             <li>
@@ -194,7 +199,7 @@
       OpenAPI vs MCP ⚔️
     </h1>
     <div class="post-description">
-      How we won the Paris AI Hackaton
+      How we won the Paris AI Hackathon
     </div>
     <div class="post-meta"><span title='2025-05-26 00:00:00 +0000 UTC'>May 26, 2025</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Andrea Gemelli
 
@@ -356,7 +361,7 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/large-langue-models/">Large Langue Models</a></li>
+      <li><a href="http://localhost:1313/tags/large-language-models/">Large Language Models</a></li>
       <li><a href="http://localhost:1313/tags/mcp/">MCP</a></li>
       <li><a href="http://localhost:1313/tags/openapi/">OpenAPI</a></li>
     </ul>
@@ -364,7 +369,7 @@
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share OpenAPI vs MCP ⚔️ on x"
-            href="https://x.com/intent/tweet/?text=OpenAPI%20vs%20MCP%20%e2%9a%94%ef%b8%8f&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2fmcp%2f&amp;hashtags=LargeLangueModels%2cMCP%2cOpenAPI">
+            href="https://x.com/intent/tweet/?text=OpenAPI%20vs%20MCP%20%e2%9a%94%ef%b8%8f&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2fmcp%2f&amp;hashtags=LargeLanguageModels%2cMCP%2cOpenAPI">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
@@ -401,7 +406,7 @@
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">Andrea Gemelli</a></span> · 
+        <span>&copy; 2026 <a href="http://localhost:1313/">Andrea Gemelli</a></span> · 
 
     <span>
         Powered by

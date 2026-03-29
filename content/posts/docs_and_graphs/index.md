@@ -11,9 +11,9 @@ ShowToc: true
 comments: true
 ---
 
-In our daily life, we are submerged by piles of documents 🫠: burocracy, bills, insurances, etc. As humans, we invented this medium to vehicle important information! But how our brain processes documents? 🤔
+In our daily life, we are submerged by piles of documents 🫠: bureaucracy, bills, insurances, etc. As humans, we invented this medium to vehicle important information! But how our brain processes documents? 🤔
 
-One could think just about *reading* words sequentially! But we also naturally perceive relationships between different parts of a page, **exploiting the layout as a semantinc meaningful piece of information**! Think about titles and subtitles or pharagraph that structure a contract or about table cells whose meaning depends on the tables structure and the name of the columns!
+One could think just about *reading* words sequentially! But we also naturally perceive relationships between different parts of a page, **exploiting the layout as a semantically meaningful piece of information**! Think about titles and subtitles or paragraphs that structure a contract or about table cells whose meaning depends on the tables structure and the name of the columns!
 
 This intuitive - yet effective - way of reading documents through relationships creates an exciting intersection between document analysis and graph theory 💡, which strongly inspired my PhD thesis "Connecting the DOCS: a graph-based approach to document understanding" [^0]. This article is an introductory version of its second chapter, summarizing the key aspects and interesting spots of this niche of Document AI.
 
@@ -28,7 +28,7 @@ The beauty of graphs lies in their natural ability to represent how we see patte
 
 ## From Brain to Computer
 
-Our understanding of how the brain processes visual information has profoundly influenced the Machine Learning research field. The multi-layer structure of neurons in our visual cortex, with simpler cells detecting basic patterns that get combined into more complex features [^4], inspired early artificial neural networks like the Neocognitron [^5] in the 1980s. This eventually evolved into modern Neural Networks - such as CNNs[^6] [^17], LSTM[^16], GANs[^18], Transformers[^19] - that revolutionized the machine learning fields and, whith more data and computing capabilities, started the **Deep Learning** era.
+Our understanding of how the brain processes visual information has profoundly influenced the Machine Learning research field. The multi-layer structure of neurons in our visual cortex, with simpler cells detecting basic patterns that get combined into more complex features [^4], inspired early artificial neural networks like the Neocognitron [^5] in the 1980s. This eventually evolved into modern Neural Networks - such as CNNs[^6] [^17], LSTM[^16], GANs[^18], Transformers[^19] - that revolutionized the machine learning fields and, with more data and computing capabilities, started the **Deep Learning** era.
 
 ### Geometric Deep Learning
 
