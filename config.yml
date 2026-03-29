@@ -62,8 +62,6 @@ params:
     imageHeight: 300 # custom size
 
   socialIcons: # optional
-    - name: "email"
-      url: "mailto:gemelli.andrea@hotmail.com"
     - name: "linkedin"
       url: "https://www.linkedin.com/in/andrea-gemelli/"
     - name: "github"
@@ -74,9 +72,6 @@ params:
       url: "https://twitter.com/_andreagemelli"
     - name: "medium"
       url: "https://medium.com/@andrea.gemelli"
-    - name: "linktree"
-      url: "https://linktr.ee/andrea.gemelli"
-      icon: "/assets/linktree.svg"
     - name: "huggingface"
       url: "https://huggingface.co/andreagemelli"
       icon: "/assets/huggingface.png"
