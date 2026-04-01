@@ -2,73 +2,73 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Andrea Gemelli</title>
-    <link>https://andreagemelli.me/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on Andrea Gemelli</description>
     <generator>Hugo -- 0.150.0</generator>
     <language>en</language>
     <lastBuildDate>Sun, 07 Dec 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://andreagemelli.me/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How I stay up to date with AI</title>
-      <link>https://andreagemelli.me/posts/resources/</link>
+      <link>http://localhost:1313/posts/resources/</link>
       <pubDate>Sun, 07 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>https://andreagemelli.me/posts/resources/</guid>
+      <guid>http://localhost:1313/posts/resources/</guid>
       <description>spoiler: I don&amp;#39;t.</description>
     </item>
     <item>
       <title>OpenAPI vs MCP ⚔️</title>
-      <link>https://andreagemelli.me/posts/mcp/</link>
+      <link>http://localhost:1313/posts/mcp/</link>
       <pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://andreagemelli.me/posts/mcp/</guid>
+      <guid>http://localhost:1313/posts/mcp/</guid>
       <description>How we won the Paris AI Hackathon</description>
     </item>
     <item>
       <title>3476, 477, 12274, 112838, 248</title>
-      <link>https://andreagemelli.me/posts/tokenizers/</link>
+      <link>http://localhost:1313/posts/tokenizers/</link>
       <pubDate>Sun, 26 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://andreagemelli.me/posts/tokenizers/</guid>
+      <guid>http://localhost:1313/posts/tokenizers/</guid>
       <description>Hint: &amp;#34;deepseek-ai/DeepSeek-R1&amp;#34; 🤗</description>
     </item>
     <item>
       <title>How Documents Met Graph Theory</title>
-      <link>https://andreagemelli.me/posts/docs_and_graphs/</link>
+      <link>http://localhost:1313/posts/docs_and_graphs/</link>
       <pubDate>Mon, 11 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://andreagemelli.me/posts/docs_and_graphs/</guid>
+      <guid>http://localhost:1313/posts/docs_and_graphs/</guid>
       <description>An introductory blog post to GNNs and Document AI</description>
     </item>
     <item>
       <title>Introduction to Retrieval Augmented Generation</title>
-      <link>https://andreagemelli.me/posts/rag/</link>
+      <link>http://localhost:1313/posts/rag/</link>
       <pubDate>Wed, 05 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://andreagemelli.me/posts/rag/</guid>
+      <guid>http://localhost:1313/posts/rag/</guid>
       <description>What is RAG and when to use it</description>
     </item>
     <item>
       <title>Hello World!</title>
-      <link>https://andreagemelli.me/posts/hello-world/</link>
+      <link>http://localhost:1313/posts/hello-world/</link>
       <pubDate>Thu, 09 May 2024 00:00:00 +0000</pubDate>
-      <guid>https://andreagemelli.me/posts/hello-world/</guid>
+      <guid>http://localhost:1313/posts/hello-world/</guid>
       <description>Wondering about blogging.</description>
     </item>
     <item>
       <title>About me</title>
-      <link>https://andreagemelli.me/about/</link>
+      <link>http://localhost:1313/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://andreagemelli.me/about/</guid>
+      <guid>http://localhost:1313/about/</guid>
       <description>about me</description>
     </item>
     <item>
       <title>Publications</title>
-      <link>https://andreagemelli.me/publications/</link>
+      <link>http://localhost:1313/publications/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://andreagemelli.me/publications/</guid>
+      <guid>http://localhost:1313/publications/</guid>
       <description>search</description>
     </item>
     <item>
       <title>Unsorted Nice Stuff</title>
-      <link>https://andreagemelli.me/misc/</link>
+      <link>http://localhost:1313/misc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://andreagemelli.me/misc/</guid>
+      <guid>http://localhost:1313/misc/</guid>
       <description>Little bit of everything</description>
     </item>
   </channel>
