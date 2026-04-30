@@ -19,12 +19,12 @@ comments: false
   <div class="timeline-item">
     <div class="timeline-header">
       <h3 class="timeline-title">Letxbe</h3>
-      <span class="timeline-date">2023 - Ongoing</span>
+      <span class="timeline-date">2023 - 2026</span>
     </div>
     <div class="timeline-content">
       <p>After successfully concluding my PhD with the <strong>Doctor Europaeus</strong> title, I joined 👨🏻‍💻 <a href="https://www.letxbe.ai">LetXBe</a>, a Paris-based startup focused on Document Analysis and NLP, in December 2023. In my current role, I am creating innovative LLM-based and multi-modal solutions for research purposes and client requirements. I am also actively contributing to product development, leading a monthly internal reading group to foster technical team knowledge sharing and collaboration.</p>
       <div class="timeline-location">
-        <span class="location-name">📍 Paris</span> <span class="location-role">(AI Research Scientist @ LetXbe)</span> 🇫🇷 - from 2024
+        <span class="location-name">📍 Paris</span> <span class="location-role">(AI Research Scientist @ LetXbe)</span> 🇫🇷 - from 2024 to 2026
       </div>
     </div>
   </div>
