@@ -18,6 +18,7 @@ comments: false
 <div class="timeline">
   <div class="timeline-item">
     <div class="timeline-header">
+      <div class="timeline-dot"></div>
       <h3 class="timeline-title">Letxbe</h3>
       <span class="timeline-date">2023 - 2026</span>
     </div>
@@ -31,6 +32,7 @@ comments: false
 
   <div class="timeline-item">
     <div class="timeline-header">
+      <div class="timeline-dot"></div>
       <h3 class="timeline-title">PhD AI</h3>
       <span class="timeline-date">2020 - 2023</span>
     </div>
@@ -45,6 +47,7 @@ comments: false
 
   <div class="timeline-item">
     <div class="timeline-header">
+      <div class="timeline-dot"></div>
       <h3 class="timeline-title">MSc</h3>
       <span class="timeline-date">2017 - 2020</span>
     </div>

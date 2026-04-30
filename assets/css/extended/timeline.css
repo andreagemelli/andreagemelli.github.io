@@ -18,17 +18,17 @@
     line-height: 1.6;
 }
 
-/* Timeline styles */
+/* Timeline */
 .timeline {
     position: relative;
-    padding-left: 2rem;
     margin: 2rem 0;
 }
 
+/* Full-height vertical line behind all dots */
 .timeline::before {
     content: '';
     position: absolute;
-    left: 0.5rem;
+    left: 5px;
     top: 0;
     bottom: 0;
     width: 2px;
@@ -38,36 +38,32 @@
 .timeline-item {
     position: relative;
     margin-bottom: 2rem;
-    padding-left: 0;
-}
-
-.timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -1.5rem;
-    top: 0.5rem;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--primary);
-    border: 2px solid var(--entry);
-    z-index: 1;
-    transform: translate(-50%, -50%);
 }
 
 .timeline-item:last-child {
     margin-bottom: 0;
 }
 
+/* Dot + title + date on the same flex row — align-items: center guarantees the dot
+   is vertically centered with the title text regardless of font or line-height */
 .timeline-header {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 1rem;
-    margin-bottom: 0.5rem;
     flex-wrap: wrap;
     margin: 0;
     padding: 0;
-    padding-left: 1.75rem;
+}
+
+.timeline-dot {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--primary);
+    border: 2px solid var(--entry);
+    position: relative;
+    z-index: 1;
 }
 
 .timeline-title {
@@ -84,10 +80,12 @@
     white-space: nowrap;
 }
 
+/* Indent content to match dot-width + gap */
 .timeline-content {
+    padding-left: calc(12px + 1rem);
+    margin-top: 0.5rem;
     color: var(--content);
     line-height: 1.6;
-    padding-left: 1.75rem;
 }
 
 .timeline-content p {
@@ -120,4 +118,3 @@
     color: var(--secondary);
     font-style: italic;
 }
-

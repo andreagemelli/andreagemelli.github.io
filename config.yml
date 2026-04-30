@@ -54,7 +54,7 @@ params:
     title: "Nice to meet you!" # optional default will be site title
     subtitle: "📍 Paris, 🇫🇷 France\n\n
     📚 PhD & Computer Science Engineer \n\n
-    👨🏻‍💻 AI Research Scientist @ Letxbe \n\n"
+    👨🏻‍💻 AI Research Scientist \n\n"
 
     imageUrl: "img/me.jpg" # optional
     imageTitle: "🤖" # optional
