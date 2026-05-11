@@ -67,7 +67,7 @@ params:
     - name: "x"
       url: "https://twitter.com/_andreagemelli"
     - name: "googlescholar"
-      url: "http://tiny.cc/myscholar"
+      url: "https://scholar.google.fr/citations?user=8AeCCO0AAAAJ&hl=it"
     - name: "github"
       url: "https://github.com/andreagemelli"
     - name: "huggingface"

@@ -9,7 +9,7 @@ comments: false
 {{< rawhtml >}}
 <div class="citation-section">
   <blockquote>
-    <p>I am passionate about 🌐 <strong>open source development</strong> and contributing to the research community. My projects have gathered 200+ GitHub stars, including <a href="https://github.com/andreagemelli/doc2graph">Doc2Graph</a> for document information extraction and <a href="https://github.com/remorses/easymcp">EasyMCP</a> for translating OpenAPI to MCP servers - which earned <a href="https://blog.techeurope.io/p/hackathon-paris-1">3rd place at the Paris AI Hackathon</a>. I am an active reviewer for academic journals in NLP and Computer Vision, while my research has accumulated <a href="http://tiny.cc/myscholar">150+ citations on Google Scholar</a> and our Hugging Face datasets and models have reached <a href="https://huggingface.co/letxbe">20k+ downloads</a>.</p>
+    <p>I am passionate about 🌐 <strong>open source development</strong> and contributing to the research community. My projects have gathered 200+ GitHub stars, including <a href="https://github.com/andreagemelli/doc2graph">Doc2Graph</a> for document information extraction and <a href="https://github.com/remorses/easymcp">EasyMCP</a> for translating OpenAPI to MCP servers - which earned <a href="https://blog.techeurope.io/p/hackathon-paris-1">3rd place at the Paris AI Hackathon</a>. I am an active reviewer for academic journals in NLP and Computer Vision, while my research has accumulated <a href="https://scholar.google.fr/citations?user=8AeCCO0AAAAJ&hl=it">150+ citations on Google Scholar</a> and our Hugging Face datasets and models have reached <a href="https://huggingface.co/letxbe">20k+ downloads</a>.</p>
   </blockquote>
 </div>
 {{< /rawhtml >}}
