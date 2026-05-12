@@ -11,4 +11,5 @@ comments: false
 - [We ranked 3rd](https://www.linkedin.com/feed/update/urn:li:ugcPost:7332751027466665985/?originTrackingId=wzHnl2xZtoiJ4dFQlRFepA%3D%3D) with [EasyMCP](https://github.com/remorses/easymcp) @ {Tech: Europe} AI Hackathon in Paris
 - [Introduction to Retrieval Augmented Generation](https://drive.google.com/file/d/1TUIMQSkKAmIWzsKf5FGz75NiShR9lrWC/view?usp=sharing) talk @ University of Florence Master Course in Artificial Intelligence
 - Third place at Wacom x Luleå University hackaton with an [handwriting labeling game](https://github.com/andreagemelli/guessmylanguage) @ <b>4th IAPR TC 10/11 Summer School on Document Analysis and Recognition</b>
+- In 2023, I was entitled [IAPR International Scholar](https://iapr.org/docs/newsletters/2023-Vol-45-No-3.pdf)
 - Wrote and published several songs in the past [linktree](https://linktr.ee/andrea.gemelli)
