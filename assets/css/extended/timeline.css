@@ -66,6 +66,15 @@
     z-index: 1;
 }
 
+.timeline-logo {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 3px;
+    object-fit: contain;
+    flex-shrink: 0;
+    vertical-align: middle;
+}
+
 .timeline-title {
     font-weight: 600;
     font-size: 1.1rem;
