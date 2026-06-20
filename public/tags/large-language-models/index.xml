@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Large Language Models on Andrea Gemelli</title>
-    <link>http://localhost:1313/tags/large-language-models/</link>
+    <link>https://andreagemelli.me/tags/large-language-models/</link>
     <description>Recent content in Large Language Models on Andrea Gemelli</description>
     <generator>Hugo -- 0.150.0</generator>
     <language>en</language>
     <lastBuildDate>Sun, 07 Dec 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/large-language-models/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://andreagemelli.me/tags/large-language-models/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How I stay up to date with AI</title>
-      <link>http://localhost:1313/posts/resources/</link>
+      <link>https://andreagemelli.me/posts/resources/</link>
       <pubDate>Sun, 07 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/resources/</guid>
+      <guid>https://andreagemelli.me/posts/resources/</guid>
       <description>spoiler: I don&amp;#39;t.</description>
     </item>
     <item>
       <title>OpenAPI vs MCP ⚔️</title>
-      <link>http://localhost:1313/posts/mcp/</link>
+      <link>https://andreagemelli.me/posts/mcp/</link>
       <pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/mcp/</guid>
+      <guid>https://andreagemelli.me/posts/mcp/</guid>
       <description>How we won the Paris AI Hackathon</description>
     </item>
     <item>
       <title>3476, 477, 12274, 112838, 248</title>
-      <link>http://localhost:1313/posts/tokenizers/</link>
+      <link>https://andreagemelli.me/posts/tokenizers/</link>
       <pubDate>Sun, 26 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/tokenizers/</guid>
+      <guid>https://andreagemelli.me/posts/tokenizers/</guid>
       <description>Hint: &amp;#34;deepseek-ai/DeepSeek-R1&amp;#34; 🤗</description>
     </item>
     <item>
       <title>Introduction to Retrieval Augmented Generation</title>
-      <link>http://localhost:1313/posts/rag/</link>
+      <link>https://andreagemelli.me/posts/rag/</link>
       <pubDate>Wed, 05 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/rag/</guid>
+      <guid>https://andreagemelli.me/posts/rag/</guid>
       <description>What is RAG and when to use it</description>
     </item>
   </channel>

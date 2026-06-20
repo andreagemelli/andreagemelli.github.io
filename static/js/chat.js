@@ -4,21 +4,51 @@
 
   function renderText(text) {
     const div = document.createElement('div');
-    // Split on markdown links [label](url) and render the rest as plain text
-    const parts = text.split(/(\[[^\]]+\]\(https?:\/\/[^)]+\))/g);
-    parts.forEach(function (part) {
-      const m = part.match(/^\[([^\]]+)\]\((https?:\/\/[^)]+)\)$/);
-      if (m) {
-        const a = document.createElement('a');
-        a.href = m[2];
-        a.textContent = m[1];
-        a.target = '_blank';
-        a.rel = 'noopener noreferrer';
-        div.appendChild(a);
-      } else if (part) {
-        div.appendChild(document.createTextNode(part));
+
+    function appendInline(parent, str) {
+      // Split on **bold** and [link](url)
+      const parts = str.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\(https?:\/\/[^)]+\))/g);
+      parts.forEach(function (part) {
+        const link = part.match(/^\[([^\]]+)\]\((https?:\/\/[^)]+)\)$/);
+        const bold = part.match(/^\*\*([^*]+)\*\*$/);
+        if (link) {
+          const a = document.createElement('a');
+          a.href = link[2];
+          a.textContent = link[1];
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          parent.appendChild(a);
+        } else if (bold) {
+          const b = document.createElement('strong');
+          b.textContent = bold[1];
+          parent.appendChild(b);
+        } else if (part) {
+          parent.appendChild(document.createTextNode(part));
+        }
+      });
+    }
+
+    const lines = text.split('\n');
+    let ul = null;
+    lines.forEach(function (line) {
+      const listMatch = line.match(/^[-*]\s+(.+)/);
+      if (listMatch) {
+        if (!ul) { ul = document.createElement('ul'); div.appendChild(ul); }
+        const li = document.createElement('li');
+        appendInline(li, listMatch[1]);
+        ul.appendChild(li);
+      } else {
+        ul = null;
+        if (line.trim() === '') {
+          div.appendChild(document.createElement('br'));
+        } else {
+          const p = document.createElement('p');
+          appendInline(p, line);
+          div.appendChild(p);
+        }
       }
     });
+
     return div;
   }
 

@@ -2,76 +2,76 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/tags/ai/</loc>
+    <loc>https://andreagemelli.me/tags/ai/</loc>
     <lastmod>2025-12-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://andreagemelli.me/</loc>
     <lastmod>2025-12-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/benchmarks/</loc>
+    <loc>https://andreagemelli.me/tags/benchmarks/</loc>
     <lastmod>2025-12-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/resources/</loc>
+    <loc>https://andreagemelli.me/posts/resources/</loc>
     <lastmod>2025-12-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/large-language-models/</loc>
+    <loc>https://andreagemelli.me/tags/large-language-models/</loc>
     <lastmod>2025-12-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
+    <loc>https://andreagemelli.me/posts/</loc>
     <lastmod>2025-12-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://andreagemelli.me/tags/</loc>
     <lastmod>2025-12-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/mcp/</loc>
+    <loc>https://andreagemelli.me/tags/mcp/</loc>
     <lastmod>2025-05-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/openapi/</loc>
+    <loc>https://andreagemelli.me/tags/openapi/</loc>
     <lastmod>2025-05-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/mcp/</loc>
+    <loc>https://andreagemelli.me/posts/mcp/</loc>
     <lastmod>2025-05-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/tokenizers/</loc>
+    <loc>https://andreagemelli.me/posts/tokenizers/</loc>
     <lastmod>2025-01-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/nlp/</loc>
+    <loc>https://andreagemelli.me/tags/nlp/</loc>
     <lastmod>2025-01-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/tokenizers/</loc>
+    <loc>https://andreagemelli.me/tags/tokenizers/</loc>
     <lastmod>2025-01-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/docai/</loc>
+    <loc>https://andreagemelli.me/tags/docai/</loc>
     <lastmod>2024-11-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/graphs/</loc>
+    <loc>https://andreagemelli.me/tags/graphs/</loc>
     <lastmod>2024-11-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/docs_and_graphs/</loc>
+    <loc>https://andreagemelli.me/posts/docs_and_graphs/</loc>
     <lastmod>2024-11-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/hallucination/</loc>
+    <loc>https://andreagemelli.me/tags/hallucination/</loc>
     <lastmod>2024-06-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/rag/</loc>
+    <loc>https://andreagemelli.me/posts/rag/</loc>
     <lastmod>2024-06-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/rag/</loc>
+    <loc>https://andreagemelli.me/tags/rag/</loc>
     <lastmod>2024-06-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/hello-world/</loc>
+    <loc>https://andreagemelli.me/posts/hello-world/</loc>
     <lastmod>2024-05-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/archives/</loc>
+    <loc>https://andreagemelli.me/archives/</loc>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>https://andreagemelli.me/about/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://andreagemelli.me/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/publications/</loc>
+    <loc>https://andreagemelli.me/publications/</loc>
   </url><url>
-    <loc>http://localhost:1313/series/</loc>
+    <loc>https://andreagemelli.me/series/</loc>
   </url><url>
-    <loc>http://localhost:1313/misc/</loc>
+    <loc>https://andreagemelli.me/misc/</loc>
   </url>
 </urlset>

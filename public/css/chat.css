@@ -102,6 +102,10 @@
 .ck-msg--error { color: #e05; background: none; font-size: 0.8rem; padding: 4px 0; }
 .ck-msg--assistant a { color: inherit; text-decoration: underline; opacity: 0.85; }
 .ck-msg--assistant a:hover { opacity: 1; }
+.ck-msg p, .ck-msg ul { margin: 0 0 4px; padding: 0; }
+.ck-msg ul { padding-left: 16px; }
+.ck-msg li { margin-bottom: 2px; }
+.ck-msg p:last-child, .ck-msg ul:last-child { margin-bottom: 0; }
 
 #ck-footer {
   display: flex;
