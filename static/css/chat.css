@@ -222,35 +222,8 @@
   color: var(--secondary);
 }
 
-/* ── Mobile "Ask Andrea" pill (hidden on desktop) ────────────────────────── */
-
-#mobile-ask {
-  display: none;
-}
-
 @media (max-width: 767px) {
   #desktop-ask { display: none; }
-
-  #mobile-ask {
-    position: fixed;
-    bottom: 20px;
-    right: 16px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 16px;
-    background: var(--theme);
-    color: var(--primary);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-family: inherit;
-    cursor: pointer;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-    z-index: 9998;
-    transition: box-shadow 0.15s;
-  }
-  #mobile-ask:hover { box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18); }
 
   #ck-overlay {
     padding-top: 0;

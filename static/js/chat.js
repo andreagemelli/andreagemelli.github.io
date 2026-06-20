@@ -52,52 +52,46 @@
     return div;
   }
 
-  async function ask(text, onChunk, onError, onDone) {
+  async function ask(text, onReply, onError) {
     try {
       const res = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: text, history }),
       });
-
+      const data = await res.json();
       if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
         onError(data.error || 'Something went wrong.');
-        return;
-      }
-
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      let buffer = '';
-      let full = '';
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split('\n');
-        buffer = lines.pop();
-        for (const line of lines) {
-          if (!line.startsWith('data: ')) continue;
-          const raw = line.slice(6);
-          if (raw === '[DONE]') {
-            history.push({ role: 'user', content: text });
-            history.push({ role: 'assistant', content: full });
-            if (history.length > 12) history = history.slice(-12);
-            continue;
-          }
-          try {
-            const parsed = JSON.parse(raw);
-            if (parsed.error) { onError(parsed.error); return; }
-            if (parsed.text) { full += parsed.text; onChunk(full); }
-          } catch {}
-        }
+      } else {
+        history.push({ role: 'user', content: text });
+        history.push({ role: 'assistant', content: data.reply });
+        if (history.length > 12) history = history.slice(-12);
+        onReply(data.reply);
       }
     } catch {
       onError('Network error. Please try again.');
-    } finally {
-      if (onDone) onDone();
     }
+  }
+
+  function typewrite(bubble, text, onDone) {
+    const words = text.split(' ');
+    let i = 0;
+    bubble.classList.add('ck-msg--streaming');
+    bubble.textContent = '';
+
+    function next() {
+      if (i >= words.length) {
+        bubble.classList.remove('ck-msg--streaming');
+        bubble.innerHTML = '';
+        bubble.appendChild(renderText(text));
+        if (onDone) onDone();
+        return;
+      }
+      bubble.textContent += (i === 0 ? '' : ' ') + words[i];
+      i++;
+      setTimeout(next, 28);
+    }
+    next();
   }
 
   // ── ⌘K Overlay (all pages) ───────────────────────────────────────────────
@@ -131,7 +125,7 @@
     function open(prefill) {
       overlay.classList.add('open');
       document.body.style.overflow = 'hidden';
-      if (prefill) input.value = prefill;
+      if (typeof prefill === 'string' && prefill) input.value = prefill;
       input.focus();
       input.setSelectionRange(input.value.length, input.value.length);
     }
@@ -175,13 +169,25 @@
       input.disabled = true;
       send.disabled = true;
       addMsg('user', text);
-      const bubble = addMsg('assistant', '');
-      bubble.classList.add('ck-msg--streaming');
+      const bubble = addMsg('assistant', '…');
       ask(
         text,
-        function (full) { setMsg(bubble, full); },
-        function (err)  { setMsg(bubble, err, 'ck-msg--error'); },
-        function ()     { bubble.classList.remove('ck-msg--streaming'); input.disabled = false; send.disabled = false; input.focus(); }
+        function (reply) {
+          typewrite(bubble, reply, function () {
+            msgs.scrollTop = msgs.scrollHeight;
+            input.disabled = false;
+            send.disabled = false;
+            input.focus();
+          });
+        },
+        function (err) {
+          bubble.classList.remove('ck-msg--streaming');
+          bubble.classList.add('ck-msg--error');
+          bubble.textContent = err;
+          input.disabled = false;
+          send.disabled = false;
+          input.focus();
+        }
       );
     }
 
@@ -229,21 +235,12 @@
   // ── Triggers: desktop ⌘K hint + mobile pill ──────────────────────────────
 
   function buildTriggers(openOverlay) {
-    // Desktop: subtle ⌘K badge (hidden on mobile via CSS)
     const hint = document.createElement('button');
     hint.id = 'desktop-ask';
     hint.setAttribute('aria-label', 'Chat with Andrea (⌘K)');
     hint.innerHTML = '<kbd>⌘K</kbd><span>Ask Andrea</span>';
-    hint.addEventListener('click', openOverlay);
+    hint.addEventListener('click', function () { openOverlay(''); });
     document.body.appendChild(hint);
-
-    // Mobile: text pill (hidden on desktop via CSS)
-    const pill = document.createElement('button');
-    pill.id = 'mobile-ask';
-    pill.innerHTML = 'Ask Andrea <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>';
-    pill.setAttribute('aria-label', 'Chat with Andrea');
-    pill.addEventListener('click', openOverlay);
-    document.body.appendChild(pill);
   }
 
   // ── Init ──────────────────────────────────────────────────────────────────

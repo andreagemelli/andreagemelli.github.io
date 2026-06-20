@@ -149,31 +149,16 @@ module.exports = async function handler(req, res) {
         }))
       : [];
 
-    res.setHeader('Content-Type', 'text/event-stream');
-    res.setHeader('Cache-Control', 'no-cache');
-    res.setHeader('X-Accel-Buffering', 'no');
-
-    const stream = anthropic.messages.stream({
+    const response = await anthropic.messages.create({
       model: 'claude-haiku-4-5-20251001',
       max_tokens: 512,
       system: SYSTEM_PROMPT,
       messages: [...safeHistory, { role: 'user', content: message.trim() }],
     });
 
-    for await (const event of stream) {
-      if (event.type === 'content_block_delta' && event.delta.type === 'text_delta') {
-        res.write(`data: ${JSON.stringify({ text: event.delta.text })}\n\n`);
-      }
-    }
-
-    res.write('data: [DONE]\n\n');
-    res.end();
+    return res.status(200).json({ reply: response.content[0].text });
   } catch (err) {
     console.error(err);
-    if (!res.headersSent) {
-      return res.status(500).json({ error: 'Something went wrong. Please try again.' });
-    }
-    res.write(`data: ${JSON.stringify({ error: 'Something went wrong. Please try again.' })}\n\n`);
-    res.end();
+    return res.status(500).json({ error: 'Something went wrong. Please try again.' });
   }
 };
