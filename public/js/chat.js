@@ -104,16 +104,21 @@
     overlay.setAttribute('aria-label', 'Chat with Andrea');
     overlay.innerHTML = `
       <div id="ck-panel">
-        <div id="ck-input-row">
-          <input id="ck-input" type="text" placeholder="Ask me about my research, projects, or background…" maxlength="500" autocomplete="off" />
-          <button id="ck-send" aria-label="Send">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          </button>
+        <div id="ck-top-bar"><button id="ck-close" aria-label="Close">&times;</button></div>
+        <div id="ck-messages" role="log" aria-live="polite">
+          <div id="ck-welcome">
+            <img src="/img/me.jpg" id="ck-welcome-avatar" alt="Andrea" />
+            <div class="ck-msg ck-msg--assistant">Hi! Nice to meet you 🤗</div>
+          </div>
         </div>
-        <div id="ck-messages" role="log" aria-live="polite"></div>
-        <div id="ck-footer">
-          <span id="ck-hint"><kbd>Esc</kbd> to close</span>
-          <span id="ck-disclaimer">AI assistant — not the real Andrea. <a href="https://www.linkedin.com/in/andrea-gemelli/" target="_blank" rel="noopener">LinkedIn</a> for real talks.</span>
+        <div id="ck-bottom">
+          <div id="ck-input-row">
+            <input id="ck-input" type="text" placeholder="Ask Andrea…" maxlength="500" autocomplete="off" />
+            <button id="ck-send" aria-label="Send">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+          </div>
+          <div id="ck-disclaimer">Not the real Andrea — <a href="https://www.linkedin.com/in/andrea-gemelli/" target="_blank" rel="noopener">LinkedIn</a> for real conversations.</div>
         </div>
       </div>`;
     document.body.appendChild(overlay);
@@ -134,6 +139,7 @@
       document.body.style.overflow = '';
     }
 
+    overlay.querySelector('#ck-close').addEventListener('click', close);
     overlay.addEventListener('click', function (e) {
       if (e.target === overlay) close();
     });
@@ -201,55 +207,15 @@
 
   // ── Homepage inline input (launcher only — opens overlay) ───────────────
 
-  function buildInline(openOverlay, getOverlayInput) {
-    const profile = document.querySelector('.profile_inner');
-    if (!profile) return;
-
-    const wrap = document.createElement('div');
-    wrap.id = 'inline-chat';
-    wrap.innerHTML = `
-      <div id="inline-input-row">
-        <input id="inline-input" type="text" placeholder="Ask me anything…" maxlength="500" autocomplete="off" />
-        <button id="inline-send" aria-label="Send">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-        </button>
-      </div>`;
-    profile.appendChild(wrap);
-
-    const input = wrap.querySelector('#inline-input');
-    const send  = wrap.querySelector('#inline-send');
-
-    function launch() {
-      const text = input.value.trim();
-      input.value = '';
-      openOverlay(text);
-    }
-
-    input.addEventListener('focus', function () { openOverlay(''); });
-    send.addEventListener('click', launch);
-    input.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); launch(); }
-    });
-  }
-
-  // ── Triggers: desktop ⌘K hint + mobile pill ──────────────────────────────
-
-  function buildTriggers(openOverlay) {
-    const hint = document.createElement('button');
-    hint.id = 'desktop-ask';
-    hint.setAttribute('aria-label', 'Chat with Andrea (⌘K)');
-    hint.innerHTML = '<kbd>⌘K</kbd><span>Ask Andrea</span>';
-    hint.addEventListener('click', function () { openOverlay(''); });
-    document.body.appendChild(hint);
-  }
-
   // ── Init ──────────────────────────────────────────────────────────────────
 
   function init() {
     const openOverlay = buildOverlay();
-    const onHome = window.location.pathname === '/' || window.location.pathname === '/index.html';
-    if (onHome) buildInline(openOverlay);
-    buildTriggers(openOverlay);
+    const btn = document.createElement('button');
+    btn.id = 'chat-float-btn';
+    btn.innerHTML = 'Ask Andrea <kbd>⌘K</kbd>';
+    btn.addEventListener('click', function () { openOverlay(''); });
+    document.body.appendChild(btn);
   }
 
   if (document.readyState === 'loading') {

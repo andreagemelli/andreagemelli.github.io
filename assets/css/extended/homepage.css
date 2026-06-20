@@ -1,0 +1,4 @@
+.profile .profile_inner {
+  justify-content: space-evenly;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height) - (var(--gap) * 2));
+}

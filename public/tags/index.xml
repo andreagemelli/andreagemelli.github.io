@@ -2,87 +2,87 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on Andrea Gemelli</title>
-    <link>https://andreagemelli.me/tags/</link>
+    <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on Andrea Gemelli</description>
     <generator>Hugo -- 0.150.0</generator>
     <language>en</language>
     <lastBuildDate>Sun, 07 Dec 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://andreagemelli.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI</title>
-      <link>https://andreagemelli.me/tags/ai/</link>
+      <link>http://localhost:1313/tags/ai/</link>
       <pubDate>Sun, 07 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>https://andreagemelli.me/tags/ai/</guid>
+      <guid>http://localhost:1313/tags/ai/</guid>
       <description></description>
     </item>
     <item>
       <title>Benchmarks</title>
-      <link>https://andreagemelli.me/tags/benchmarks/</link>
+      <link>http://localhost:1313/tags/benchmarks/</link>
       <pubDate>Sun, 07 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>https://andreagemelli.me/tags/benchmarks/</guid>
+      <guid>http://localhost:1313/tags/benchmarks/</guid>
       <description></description>
     </item>
     <item>
       <title>Large Language Models</title>
-      <link>https://andreagemelli.me/tags/large-language-models/</link>
+      <link>http://localhost:1313/tags/large-language-models/</link>
       <pubDate>Sun, 07 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>https://andreagemelli.me/tags/large-language-models/</guid>
+      <guid>http://localhost:1313/tags/large-language-models/</guid>
       <description></description>
     </item>
     <item>
       <title>MCP</title>
-      <link>https://andreagemelli.me/tags/mcp/</link>
+      <link>http://localhost:1313/tags/mcp/</link>
       <pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://andreagemelli.me/tags/mcp/</guid>
+      <guid>http://localhost:1313/tags/mcp/</guid>
       <description></description>
     </item>
     <item>
       <title>OpenAPI</title>
-      <link>https://andreagemelli.me/tags/openapi/</link>
+      <link>http://localhost:1313/tags/openapi/</link>
       <pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://andreagemelli.me/tags/openapi/</guid>
+      <guid>http://localhost:1313/tags/openapi/</guid>
       <description></description>
     </item>
     <item>
       <title>NLP</title>
-      <link>https://andreagemelli.me/tags/nlp/</link>
+      <link>http://localhost:1313/tags/nlp/</link>
       <pubDate>Sun, 26 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://andreagemelli.me/tags/nlp/</guid>
+      <guid>http://localhost:1313/tags/nlp/</guid>
       <description></description>
     </item>
     <item>
       <title>Tokenizers</title>
-      <link>https://andreagemelli.me/tags/tokenizers/</link>
+      <link>http://localhost:1313/tags/tokenizers/</link>
       <pubDate>Sun, 26 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://andreagemelli.me/tags/tokenizers/</guid>
+      <guid>http://localhost:1313/tags/tokenizers/</guid>
       <description></description>
     </item>
     <item>
       <title>DocAI</title>
-      <link>https://andreagemelli.me/tags/docai/</link>
+      <link>http://localhost:1313/tags/docai/</link>
       <pubDate>Mon, 11 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://andreagemelli.me/tags/docai/</guid>
+      <guid>http://localhost:1313/tags/docai/</guid>
       <description></description>
     </item>
     <item>
       <title>Graphs</title>
-      <link>https://andreagemelli.me/tags/graphs/</link>
+      <link>http://localhost:1313/tags/graphs/</link>
       <pubDate>Mon, 11 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://andreagemelli.me/tags/graphs/</guid>
+      <guid>http://localhost:1313/tags/graphs/</guid>
       <description></description>
     </item>
     <item>
       <title>Hallucination</title>
-      <link>https://andreagemelli.me/tags/hallucination/</link>
+      <link>http://localhost:1313/tags/hallucination/</link>
       <pubDate>Wed, 05 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://andreagemelli.me/tags/hallucination/</guid>
+      <guid>http://localhost:1313/tags/hallucination/</guid>
       <description></description>
     </item>
     <item>
       <title>RAG</title>
-      <link>https://andreagemelli.me/tags/rag/</link>
+      <link>http://localhost:1313/tags/rag/</link>
       <pubDate>Wed, 05 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://andreagemelli.me/tags/rag/</guid>
+      <guid>http://localhost:1313/tags/rag/</guid>
       <description></description>
     </item>
   </channel>
