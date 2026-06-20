@@ -156,22 +156,35 @@
 
     function addMsg(role, text) {
       msgs.classList.add('has-messages');
-      const wrap = document.createElement('div');
-      wrap.className = 'ck-msg-wrap ck-msg-wrap--' + role;
+      const bubble = document.createElement('div');
+      bubble.className = 'ck-msg ck-msg--' + role;
+      bubble.appendChild(renderText(text));
+
       if (role === 'assistant') {
+        const row = document.createElement('div');
+        row.className = 'ck-msg-row';
+        const avatar = document.createElement('div');
+        avatar.className = 'ck-msg-avatar';
+        avatar.textContent = '🤖';
+        const inner = document.createElement('div');
+        inner.className = 'ck-msg-wrap ck-msg-wrap--assistant';
         const name = document.createElement('div');
         name.className = 'ck-msg-name';
         name.textContent = 'AIndrea';
-        wrap.appendChild(name);
+        inner.appendChild(name);
+        inner.appendChild(bubble);
+        row.appendChild(avatar);
+        row.appendChild(inner);
+        msgs.appendChild(row);
+      } else {
+        const wrap = document.createElement('div');
+        wrap.className = 'ck-msg-wrap ck-msg-wrap--user';
+        wrap.appendChild(bubble);
+        msgs.appendChild(wrap);
       }
-      const div = document.createElement('div');
-      div.className = 'ck-msg ck-msg--' + role;
-      div.appendChild(renderText(text));
-      wrap.appendChild(div);
-      msgs.appendChild(wrap);
-      msgs.scrollTop = msgs.scrollHeight;
-      return div;
 
+      msgs.scrollTop = msgs.scrollHeight;
+      return bubble;
     }
 
     function setMsg(div, text, extraClass) {
@@ -223,12 +236,23 @@
   // ── Init ──────────────────────────────────────────────────────────────────
 
   function init() {
-    const openOverlay = buildOverlay();
-    const btn = document.createElement('button');
+    var openOverlay = buildOverlay();
+    var isHome = window.location.pathname === '/' || window.location.pathname === '/index.html';
+    var btn = document.createElement('button');
     btn.id = 'chat-float-btn';
-    btn.innerHTML = 'Ask Andrea <kbd>⌘K</kbd>';
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Ask Andrea <kbd>⌘K</kbd>';
     btn.addEventListener('click', function () { openOverlay(''); });
-    document.body.appendChild(btn);
+
+    if (isHome) {
+      var socialIcons = document.querySelector('.social-icons');
+      if (socialIcons) {
+        socialIcons.parentNode.insertBefore(btn, socialIcons.nextSibling);
+      } else {
+        (document.querySelector('.profile_inner') || document.body).appendChild(btn);
+      }
+    } else {
+      document.body.appendChild(btn);
+    }
   }
 
   if (document.readyState === 'loading') {
