@@ -100,6 +100,14 @@
   border-bottom-left-radius: 3px;
 }
 .ck-msg--error { color: #e05; background: none; font-size: 0.8rem; padding: 4px 0; }
+.ck-msg--streaming::after {
+  content: '▋';
+  display: inline-block;
+  opacity: 1;
+  animation: blink 0.7s step-end infinite;
+  margin-left: 1px;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 .ck-msg--assistant a { color: inherit; text-decoration: underline; opacity: 0.85; }
 .ck-msg--assistant a:hover { opacity: 1; }
 .ck-msg p, .ck-msg ul { margin: 0 0 4px; padding: 0; }

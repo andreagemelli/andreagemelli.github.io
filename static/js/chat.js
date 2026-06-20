@@ -52,21 +52,46 @@
     return div;
   }
 
-  async function ask(text, onReply, onError, onDone) {
+  async function ask(text, onChunk, onError, onDone) {
     try {
       const res = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: text, history }),
       });
-      const data = await res.json();
+
       if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
         onError(data.error || 'Something went wrong.');
-      } else {
-        history.push({ role: 'user', content: text });
-        history.push({ role: 'assistant', content: data.reply });
-        if (history.length > 12) history = history.slice(-12);
-        onReply(data.reply);
+        return;
+      }
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+      let full = '';
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop();
+        for (const line of lines) {
+          if (!line.startsWith('data: ')) continue;
+          const raw = line.slice(6);
+          if (raw === '[DONE]') {
+            history.push({ role: 'user', content: text });
+            history.push({ role: 'assistant', content: full });
+            if (history.length > 12) history = history.slice(-12);
+            continue;
+          }
+          try {
+            const parsed = JSON.parse(raw);
+            if (parsed.error) { onError(parsed.error); return; }
+            if (parsed.text) { full += parsed.text; onChunk(full); }
+          } catch {}
+        }
       }
     } catch {
       onError('Network error. Please try again.');
@@ -150,12 +175,13 @@
       input.disabled = true;
       send.disabled = true;
       addMsg('user', text);
-      const thinking = addMsg('assistant', '…');
+      const bubble = addMsg('assistant', '');
+      bubble.classList.add('ck-msg--streaming');
       ask(
         text,
-        function (reply) { setMsg(thinking, reply); },
-        function (err)   { setMsg(thinking, err, 'ck-msg--error'); },
-        function ()      { input.disabled = false; send.disabled = false; input.focus(); }
+        function (full) { setMsg(bubble, full); },
+        function (err)  { setMsg(bubble, err, 'ck-msg--error'); },
+        function ()     { bubble.classList.remove('ck-msg--streaming'); input.disabled = false; send.disabled = false; input.focus(); }
       );
     }
 
