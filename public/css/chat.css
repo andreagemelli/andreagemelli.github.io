@@ -1,0 +1,252 @@
+/* ── ⌘K Overlay ─────────────────────────────────────────────────────────── */
+
+#ck-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 18vh;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s;
+}
+#ck-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#ck-panel {
+  background: var(--theme);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  width: 560px;
+  max-width: 92vw;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  transform: translateY(-8px);
+  transition: transform 0.15s;
+}
+#ck-overlay.open #ck-panel {
+  transform: translateY(0);
+}
+
+#ck-input-row {
+  display: flex;
+  align-items: center;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  gap: 10px;
+}
+#ck-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--primary);
+  font-size: 1rem;
+  font-family: inherit;
+}
+#ck-input::placeholder { color: var(--secondary); }
+#ck-send {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--secondary);
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 6px;
+  transition: color 0.15s, background 0.15s;
+}
+#ck-send:hover { color: var(--primary); background: var(--entry); }
+#ck-send:disabled { opacity: 0.4; cursor: not-allowed; }
+#ck-send svg { width: 16px; height: 16px; }
+
+#ck-messages {
+  max-height: 320px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+#ck-messages.has-messages {
+  padding: 12px 16px;
+  gap: 8px;
+}
+
+.ck-msg {
+  max-width: 82%;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  word-break: break-word;
+}
+.ck-msg--user {
+  align-self: flex-end;
+  background: var(--primary);
+  color: var(--theme);
+  border-bottom-right-radius: 3px;
+}
+.ck-msg--assistant {
+  align-self: flex-start;
+  background: var(--entry);
+  color: var(--primary);
+  border-bottom-left-radius: 3px;
+}
+.ck-msg--error { color: #e05; background: none; font-size: 0.8rem; padding: 4px 0; }
+.ck-msg--assistant a { color: inherit; text-decoration: underline; opacity: 0.85; }
+.ck-msg--assistant a:hover { opacity: 1; }
+
+#ck-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  border-top: 1px solid var(--border);
+  gap: 8px;
+}
+#ck-hint { font-size: 0.72rem; color: var(--secondary); flex-shrink: 0; }
+#ck-hint kbd {
+  display: inline-block;
+  padding: 1px 5px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.7rem;
+  color: var(--secondary);
+}
+#ck-disclaimer { font-size: 0.7rem; color: var(--secondary); text-align: right; }
+#ck-disclaimer a { color: var(--secondary); text-decoration: underline; }
+#ck-disclaimer a:hover { color: var(--primary); }
+
+/* ── Homepage inline chat ────────────────────────────────────────────────── */
+
+#inline-chat {
+  width: 100%;
+  max-width: 460px;
+  margin-top: 20px;
+}
+
+#inline-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 8px 8px 8px 16px;
+  background: var(--entry);
+  transition: border-color 0.15s;
+}
+#inline-input-row:focus-within { border-color: var(--primary); }
+
+#inline-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--primary);
+  font-size: 0.875rem;
+  font-family: inherit;
+}
+#inline-input::placeholder { color: var(--secondary); }
+#inline-input:disabled { opacity: 0.5; }
+
+#inline-send {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--theme);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: opacity 0.15s;
+}
+#inline-send:hover { opacity: 0.8; }
+#inline-send:disabled { opacity: 0.4; cursor: not-allowed; }
+#inline-send svg { width: 14px; height: 14px; }
+
+
+/* ── Desktop ⌘K hint (hidden on mobile) ─────────────────────────────────── */
+
+#desktop-ask {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px 6px 8px;
+  background: var(--theme);
+  color: var(--secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-family: inherit;
+  cursor: pointer;
+  z-index: 9998;
+  transition: color 0.15s, border-color 0.15s;
+}
+#desktop-ask:hover { color: var(--primary); border-color: var(--primary); }
+#desktop-ask kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 6px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.72rem;
+  background: var(--entry);
+  color: var(--secondary);
+}
+
+/* ── Mobile "Ask Andrea" pill (hidden on desktop) ────────────────────────── */
+
+#mobile-ask {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  #desktop-ask { display: none; }
+
+  #mobile-ask {
+    position: fixed;
+    bottom: 20px;
+    right: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: var(--theme);
+    color: var(--primary);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-family: inherit;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    z-index: 9998;
+    transition: box-shadow 0.15s;
+  }
+  #mobile-ask:hover { box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18); }
+
+  #ck-overlay {
+    padding-top: 0;
+    align-items: flex-end;
+  }
+  #ck-panel {
+    border-radius: 16px 16px 0 0;
+    width: 100%;
+    max-width: 100%;
+  }
+}
