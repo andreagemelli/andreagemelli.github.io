@@ -1,6 +1,6 @@
 baseURL: "https://andreagemelli.me/"
 title: Andrea Gemelli
-description: "This is my portfolio"
+description: "Andrea Gemelli is a PhD AI Research Scientist based in Paris, France, specializing in Natural Language Processing, Computer Vision, and document understanding. Open source contributor with 150+ academic citations and 20k+ Hugging Face downloads."
 pagination:
   pagerSize: 5
 theme: [PaperMod]
@@ -41,7 +41,18 @@ languages:
 
 params:
 
-  description: "My Portfolio"
+  description: "Andrea Gemelli is a PhD AI Research Scientist based in Paris, France, specializing in Natural Language Processing, Computer Vision, and document understanding. Open source contributor with 150+ academic citations and 20k+ Hugging Face downloads. His work spans document information extraction, graph neural networks, and applied LLMs — including projects like Doc2Graph and EasyMCP, and research published at top venues such as ECCV and ICDAR."
+  keywords:
+    - Andrea Gemelli
+    - AI Research Scientist
+    - NLP
+    - Computer Vision
+    - Document Understanding
+    - Graph Neural Networks
+    - LLM
+    - Agents
+    - PhD
+    - Paris
   author: Andrea Gemelli
   defaultTheme: auto # to switch between dark or light according to browser theme
   displayFullLangName: true
