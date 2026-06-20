@@ -66,13 +66,25 @@
   margin-bottom: 4px;
 }
 #ck-welcome-avatar {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1px solid var(--border);
+  font-size: 1.6rem;
+  line-height: 1;
   flex-shrink: 0;
+  align-self: flex-end;
 }
+.ck-msg-name {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #7c6af7;
+  margin-bottom: 2px;
+  padding-left: 4px;
+}
+.ck-msg-wrap {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+}
+.ck-msg-wrap--user { align-self: flex-end; align-items: flex-end; }
+.ck-msg-wrap--assistant { align-self: flex-start; align-items: flex-start; }
 
 /* ── Messages ────────────────────────────────────────────────────────────── */
 
@@ -86,7 +98,6 @@
 }
 
 .ck-msg {
-  max-width: 80%;
   padding: 8px 12px;
   border-radius: 14px;
   font-size: 0.85rem;
@@ -94,18 +105,17 @@
   word-break: break-word;
 }
 .ck-msg--user {
-  align-self: flex-end;
   background: var(--primary);
   color: var(--theme);
   border-bottom-right-radius: 4px;
 }
 .ck-msg--assistant {
-  align-self: flex-start;
   background: var(--entry);
   color: var(--primary);
   border-bottom-left-radius: 4px;
 }
 .ck-msg--error { color: #e05; background: none; font-size: 0.8rem; padding: 4px 0; }
+.ck-msg-wrap:has(.ck-msg--error) .ck-msg-name { display: none; }
 .ck-msg--assistant a { color: inherit; text-decoration: underline; opacity: 0.85; }
 .ck-msg--assistant a:hover { opacity: 1; }
 .ck-msg p, .ck-msg ul { margin: 0 0 4px; padding: 0; }

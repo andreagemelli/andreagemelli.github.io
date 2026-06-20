@@ -107,8 +107,11 @@
         <div id="ck-top-bar"><button id="ck-close" aria-label="Close">&times;</button></div>
         <div id="ck-messages" role="log" aria-live="polite">
           <div id="ck-welcome">
-            <img src="/img/me.jpg" id="ck-welcome-avatar" alt="Andrea" />
-            <div class="ck-msg ck-msg--assistant">Hi! Nice to meet you 🤗</div>
+            <div id="ck-welcome-avatar">🤖</div>
+            <div>
+              <div class="ck-msg-name">AIndrea</div>
+              <div class="ck-msg ck-msg--assistant">Hi! Nice to meet you 🤗</div>
+            </div>
           </div>
         </div>
         <div id="ck-bottom">
@@ -153,12 +156,22 @@
 
     function addMsg(role, text) {
       msgs.classList.add('has-messages');
+      const wrap = document.createElement('div');
+      wrap.className = 'ck-msg-wrap ck-msg-wrap--' + role;
+      if (role === 'assistant') {
+        const name = document.createElement('div');
+        name.className = 'ck-msg-name';
+        name.textContent = 'AIndrea';
+        wrap.appendChild(name);
+      }
       const div = document.createElement('div');
       div.className = 'ck-msg ck-msg--' + role;
       div.appendChild(renderText(text));
-      msgs.appendChild(div);
+      wrap.appendChild(div);
+      msgs.appendChild(wrap);
       msgs.scrollTop = msgs.scrollHeight;
       return div;
+
     }
 
     function setMsg(div, text, extraClass) {
