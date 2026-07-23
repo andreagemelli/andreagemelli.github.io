@@ -6,6 +6,8 @@ disableShare: true
 comments: false
 ---
 
+- Participated in the [Mistral Vibe Hackathon](https://luma.com/w692ilf0) in Paris — [watch our project video](https://youtu.be/2r-ixamvtco)
+- Took part in the [community agent challenge on reproducing ICML 2026 papers](https://huggingface.co/spaces/ICML-2026-agent-repro/challenge) hosted by Hugging Face
 - Lecturer for [Artificial Intelligence for Design](https://unifi.coursecatalogue.cineca.it/corsi/2024/3255/insegnamenti/2025/48521_B270-23-24_135605_735284/2023/48521?coorte=2024) course @ University of Florence
 - [Sophia Yang mentioned](https://www.linkedin.com/feed/update/urn:li:activity:7373527723668893696/) our project built during @ [Mistral AI MCP Hackathon](https://cerebralvalley.ai/e/mistral-mcp-hackathon)
 - [We ranked 3rd](https://www.linkedin.com/feed/update/urn:li:ugcPost:7332751027466665985/?originTrackingId=wzHnl2xZtoiJ4dFQlRFepA%3D%3D) with [EasyMCP](https://github.com/remorses/easymcp) @ {Tech: Europe} AI Hackathon in Paris
