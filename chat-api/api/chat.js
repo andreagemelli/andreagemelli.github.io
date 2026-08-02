@@ -2,9 +2,12 @@ const Anthropic = require('@anthropic-ai/sdk');
 const { Redis } = require('@upstash/redis');
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+// The Vercel Marketplace integration injects KV_REST_API_*; the UPSTASH_* names
+// are what you get provisioning a database by hand at upstash.com. Read the
+// integration's names first and fall back, so this works either way.
 const redis = new Redis({
-  url: process.env.UPSTASH_REDIS_REST_URL,
-  token: process.env.UPSTASH_REDIS_REST_TOKEN,
+  url: process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL,
+  token: process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN,
 });
 
 const MAX_REQUESTS_PER_IP_PER_DAY = 10;
