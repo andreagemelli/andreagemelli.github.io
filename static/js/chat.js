@@ -116,7 +116,7 @@
         </div>
         <div id="ck-bottom">
           <div id="ck-input-row">
-            <input id="ck-input" type="text" placeholder="Ask Andrea…" maxlength="500" autocomplete="off" />
+            <input id="ck-input" type="text" placeholder="Ask AIndrea…" maxlength="500" autocomplete="off" />
             <button id="ck-send" aria-label="Send">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
             </button>
@@ -240,7 +240,7 @@
     var isHome = window.location.pathname === '/' || window.location.pathname === '/index.html';
     var btn = document.createElement('button');
     btn.id = 'chat-float-btn';
-    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Ask Andrea <kbd>⌘K</kbd>';
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.14 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M6 18H4"/></svg> Ask AIndrea <kbd>⌘K</kbd>';
     btn.addEventListener('click', function () { openOverlay(''); });
 
     if (isHome) {

@@ -2,3 +2,6 @@ other.html
 .DS_Store
 a.txt*
 public/
+.env
+.env.*
+*.env

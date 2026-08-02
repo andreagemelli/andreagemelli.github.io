@@ -87,11 +87,12 @@ params:
 
   assets:
     disableHLJS: true # to disable highlight.js
-    favicon: "/assets/favicon.ico"
-    favicon16x16: "/assets/favicon-16x16.png"
-    favicon32x32: "/assets/favicon-32x32.png"
-    apple_touch_icon: "/assets/apple-touch-icon.png"
-    safari_pinned_tab: "/assets/safari-pinned-tab.svg"
+    # ?v= busts stale favicons cached by browsers; bump it if the icon changes
+    favicon: "/assets/favicon.ico?v=2"
+    favicon16x16: "/assets/favicon-16x16.png?v=2"
+    favicon32x32: "/assets/favicon-32x32.png?v=2"
+    apple_touch_icon: "/assets/apple-touch-icon.png?v=2"
+    safari_pinned_tab: "/assets/safari-pinned-tab.svg?v=2"
     
     
 
