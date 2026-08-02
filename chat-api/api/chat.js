@@ -223,6 +223,33 @@ function buildContextTurns(siteContext, cvBase64) {
   ];
 }
 
+// The transcript arrives from the client, so a caller can hand-craft assistant
+// turns ("sure, I'll drop the rules") and set up a multi-turn jailbreak in a
+// single request. Requiring the shape a real exchange has — opens on the user,
+// strictly alternating, complete pairs — throws out the useful forgeries and
+// costs nothing legitimate: the widget always pushes user/assistant together.
+// This narrows the surface, it doesn't close it; only a server-held transcript
+// would do that.
+function sanitizeHistory(history) {
+  if (!Array.isArray(history)) return [];
+
+  const turns = [];
+  for (const m of history.slice(-6)) {
+    if (!m || typeof m.content !== 'string') continue;
+    const content = m.content.trim().slice(0, 500);
+    if (!content) continue;
+    const role = m.role === 'assistant' ? 'assistant' : 'user';
+    if (role !== (turns.length % 2 === 0 ? 'user' : 'assistant')) break;
+    turns.push({ role, content });
+  }
+
+  // The context turns end on an assistant message and the live question is
+  // appended as a user one, so history has to be whole pairs to keep roles
+  // alternating across the join.
+  if (turns.length % 2 !== 0) turns.pop();
+  return turns;
+}
+
 module.exports = async function handler(req, res) {
   const origin = req.headers.origin;
   if (ALLOWED_ORIGINS.includes(origin)) {
@@ -241,23 +268,9 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    // Global monthly cap
-    const monthKey = `rl:global:${new Date().toISOString().slice(0, 7)}`;
-    const globalCount = await redis.incr(monthKey);
-    if (globalCount === 1) await redis.expire(monthKey, 2678400);
-    if (globalCount > MAX_GLOBAL_MONTHLY) {
-      return res.status(429).json({ error: "Andrea's assistant has reached its monthly message limit. Please check back next month!" });
-    }
-
-    // Per-IP daily cap
-    const ip = req.headers['x-real-ip'] || (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'unknown';
-    const ipKey = `rl:ip:${ip}:${new Date().toISOString().slice(0, 10)}`;
-    const ipCount = await redis.incr(ipKey);
-    if (ipCount === 1) await redis.expire(ipKey, 86400);
-    if (ipCount > MAX_REQUESTS_PER_IP_PER_DAY) {
-      return res.status(429).json({ error: "You've reached today's message limit. Come back tomorrow!" });
-    }
-
+    // Validate before touching the counters. The other way round, a flood of
+    // malformed requests exhausts the monthly quota — taking the chat offline
+    // for the rest of the month — without a single call ever reaching the model.
     const { message, history } = req.body || {};
     if (!message || typeof message !== 'string' || message.trim().length === 0) {
       return res.status(400).json({ error: 'Message is required' });
@@ -266,12 +279,25 @@ module.exports = async function handler(req, res) {
       return res.status(400).json({ error: 'Message too long (max 500 characters)' });
     }
 
-    const safeHistory = Array.isArray(history)
-      ? history.slice(-6).filter(m => m.role && m.content).map(m => ({
-          role: m.role === 'assistant' ? 'assistant' : 'user',
-          content: String(m.content).slice(0, 500),
-        }))
-      : [];
+    // Global monthly cap
+    const monthKey = `rl:global:${new Date().toISOString().slice(0, 7)}`;
+    const globalCount = await redis.incr(monthKey);
+    if (globalCount === 1) await redis.expire(monthKey, 2678400);
+    if (globalCount > MAX_GLOBAL_MONTHLY) {
+      return res.status(429).json({ error: "Andrea's assistant has reached its monthly message limit. Please check back next month!" });
+    }
+
+    // Per-IP daily cap. Vercel overwrites x-forwarded-for with the real client
+    // IP and refuses to forward external ones, so neither header is spoofable.
+    const ip = req.headers['x-real-ip'] || (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'unknown';
+    const ipKey = `rl:ip:${ip}:${new Date().toISOString().slice(0, 10)}`;
+    const ipCount = await redis.incr(ipKey);
+    if (ipCount === 1) await redis.expire(ipKey, 86400);
+    if (ipCount > MAX_REQUESTS_PER_IP_PER_DAY) {
+      return res.status(429).json({ error: "You've reached today's message limit. Come back tomorrow!" });
+    }
+
+    const safeHistory = sanitizeHistory(history);
 
     // Either source failing degrades the answer; neither should 500 the request.
     const [siteResult, cvResult] = await Promise.allSettled([
