@@ -1,7 +1,5 @@
-other.html
+node_modules/
+dist/
 .DS_Store
+other.html
 a.txt*
-public/
-.env
-.env.*
-*.env
