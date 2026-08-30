@@ -1,5 +1,5 @@
 ---
-title: 'OpenAPI vs MCP ⚔️'
+title: 'OpenAPI vs MCP'
 date: 2025-05-26
 draft: false
 description: "How we won the Paris AI Hackathon"

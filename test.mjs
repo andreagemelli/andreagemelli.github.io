@@ -1,16 +1,23 @@
 // Smallest thing that fails if the generator breaks: build, then assert on dist/.
 //   node test.mjs
 import { execFileSync } from 'node:child_process';
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import assert from 'node:assert/strict';
 
 const read = (f) => readFileSync(`dist/${f}`, 'utf8');
 
 execFileSync('node', ['build.mjs'], { stdio: 'inherit' });
 
-// drafts stay out of a production build
-assert.ok(!existsSync('dist/posts/intelligence'), 'draft post was published');
-assert.ok(!read('index.xml').includes('Retrieval and Reasoning'), 'draft leaked into the feed');
+// drafts stay out of a production build. Derived from what is actually on disk, so
+// this keeps testing the filter as posts come and go rather than naming one slug.
+const feed = read('index.xml');
+for (const dir of readdirSync('content/posts')) {
+  const md = `content/posts/${dir}/index.md`;
+  if (!existsSync(md) || !/^draft:\s*true\s*$/m.test(readFileSync(md, 'utf8'))) continue;
+  const title = readFileSync(md, 'utf8').match(/^title:\s*['"]?(.+?)['"]?\s*$/m)?.[1];
+  assert.ok(!existsSync(`dist/posts/${dir}`), `draft "${dir}" was published`);
+  if (title) assert.ok(!feed.includes(title), `draft "${dir}" leaked into the feed`);
+}
 
 // front matter drives the page
 const post = read('posts/tokenizers/index.html');

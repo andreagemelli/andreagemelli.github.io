@@ -2,7 +2,7 @@
 title: 'How I stay up to date with AI'
 date: 2025-12-07
 draft: false
-description: "spoiler: I don't."
+description: "spoiler: I can't."
 ShareButtons: ['linkedin', 'x']
 tags: ["AI", "Large Language Models", "Benchmarks"]
 author: 'Andrea Gemelli'
