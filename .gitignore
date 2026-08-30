@@ -1,7 +1,17 @@
-other.html
-.DS_Store
-a.txt*
-public/
+node_modules/
+dist/
+
+# secrets: never commit these to a public repo
 .env
 .env.*
 *.env
+.vercel
+
+# local tooling and agent scratch, not part of the website
+.agents/
+.claude/
+skills-lock.json
+
+.DS_Store
+other.html
+a.txt*

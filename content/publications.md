@@ -5,6 +5,8 @@ hidemeta: true
 disableShare: true
 comments: false
 ---
+<p class="lede">~200 citations on <a href="https://scholar.google.com/citations?user=8AeCCO0AAAAJ&hl=it">Google Scholar</a>.</p>
+
 ### 📣 Conference Proceedings
 ---
 

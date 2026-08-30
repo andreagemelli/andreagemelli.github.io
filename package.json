@@ -1,0 +1,18 @@
+{
+  "name": "andreagemelli-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node test.mjs",
+    "dev": "node build.mjs --drafts --watch",
+    "serve": "node build.mjs --drafts --watch --serve"
+  },
+  "devDependencies": {
+    "js-yaml": "^4.1.0",
+    "markdown-it": "^14.1.0",
+    "markdown-it-anchor": "^9.2.0",
+    "markdown-it-footnote": "^4.0.0",
+    "simple-icons": "^13.21.0"
+  }
+}

@@ -2,7 +2,7 @@
 title: '3476, 477, 12274, 112838, 248'
 date: 2025-01-26
 draft: false
-description: "Hint: \"deepseek-ai/DeepSeek-R1\" 🤗"
+description: "Hint: \"deepseek-ai/DeepSeek-R1\""
 ShareButtons: ['linkedin', 'x']
 tags: ["NLP", "Large Language Models", "Tokenizers"]
 author: 'Andrea Gemelli'
