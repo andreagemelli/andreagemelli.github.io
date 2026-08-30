@@ -26,7 +26,7 @@ const SITE = {
 };
 
 const NAV = [
-  ['about', '/about/'],
+  ['career', '/career/'],
   ['writing', '/posts/'],
   ['publications', '/publications/'],
   ['cv', '/cv.pdf'],
@@ -112,9 +112,10 @@ function layout({ title, description, body, url, klass = '', ogType = 'website',
 <meta name="twitter:creator" content="@_andreagemelli">
 ${date ? `<meta property="article:published_time" content="${ymd(date)}">` : ''}
 <link rel="alternate" type="application/rss+xml" title="${SITE.title}" href="/index.xml">
-<link rel="icon" href="/assets/favicon.ico?v=2">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?v=2">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=2">
+<link rel="icon" href="/assets/favicon.svg?v=3" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?v=3">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?v=3">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=3">
 <link rel="preload" href="/fonts/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/site.css">
 <script>
@@ -213,21 +214,25 @@ function home(posts) {
   const recent = posts.slice(0, 5);
   const body = `<section class="intro">
   <h1 class="sr-only">Andrea Gemelli</h1>
-  <p>I am an <strong>AI Researcher at <a href="https://www.kleio.ai">Kleio</a></strong> in Paris,
-  where I work on multi-agent architectures and on the retrieval and orchestration
-  pipelines underneath them.</p>
+  <p>I am an <strong>AI Researcher</strong> based in Paris, working on multi-agent
+  architectures and on the retrieval and orchestration pipelines underneath them.</p>
 
-  <p>Before Kleio I spent two years at <a href="https://www.letxbe.ai">LetXBe</a> building
-  LLM and multi-modal systems for document understanding. Before that, a
-  <a href="https://flore.unifi.it/handle/2158/1353891">PhD in Artificial Intelligence</a>
-  with a Doctor Europaeus title, a year as a visiting researcher at the
-  <a href="https://www.cvc.uab.es">Computer Vision Center</a> in Barcelona, and papers at
-  ECCV, ICPR, ICASSP and IJDAR.</p>
+  <p>Before that: a <a href="https://flore.unifi.it/handle/2158/1353891">PhD in
+  Artificial Intelligence</a> with a Doctor Europaeus title, a year as a visiting
+  researcher at the <a href="https://www.cvc.uab.es">Computer Vision Center</a> in
+  Barcelona, and two years in industry building LLM and multi-modal systems for
+  document understanding. Papers at ECCV, ICPR, ICASSP and IJDAR.
+  <a href="/career/">The long version</a>, or the <a href="/cv.pdf" target="_blank">CV</a>.</p>
 
-  <p>I keep things in the open: <a href="https://github.com/andreagemelli/doc2graph">Doc2Graph</a>,
-  <a href="https://github.com/remorses/easymcp">EasyMCP</a>, 150+ citations, 20k+ downloads on
-  Hugging Face. <a href="/about/">More about me</a>, or the
-  <a href="/cv.pdf" target="_blank">CV</a>.</p>
+  <p>Most of it stays in the open:
+  <a href="https://github.com/andreagemelli/doc2graph">Doc2Graph</a> for document
+  information extraction, <a href="https://github.com/remorses/easymcp">EasyMCP</a>
+  for turning OpenAPI specs into MCP servers, and
+  <a href="/posts/baguettotron-vlm/">Baguettotron-VLM</a>, a sub-1B vision-language
+  model I trained end to end for about $200. That work has gathered
+  <a href="https://scholar.google.fr/citations?user=8AeCCO0AAAAJ&amp;hl=it">150+
+  citations</a> and 20k+ downloads across the datasets and models released on
+  <a href="https://huggingface.co/andreagemelli">Hugging Face</a>.</p>
 </section>
 
 <section class="block">
@@ -290,12 +295,12 @@ function post(p, posts) {
   });
 }
 
-function page(name, url) {
+function page(name, url, extra = '') {
   const { meta, body } = parse(path.join(ROOT, `content/${name}.md`));
   return layout({
     title: meta.title ?? name,
     description: meta.summary,
-    body: `<article class="page"><h1>${esc(meta.title ?? name)}</h1>${md.render(body)}</article>`,
+    body: `<article class="page ${extra}"><h1>${esc(meta.title ?? name)}</h1>${md.render(body)}</article>`,
     url,
   });
 }
@@ -358,10 +363,11 @@ function build() {
     for (const sub of ['images', 'docs']) copyTree(path.join(p.dir, sub), path.join(OUT, 'posts', p.slug, sub));
   }
 
-  write('about/index.html', page('about', '/about/'));
-  write('publications/index.html', page('publications', '/publications/'));
+  write('career/index.html', page('career', '/career/'));
+  write('publications/index.html', page('publications', '/publications/', 'pubs'));
   write('archives/index.html', redirect('/posts/'));
-  write('misc/index.html', redirect('/about/'));
+  write('about/index.html', redirect('/career/'));
+  write('misc/index.html', redirect('/career/'));
   write(
     '404.html',
     layout({
@@ -376,7 +382,7 @@ function build() {
   write('index.xml', feed(posts));
   write(
     'sitemap.xml',
-    sitemap(['/', '/about/', '/publications/', '/posts/', ...posts.map((p) => p.url)])
+    sitemap(['/', '/career/', '/publications/', '/posts/', ...posts.map((p) => p.url)])
   );
   write('robots.txt', `User-agent: *\nAllow: /\nSitemap: ${SITE.url}/sitemap.xml\n`);
 

@@ -36,7 +36,7 @@
   --accent: #b4441f;
   --accent-soft: #f4e5de;
 
-  --measure: 68ch;
+  --measure: 76ch;
   --pad: 2rem;
   color-scheme: light;
 }
@@ -697,47 +697,63 @@ th {
   color: var(--faint);
 }
 
+/* Section heads on prose pages get the same hairline rule as the index pages. */
+.page > h2 {
+  display: flex;
+  align-items: center;
+  gap: 1ch;
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 4.5rem 0 1.5rem;
+}
+.page > h2::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
 /* ---------------------------------------------------------------- publications */
 
-.page > h3 {
+.pubs > h3 {
   font-size: 0.9rem;
   color: var(--muted);
   margin: 3.5rem 0 0;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--line);
 }
-.page > h3 + hr {
+.pubs > h3 + hr {
   display: none;
 }
-.page > h3 + p {
+.pubs > h3 + p {
   margin-top: 1.5rem;
 }
-.page > ul {
+.pubs > ul {
   padding-left: 0;
 }
-.page > ul > li::before {
+.pubs > ul > li::before {
   display: none;
 }
-.page > ul > li {
+.pubs > ul > li {
   padding: 1.25rem 0;
   border-bottom: 1px solid var(--line-soft);
   margin: 0;
 }
-.page > ul > li > a:first-child {
+.pubs > ul > li > a:first-child {
   font-weight: 700;
   text-decoration: none;
 }
-.page > ul > li > a:first-child:hover {
+.pubs > ul > li > a:first-child:hover {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 /* Author line, then venue line. */
-.page > ul > li p {
+.pubs > ul > li p {
   margin: 0.4rem 0 0;
   font-size: 0.85rem;
   color: var(--muted);
 }
-.page > ul > li p:last-child {
+.pubs > ul > li p:last-child {
   color: var(--faint);
 }
 

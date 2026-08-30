@@ -32,8 +32,22 @@ assert.match(read('posts/tokenizers/index.html'), /<img[^>]*images\/chats\.png[^
 assert.match(read('posts/index.html').split('class="index"')[1], /baguettotron-vlm/, 'wrong sort order');
 assert.ok(existsSync('dist/posts/tokenizers/images/chats.png'), 'post images not copied');
 
-// old Hugo URLs still resolve
+// the career page absorbed the about page, plus two sections of its own
+const career = read('career/index.html');
+assert.match(career, /<h2 id="teaching-talks"/, 'teaching & talks section missing');
+assert.match(career, /<h2 id="unsorted"/, 'unsorted section missing');
+assert.ok(!career.includes('citation-section'), 'the opening blockquote moved to the home page');
+
+// the home page names no employer and points at the VLM post
+const home = read('index.html');
+assert.ok(!/Kleio|LetXBe/i.test(home), 'home page names an employer');
+assert.match(home, /href="\/posts\/baguettotron-vlm\/"/, 'home page does not cite Baguettotron-VLM');
+assert.equal(home.split('<section class="intro">')[1].split('</section>')[0].match(/<p>/g).length, 3,
+  'home intro is not three paragraphs');
+
+// URLs that existed before still resolve
 assert.match(read('archives/index.html'), /url=\/posts\//, 'archives redirect broken');
-assert.match(read('misc/index.html'), /url=\/about\//, 'misc redirect broken');
+assert.match(read('about/index.html'), /url=\/career\//, 'about redirect broken');
+assert.match(read('misc/index.html'), /url=\/career\//, 'misc redirect broken');
 
 console.log('all checks passed');

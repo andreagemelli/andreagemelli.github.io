@@ -1,16 +1,8 @@
 ---
-title: "About me"
-summary: about me
-hidemeta: true
-disableShare: true
-comments: false
+title: "Career"
+summary: "Where Andrea Gemelli has worked and studied, plus teaching, talks and assorted marks."
 ---
 
-<div class="citation-section">
-  <blockquote>
-    <p>I am passionate about 🌐 <strong>open source development</strong> and contributing to the research community. My projects have gathered 200+ GitHub stars, including <a href="https://github.com/andreagemelli/doc2graph">Doc2Graph</a> for document information extraction and <a href="https://github.com/remorses/easymcp">EasyMCP</a> for translating OpenAPI to MCP servers - which earned <a href="https://blog.techeurope.io/p/hackathon-paris-1">3rd place at the Paris AI Hackathon</a>. I am an active reviewer for academic journals in NLP and Computer Vision, while my research has accumulated <a href="https://scholar.google.fr/citations?user=8AeCCO0AAAAJ&hl=it">150+ citations on Google Scholar</a> and our Hugging Face datasets and models have reached <a href="https://huggingface.co/letxbe">20k+ downloads</a>.</p>
-  </blockquote>
-</div>
 <div class="timeline">
   <div class="timeline-item">
     <div class="timeline-header">
@@ -75,3 +67,19 @@ comments: false
     </div>
   </div>
 </div>
+
+## Teaching & talks
+
+- Lecturer 📖 for the [Artificial Intelligence for Design](https://unifi.coursecatalogue.cineca.it/corsi/2024/3255/insegnamenti/2025/48521_B270-23-24_135605_735284/2023/48521?coorte=2024) course @ University of Florence
+- [Introduction to Retrieval Augmented Generation](https://drive.google.com/file/d/1TUIMQSkKAmIWzsKf5FGz75NiShR9lrWC/view?usp=sharing) 🗣️ guest lecture @ University of Florence, MSc in Artificial Intelligence
+- Theory and programming courses @ the universities of Florence and Arezzo during my PhD, plus supervision of student projects and theses
+- Reviewer 🧑‍⚖️ for academic journals and conferences in NLP and Computer Vision
+
+## Unsorted
+
+- Recognized [outstanding reviewer](https://icdar2026.org/index.php/outstanding-reviewer/) 🏆 @ ICDAR 2026
+- [Sophia Yang mentioned](https://www.linkedin.com/feed/update/urn:li:activity:7373527723668893696/) 🗣️ our project @ [Mistral AI MCP Hackathon](https://cerebralvalley.ai/e/mistral-mcp-hackathon)
+- [We ranked 3rd](https://www.linkedin.com/feed/update/urn:li:ugcPost:7332751027466665985/?originTrackingId=wzHnl2xZtoiJ4dFQlRFepA%3D%3D) 🥉 with [EasyMCP](https://github.com/remorses/easymcp) @ {Tech: Europe} AI Hackathon in Paris
+- Third place 🥉 at the Wacom x Luleå University hackathon with a [handwriting labeling game](https://github.com/andreagemelli/guessmylanguage) @ 4th IAPR TC 10/11 Summer School on Document Analysis and Recognition
+- In 2023, I was entitled [IAPR International Scholar](https://iapr.org/docs/newsletters/2023-Vol-45-No-3.pdf) 🏆
+- 🎸 Wrote and published several songs in the past, on [linktree](https://linktr.ee/andrea.gemelli)
