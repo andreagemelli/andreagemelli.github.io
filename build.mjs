@@ -151,7 +151,7 @@ ${body}
 </main>
 <footer class="bar foot">
   <span>${SITE.author}</span>
-  <span><a href="/index.xml">rss</a> · <a href="https://github.com/andreagemelli/andreagemelli.github.io">source</a></span>
+  <span><a href="/index.xml">rss</a></span>
 </footer>
 <script>
   document.getElementById('theme').addEventListener('click', function () {
@@ -220,11 +220,11 @@ function copyTree(from, to) {
 // ---------------------------------------------------------------- pages
 
 function home(posts) {
-  const recent = posts.slice(0, 5);
+  const recent = posts.slice(0, 3);
   const body = `<section class="intro">
   <h1 class="sr-only">Andrea Gemelli</h1>
   <p>I am an <strong>AI Researcher & Engineer</strong> based in Paris, currently working on multi-agent
-  architectures and on the retrieval and orchestration pipelines underneath them.</p>
+  architectures and on retrieval and orchestration pipelines underneath them.</p>
 
   <p>I held <a href="https://flore.unifi.it/handle/2158/1353891">PhD in
   Artificial Intelligence</a> and three years in industry building around post-training and evaluation pipelines for LLM and agentic-based systems.
@@ -254,8 +254,7 @@ function postsIndex(posts) {
   const byYear = {};
   for (const p of posts) (byYear[new Date(p.date).getFullYear()] ??= []).push(p);
   const body = `<h1>writing</h1>
-<p class="lede">Notes about AI stuff. ${posts.length} posts,
-<a href="/index.xml">rss</a>.</p>
+<p class="lede">Notes about AI stuff.</p>
 ${Object.keys(byYear)
   .sort((a, b) => b - a)
   .map((y) => `<section class="block"><h2 class="rule">${y}</h2>${postList(byYear[y])}</section>`)
