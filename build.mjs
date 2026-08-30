@@ -17,7 +17,7 @@ const args = process.argv.slice(2);
 const INCLUDE_DRAFTS = args.includes('--drafts');
 
 const SITE = {
-  title: 'Andrea Gemelli',
+  title: '@andreagemelli',
   url: 'https://www.andreagemelli.me',
   description:
     'AI Researcher in Paris. PhD in Artificial Intelligence. Notes on agents, ' +
@@ -78,6 +78,15 @@ function toc(html) {
 const esc = (s) =>
   String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 
+// Every link that leaves the site opens in a new tab, so a visitor reading a
+// post never loses the page. Applied to the finished document, which covers
+// both markdown output and the hand-written HTML in these templates.
+const newTabForExternal = (html) =>
+  html.replace(
+    /<a (?![^>]*\btarget=)([^>]*href="https?:\/\/[^"]*"[^>]*)>/g,
+    '<a $1 target="_blank" rel="noopener">'
+  );
+
 const ymd = (d) => new Date(d).toISOString().slice(0, 10);
 const stamp = (d) => ymd(d).slice(0, 7).replace('-', '.'); // 2026.08
 
@@ -95,7 +104,7 @@ function socialRow() {
 function layout({ title, description, body, url, klass = '', ogType = 'website', date }) {
   const full = url === '/' ? SITE.title : `${title} · ${SITE.title}`;
   const desc = description || SITE.description;
-  return `<!doctype html>
+  return newTabForExternal(`<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -156,7 +165,7 @@ ${body}
 </script>
 </body>
 </html>
-`;
+`);
 }
 
 function postList(posts) {
@@ -214,30 +223,22 @@ function home(posts) {
   const recent = posts.slice(0, 5);
   const body = `<section class="intro">
   <h1 class="sr-only">Andrea Gemelli</h1>
-  <p>I am an <strong>AI Researcher</strong> based in Paris, working on multi-agent
+  <p>I am an <strong>AI Researcher & Engineer</strong> based in Paris, currently working on multi-agent
   architectures and on the retrieval and orchestration pipelines underneath them.</p>
 
-  <p>Before that: a <a href="https://flore.unifi.it/handle/2158/1353891">PhD in
-  Artificial Intelligence</a> with a Doctor Europaeus title, a year as a visiting
-  researcher at the <a href="https://www.cvc.uab.es">Computer Vision Center</a> in
-  Barcelona, and two years in industry building LLM and multi-modal systems for
-  document understanding. Papers at ECCV, ICPR, ICASSP and IJDAR.
-  <a href="/career/">The long version</a>, or the <a href="/cv.pdf" target="_blank">CV</a>.</p>
+  <p>I held <a href="https://flore.unifi.it/handle/2158/1353891">PhD in
+  Artificial Intelligence</a> and three years in industry building around post-training and evaluation pipelines for LLM and agentic-based systems.
+  <a href="/career/">My career</a>, or <a href="/cv.pdf" target="_blank">CV</a> for the details.</p>
 
-  <p>Most of it stays in the open:
-  <a href="https://github.com/andreagemelli/doc2graph">Doc2Graph</a> for document
-  information extraction, <a href="https://github.com/remorses/easymcp">EasyMCP</a>
-  for turning OpenAPI specs into MCP servers, and
-  <a href="/posts/baguettotron-vlm/">Baguettotron-VLM</a>, a sub-1B vision-language
-  model I trained end to end for about $200. That work has gathered
-  <a href="https://scholar.google.fr/citations?user=8AeCCO0AAAAJ&amp;hl=it">150+
-  citations</a> and 20k+ downloads across the datasets and models released on
-  <a href="https://huggingface.co/andreagemelli">Hugging Face</a>.</p>
+  <p>Open contributions:
+  <a href="https://github.com/andreagemelli/doc2graph">Doc2Graph</a> framework for several document understanding tasks, 
+  <a href="https://huggingface.co/collections/andreagemelli/baguettotron-vlm">Baguettotron-VLM</a>, a sub-1B vision-language
+  model and DocVQA datasets and models available on
+  <a href="https://huggingface.co/letxbe">Hugging Face</a>.</p>
 </section>
 
 <section class="block">
   <h2 class="rule"><a href="/posts/">writing</a></h2>
-  <p class="lede">Notes on what I read and build. Closer to a lab notebook than to a guide.</p>
   ${postList(recent)}
   ${posts.length > recent.length ? '<p class="more"><a href="/posts/">all posts</a></p>' : ''}
 </section>
@@ -253,8 +254,7 @@ function postsIndex(posts) {
   const byYear = {};
   for (const p of posts) (byYear[new Date(p.date).getFullYear()] ??= []).push(p);
   const body = `<h1>writing</h1>
-<p class="lede">Notes on agents, retrieval, tokenizers and document understanding.
-Closer to a lab notebook than to a guide. ${posts.length} posts,
+<p class="lede">Notes about AI stuff. ${posts.length} posts,
 <a href="/index.xml">rss</a>.</p>
 ${Object.keys(byYear)
   .sort((a, b) => b - a)

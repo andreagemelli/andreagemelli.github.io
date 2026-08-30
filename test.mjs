@@ -38,12 +38,18 @@ assert.match(career, /<h2 id="teaching-talks"/, 'teaching & talks section missin
 assert.match(career, /<h2 id="unsorted"/, 'unsorted section missing');
 assert.ok(!career.includes('citation-section'), 'the opening blockquote moved to the home page');
 
-// the home page names no employer and points at the VLM post
+// the home page is a three-paragraph intro that cites the VLM work
 const home = read('index.html');
-assert.ok(!/Kleio|LetXBe/i.test(home), 'home page names an employer');
-assert.match(home, /href="\/posts\/baguettotron-vlm\/"/, 'home page does not cite Baguettotron-VLM');
+assert.match(home, /baguettotron-vlm/i, 'home page does not cite Baguettotron-VLM');
 assert.equal(home.split('<section class="intro">')[1].split('</section>')[0].match(/<p>/g).length, 3,
   'home intro is not three paragraphs');
+
+// links that leave the site open in a new tab; links that stay do not
+assert.match(post, /<a href="https:\/\/huggingface\.co\/docs[^"]*" target="_blank" rel="noopener">/,
+  'external link in a post does not open in a new tab');
+assert.match(home, /<a href="\/career\/">/, 'internal link was given a target');
+assert.ok(!/<a href="#fnref1"[^>]*target=/.test(post), 'footnote backref was given a target');
+assert.ok(!/target="_blank"[^>]*target="_blank"/.test(home), 'target applied twice');
 
 // URLs that existed before still resolve
 assert.match(read('archives/index.html'), /url=\/posts\//, 'archives redirect broken');
