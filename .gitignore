@@ -1,16 +1,16 @@
 node_modules/
 dist/
 
+# secrets: never commit these to a public repo
+.env
+.env.*
+*.env
+.vercel
+
 # local tooling and agent scratch, not part of the website
 .agents/
 .claude/
-.cursor/
-.vscode/
-.idea/
-docs/superpowers/
 skills-lock.json
-AGENTS.md
-CLAUDE.md
 
 .DS_Store
 other.html
