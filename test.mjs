@@ -34,7 +34,8 @@ assert.ok(existsSync('dist/posts/tokenizers/images/chats.png'), 'post images not
 
 // the career page absorbed the about page, plus two sections of its own
 const career = read('career/index.html');
-assert.match(career, /<h2 id="teaching-talks"/, 'teaching & talks section missing');
+// prefix match on purpose: the heading gets renamed, the section should not vanish
+assert.match(career, /<h2 id="teaching/, 'teaching section missing');
 assert.match(career, /<h2 id="unsorted"/, 'unsorted section missing');
 assert.ok(!career.includes('citation-section'), 'the opening blockquote moved to the home page');
 
