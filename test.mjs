@@ -25,6 +25,9 @@ assert.match(post, /<h1>3476, 477, 12274, 112838, 248<\/h1>/, 'title lost');
 assert.match(post, /<time datetime="2025-01-26">/, 'date lost');
 assert.match(post, /<span class="tags">.*<span>Tokenizers<\/span>/, 'tags lost');
 
+// ShowReadingTime in the front matter has to reach the meta line
+assert.match(post, /<span>\d+ min read<\/span>/, 'reading time missing from a ShowReadingTime post');
+
 // TOC needs ids from markdown-it-anchor and 3+ headings; this pair broke once
 assert.match(post, /class="toc"/, 'ShowToc post has no table of contents');
 assert.match(post, /<a href="#what-are-tokenizers">/, 'TOC anchor does not match the heading id');

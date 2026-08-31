@@ -90,6 +90,10 @@ const newTabForExternal = (html) =>
 const ymd = (d) => new Date(d).toISOString().slice(0, 10);
 const stamp = (d) => ymd(d).slice(0, 7).replace('-', '.'); // 2026.08
 
+// ~200 wpm over the markdown source. Code fences count as words; close enough
+// for an estimate, and cheaper than teaching it to skip them.
+const readingTime = (body) => Math.max(1, Math.round(body.split(/\s+/).filter(Boolean).length / 200));
+
 function icon(si) {
   return `<svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="${si.path}"/></svg>`;
 }
@@ -199,6 +203,7 @@ function readPosts() {
         tags: meta.tags ?? [],
         draft: meta.draft === true,
         showToc: meta.ShowToc === true,
+        showReadingTime: meta.ShowReadingTime === true,
         url: `/posts/${slug}/`,
         body,
       };
@@ -273,6 +278,7 @@ function post(p, posts) {
     ${p.description ? `<p class="lede">${esc(p.description)}</p>` : ''}
     <p class="meta">
       <time datetime="${ymd(p.date)}">${ymd(p.date)}</time>
+      ${p.showReadingTime ? `<span>${readingTime(p.body)} min read</span>` : ''}
       ${p.tags.length ? `<span class="tags">${p.tags.map((t) => `<span>${esc(t)}</span>`).join('')}</span>` : ''}
       ${p.draft ? '<span class="draft">draft</span>' : ''}
     </p>
