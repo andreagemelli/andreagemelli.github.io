@@ -259,7 +259,7 @@ function postsIndex(posts) {
   const byYear = {};
   for (const p of posts) (byYear[new Date(p.date).getFullYear()] ??= []).push(p);
   const body = `<h1>writing</h1>
-<p class="lede">Notes about AI stuff.</p>
+<p class="lede">Notes about AI stuff. Projects on <a href="https://github.com/andreagemelli">GitHub</a>, Models & Datasets on <a href="https://huggingface.co/andreagemelli">Hugging Face</a></p>
 ${Object.keys(byYear)
   .sort((a, b) => b - a)
   .map((y) => `<section class="block"><h2 class="rule">${y}</h2>${postList(byYear[y])}</section>`)

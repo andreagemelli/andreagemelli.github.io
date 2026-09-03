@@ -2,7 +2,7 @@
 title: "Career"
 summary: "Where Andrea Gemelli has worked and studied, plus teaching, talks and assorted marks."
 ---
-<p class="lede">The journey, so far.</p>
+<p class="lede">The journey, so far. More on <a href="https://www.linkedin.com/in/andrea-gemelli/">Linkedin</a> and <a href="https://twitter.com/_andreagemelli">X</a></p>
 
 <div class="timeline">
   <div class="timeline-item">

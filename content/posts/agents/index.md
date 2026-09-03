@@ -13,16 +13,16 @@ comments: true
 
 ## Overview
 
-Last 14th of May I went back to the University of Florence to give a seminar titled *"From LLMs to Agents"* 🤗. These notes are made on top of my [seminar slides](docs/seminar.pdf) - the deck also covers agentic Document AI at the end, which I am leaving out here to keep this post about one thing only.
+Last 14th of May I went back to the University of Florence to give a seminar titled *"From LLMs to Agents"* 🤗. These notes build on my [seminar slides](docs/seminar.pdf) - the deck also covers agentic Document AI, which I'm leaving out here to keep this post about one thing.
 
-Let's start with a fact that is easy to miss: the chat models we use nowadays are **not** the first ChatGPT. Under the hood they are still Large Language Models, they still work with language and they still predict one token at a time. But the thing you are talking to has grown a few extra habits: it can *reason* before answering, it can *call tools*, and it can speak [MCP](https://www.andreagemelli.me/posts/mcp/) to discover tools it has never seen before.
+Start with a fact that's easy to miss: today's chat models are still, under the hood, the same Large Language Models - they work with language and predict one token at a time. But the thing you talk to has grown a few habits: it can *reason* before answering, *call tools*, and speak [MCP](https://www.andreagemelli.me/posts/mcp/) to discover tools it has never seen.
 
 The clearest example of this is one you have probably already used without noticing: **image generation**.
 
 ![How a chat model "generates" an image](images/tool-calling.png)
 *From the seminar slides: the user asks Gemini for an image; Gemini thinks "I need NanoBanana to generate images", calls it as a tool, and hands the returned picture back to the user.*
 
-When you ask Gemini (or ChatGPT, or Claude) for a picture, *the model you are chatting with does not draw anything*. It is a language model: all it can produce is text. What actually happens is that it writes a **tool call** - a small, structured piece of text saying "run the image generator with this prompt" - and a completely different model, an image generator, does the drawing. The picture comes back into the conversation, and the chat model hands it to you as if it had been its own doing 🪄
+When you ask Gemini (or ChatGPT, or Claude) for a picture, *the model you're chatting with draws nothing*. It's a language model: all it produces is text. It writes a **tool call** - a structured bit of text saying "run the image generator with this prompt" - and a completely different model does the drawing. The picture comes back into the conversation, and the chat model hands it to you as if it were its own 🪄
 
 Two models, one conversation. Once you see it, you see it everywhere: web search, code execution, file reading, sending an email. The chat client is an *orchestrator* around a model that only knows how to write text.
 
@@ -33,7 +33,7 @@ Why the detour? Because LLMs are limited by design, and the seminar spent a good
 - **no long-context planning**: no memory across calls, one forward pass at a time;
 - **limited by language**: no way to interact with the *world*.
 
-And one more property that is the key to everything that follows: **LLMs are stateless**. The "chat" you experience is simulated. Every time a new token is generated, the whole conversation is read again from the top. There is no hidden place where the model keeps things. So if you want the model to know something new - the result of a computation, today's weather, the content of a web page - there is exactly one way in: **put it in the context**.
+And the property that underpins everything else: **LLMs are stateless**. The "chat" is simulated - every new token re-reads the whole conversation from the top. There's no hidden place where the model keeps things. So if you want it to know something new - a computation's result, today's weather, a web page - there's exactly one way in: **put it in the context**.
 
 That is, in one sentence, what a tool does.
 
@@ -128,32 +128,13 @@ The last piece arrived with reasoning models. DeepSeek-R1 [^1] made this very vi
 
 The important consequence is compositional. If *thinking* is just tokens in the context, and a *tool call* is just tokens in the context, then the two compose for free. The model reasons about which tool it needs, emits the call, the tool **takes its own turn** in the conversation, and its output lands in the context like any other message. Then reasoning resumes with one more fact in hand.
 
-### System 1 and System 2
-
-This is where Kahneman shows up [^2]. In *Thinking, Fast and Slow*, System 1 is fast, intuitive, automatic - pattern matching with immediate output and no verification. System 2 is slow, deliberate, sequential - reasoning, checking, iterating.
-
-A single LLM forward pass is System 1. It answers in one shot, from pattern, with no way to verify itself.
-
-An agent - an LLM in a loop with tools - is System 2. It can plan, act, look at what came back, and change its mind. **The loop is what buys the deliberation**, and the tools are what make the deliberation about something real: they let the model *interact with an environment* rather than only describe it. And here is the part I insisted on with the students: that environment is exactly, and only, the set of tools you handed over. Nothing more.
-
-Agency is not binary, though. It comes in levels, and most systems that people call "agents" sit lower on this ladder than the word suggests:
-
-| Agency | Pattern | Example | Behavior |
-|---|---|---|---|
-| ★☆☆ | Router | `if llm_decides_a(): a() else: b()` | LLM picks a branch |
-| ★★☆ | Tool caller | `run(llm_tool, llm_args)` | LLM picks tool + arguments |
-| ★★★ | Multi-step agent | `while llm_should_continue(): step()` | LLM controls iteration |
-| ★★★ | Multi-agent | `if llm_trigger(): spawn_agent()` | Agents spawn agents |
-
-Most production agents live between ★★☆ and ★★★. More agency means more capability *and* more failure modes - a lesson everyone learns the expensive way at least once 🙃
-
 ## Practical examples: ask grandma about super good recipes!
 
 Enough theory. Brain and body can be built separately, so I built one of each 👩🏼‍🍳
 
 ### A brain: a small model that thinks, then calls
 
-The first artifact is [**Phi-3.5-mini-thinking-function_calling-V0**](https://huggingface.co/andreagemelli/Phi-3.5-mini-thinking-function_calling-V0): `microsoft/Phi-3.5-mini-instruct` fine-tuned with SFT (TRL) on [`Jofthomas/hermes-function-calling-thinking-V1`](https://huggingface.co/datasets/Jofthomas/hermes-function-calling-thinking-V1). It is the bonus exercise of Unit 1 of the Agents Course, which uses Gemma - I did it with Phi instead, which meant adapting the chat template and the special tokens, and that is where you actually learn something.
+The first artifact is [**Phi-3.5-mini-thinking-function_calling-V0**](https://huggingface.co/andreagemelli/Phi-3.5-mini-thinking-function_calling-V0): `microsoft/Phi-3.5-mini-instruct` fine-tuned with SFT (TRL) on [`Jofthomas/hermes-function-calling-thinking-V1`](https://huggingface.co/datasets/Jofthomas/hermes-function-calling-thinking-V1). It is the bonus exercise of Unit 1 of the Agents Course, which uses Gemma - I did it with Phi, which meant adapting the chat template and special tokens, and that's where you actually learn something.
 
 Ask it to convert 500 USD to Euros and this is what comes out:
 
@@ -229,7 +210,7 @@ One practical hint I gave the students, and I stand by it: use **Pydantic** for 
 Three things to take home 🎓
 
 1. **LLMs predict the next token.** Extremely capable, but stateless and, on their own, toolless. The chat is simulated; the context is the only memory there is.
-2. **Agents = LLM + loop + tools.** That is what turns System 1 into System 2: the loop buys deliberation, the tools buy an environment to deliberate about.
+2. **Agents = LLM + loop + tools.** The loop buys deliberation; the tools buy an environment to deliberate about - and that environment is exactly, and only, the set of tools you hand over.
 3. **The interesting engineering is at the boundary**, not in the prompt. Which functions you expose, what you name them, what you write in the docstring, and what you feed back into the context. The model chooses; your code does.
 
 If you want the full deck, agentic Document AI included, it is [here](docs/seminar.pdf). And if you want to argue with a language model about carbonara, [my grandma is available](https://huggingface.co/spaces/andreagemelli/grandma_secret_sauce) 🍝
@@ -240,4 +221,3 @@ Happy learning 🤗
 
 [^0]: Yao, et al., "ReAct: Synergizing Reasoning and Acting in Language Models", [arXiv:2210.03629](https://arxiv.org/abs/2210.03629), 2022
 [^1]: DeepSeek-AI, "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning", [arXiv:2501.12948](https://arxiv.org/abs/2501.12948), 2025
-[^2]: Kahneman, "Thinking, Fast and Slow", 2011
