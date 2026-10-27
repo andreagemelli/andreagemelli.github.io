@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 330" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" role="img" aria-label="An LLM generates tokens in a loop; a decision model returns typed probabilities in one forward pass.">
+  <style>
+    .t { fill: #1b1a17 } .m { fill: #57534a } .box { fill: #f1eee7; stroke: #b9b3a5; stroke-width: 1.2 }
+    .hot { fill: #f4e5de; stroke: #b4441f; stroke-width: 1.4 } .a { stroke: #57534a; stroke-width: 1.4; fill: none }
+    .ah { fill: #57534a } .loop { stroke: #b4441f; stroke-width: 1.4; fill: none; stroke-dasharray: 5 4 }
+    @media (prefers-color-scheme: dark) {
+      .t { fill: #ded9cd } .m { fill: #aca596 } .box { fill: #1d1b17; stroke: #4a443b }
+      .hot { fill: #2a1f17; stroke: #e0854f } .a { stroke: #aca596 } .ah { fill: #aca596 } .loop { stroke: #e0854f }
+    }
+  </style>
+  <defs><marker id="h" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" class="ah"/></marker></defs>
+
+  <text x="20" y="26" class="t" font-weight="700">LLM</text>
+  <text x="62" y="26" class="m">autoregressive: one token per forward pass</text>
+  <rect x="20" y="42" width="130" height="56" rx="6" class="box"/>
+  <text x="85" y="66" text-anchor="middle" class="t">prompt</text>
+  <text x="85" y="84" text-anchor="middle" class="m">+ tokens so far</text>
+  <rect x="200" y="42" width="150" height="56" rx="6" class="box"/>
+  <text x="275" y="66" text-anchor="middle" class="t">decoder</text>
+  <text x="275" y="84" text-anchor="middle" class="m">transformer</text>
+  <rect x="400" y="42" width="170" height="56" rx="6" class="box"/>
+  <text x="485" y="66" text-anchor="middle" class="t">LM head</text>
+  <text x="485" y="84" text-anchor="middle" class="m">softmax over vocab</text>
+  <rect x="620" y="42" width="120" height="56" rx="6" class="box"/>
+  <text x="680" y="66" text-anchor="middle" class="t">next token</text>
+  <text x="680" y="84" text-anchor="middle" class="m">one of ~100k</text>
+  <path d="M150 70H198" class="a" marker-end="url(#h)"/><path d="M350 70H398" class="a" marker-end="url(#h)"/><path d="M570 70H618" class="a" marker-end="url(#h)"/>
+  <path d="M680 100V124H85V102" class="loop" marker-end="url(#h)"/>
+  <text x="382" y="119" text-anchor="middle" class="m">append, repeat until done</text>
+
+  <line x1="20" y1="158" x2="740" y2="158" stroke="#b9b3a5" stroke-width="1" stroke-dasharray="2 4"/>
+
+  <text x="20" y="190" class="t" font-weight="700">Decision model</text>
+  <text x="152" y="190" class="m">one forward pass, no generation</text>
+  <rect x="20" y="206" width="130" height="86" rx="6" class="box"/>
+  <text x="85" y="232" text-anchor="middle" class="t">input</text>
+  <text x="85" y="250" text-anchor="middle" class="m">text / image</text>
+  <text x="85" y="272" text-anchor="middle" class="t">+ questions</text>
+  <rect x="200" y="206" width="150" height="86" rx="6" class="box"/>
+  <text x="275" y="244" text-anchor="middle" class="t">encoder</text>
+  <text x="275" y="262" text-anchor="middle" class="m">(presumed)</text>
+  <rect x="400" y="198" width="170" height="30" rx="6" class="hot"/><text x="485" y="218" text-anchor="middle" class="t">noul head</text>
+  <rect x="400" y="235" width="170" height="30" rx="6" class="hot"/><text x="485" y="255" text-anchor="middle" class="t">choice head</text>
+  <rect x="400" y="272" width="170" height="30" rx="6" class="hot"/><text x="485" y="292" text-anchor="middle" class="t">score head</text>
+  <rect x="620" y="206" width="120" height="86" rx="6" class="box"/>
+  <text x="680" y="236" text-anchor="middle" class="t">typed answer</text>
+  <text x="680" y="254" text-anchor="middle" class="m">+ probability</text>
+  <text x="680" y="272" text-anchor="middle" class="m">+ confidence</text>
+  <path d="M150 249H198" class="a" marker-end="url(#h)"/>
+  <path d="M350 249H375V213H398" class="a" marker-end="url(#h)"/><path d="M375 249H398" class="a" marker-end="url(#h)"/><path d="M375 249V287H398" class="a" marker-end="url(#h)"/>
+  <path d="M570 213H595V249" class="a"/><path d="M570 287H595V249" class="a"/><path d="M570 249H618" class="a" marker-end="url(#h)"/><path d="M595 249H618" class="a" marker-end="url(#h)"/>
+</svg>

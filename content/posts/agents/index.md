@@ -213,7 +213,7 @@ Three things to take home 🎓
 2. **Agents = LLM + loop + tools.** The loop buys deliberation; the tools buy an environment to deliberate about - and that environment is exactly, and only, the set of tools you hand over.
 3. **The interesting engineering is at the boundary**, not in the prompt. Which functions you expose, what you name them, what you write in the docstring, and what you feed back into the context. The model chooses; your code does.
 
-If you want the full deck, agentic Document AI included, it is [here](docs/seminar.pdf). And if you want to argue with a language model about carbonara, [my grandma is available](https://huggingface.co/spaces/andreagemelli/grandma_secret_sauce) 🍝
+If you want the full deck, agentic Document AI included, it is [here](docs/seminar.pdf).
 
 Happy learning 🤗
 

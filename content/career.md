@@ -71,7 +71,7 @@ summary: "Where Andrea Gemelli has worked and studied, plus teaching, talks and 
 
 ## Teaching
 
-- Lecturer 📖 for the [Artificial Intelligence for Design](https://unifi.coursecatalogue.cineca.it/corsi/2024/3255/insegnamenti/2025/48521_B270-23-24_135605_735284/2023/48521?coorte=2024) @ Design Campus UniFi (2026)
+- Lecturer 📖 for the [Artificial Intelligence for Design](https://unifi.coursecatalogue.cineca.it/corsi/2024/3255/insegnamenti/2025/48521_B270-23-24_135605_735284/2023/48521?coorte=2024) @ Design Campus UniFi (2026~2027)
 - Teaching Assistant, Fondamenti di Informatica, Computer Engineering, University of Florence (2023).
 - Lecturer 📖, Fondamenti di Sistemi Informativi, [Polo Universitario Aretino](https://www.polouniversitarioaretino.it/) (2021~2022)
 
@@ -83,3 +83,4 @@ summary: "Where Andrea Gemelli has worked and studied, plus teaching, talks and 
 - Third place 🥉 at the Wacom x Luleå University hackathon with a [handwriting labeling game](https://github.com/andreagemelli/guessmylanguage) @ 4th IAPR TC 10/11 Summer School on Document Analysis and Recognition
 - In 2023, I was entitled [IAPR International Scholar](https://iapr.org/docs/newsletters/2023-Vol-45-No-3.pdf) 🏆
 - 🎸 Wrote and published several songs in the past, on [linktree](https://linktr.ee/andrea.gemelli)
+- 🎮 Peak rating in the top ~5% of [Valorant Europe](https://www.vstats.gg/ranks?cumulative=true) ([profile](https://tracker.gg/valorant/profile/riot/Classic%20Twins%23SOCIO/overview?platform=pc&playlist=competitive&season=8102cd81-43a0-d0d7-bd59-47b8fe9bed1b)), and several games completed at 100% (including Elden Ring, Cuphead and Hollow Knight: Silksong) worth ~$7,500 per year @ University of Silicon Valley [Max Achievement Scholarship](https://usv.edu/max-achievement-scholarship) (Mastery tier)
