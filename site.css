@@ -356,7 +356,7 @@ hr {
 }
 .index li {
   display: grid;
-  grid-template-columns: 2ch 1fr auto;
+  grid-template-columns: 2ch 4.5rem 1fr 1.6rem;
   gap: 0 1ch;
   align-items: baseline;
   padding: 0.9rem 0;
@@ -368,11 +368,11 @@ hr {
 .index .bullet {
   color: var(--faint);
 }
-.index li > a {
+.index .main > a {
   text-decoration: none;
   font-weight: 700;
 }
-.index li > a:hover {
+.index .main > a:hover {
   color: var(--accent);
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -382,11 +382,33 @@ hr {
   font-size: 0.85rem;
   font-variant-numeric: tabular-nums;
 }
-.index li p {
-  grid-column: 2 / -1;
+.index .main p {
   margin: 0.2rem 0 0;
   color: var(--muted);
   font-size: 0.9rem;
+}
+
+/* Icons stack vertically, one on top of the other. */
+.index .code {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: center;
+}
+.index .code a {
+  display: block;
+  color: var(--muted);
+  text-decoration: none;
+}
+.index .code a:hover {
+  color: var(--accent);
+}
+.index .code svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
 }
 
 .more {
@@ -782,13 +804,16 @@ th {
   }
   .index li {
     grid-template-columns: 2ch 1fr;
+    gap: 0.2rem 1ch;
   }
-  .index time {
+  .index time,
+  .index .main,
+  .index .code {
     grid-column: 2;
-    grid-row: 2;
   }
-  .index li p {
-    grid-row: 3;
+  .index .code {
+    flex-direction: row;
+    gap: 1rem;
   }
   .pager {
     grid-template-columns: 1fr;

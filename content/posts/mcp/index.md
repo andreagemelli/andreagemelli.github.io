@@ -3,6 +3,7 @@ title: 'OpenAPI vs MCP'
 date: 2025-05-26
 draft: false
 description: "How we won the Paris AI Hackathon"
+github: 'https://github.com/remorses/easymcp'
 ShareButtons: ['linkedin', 'x']
 tags: ["Large Language Models", "MCP", "OpenAPI"]
 author: 'Andrea Gemelli'

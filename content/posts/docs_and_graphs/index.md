@@ -3,6 +3,7 @@ title: 'How Documents Met Graph Theory'
 date: 2024-11-11
 draft: false
 description: "An introductory blog post to GNNs and Document AI"
+github: 'https://github.com/andreagemelli/doc2graph'
 ShareButtons: ['linkedin', 'x']
 tags: ["DocAI", "Graphs"]
 author: 'Andrea Gemelli'

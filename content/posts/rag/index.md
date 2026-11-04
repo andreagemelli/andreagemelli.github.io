@@ -3,6 +3,7 @@ title: 'Introduction to Retrieval Augmented Generation'
 date: 2024-06-05
 draft: false
 description: "What is RAG and when to use it"
+slides: 'docs/lecture.pdf'
 ShareButtons: ['linkedin', 'x']
 tags: ["Large Language Models", "RAG", "Hallucination"]
 author: 'Andrea Gemelli'

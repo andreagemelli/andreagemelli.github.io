@@ -3,6 +3,8 @@ title: 'Scrivano: reading Italian forms on a laptop, fully offline'
 date: 2026-09-03
 draft: false
 description: "A 350M model that turns Italian forms into JSON — no API key, no network, 219 MiB of it"
+github: 'https://github.com/andreagemelli/scrivano'
+huggingface: 'https://huggingface.co/andreagemelli/LFM2.5-350M-IT-Extract'
 ShareButtons: ['linkedin', 'x']
 tags: ["Document AI", "Key Information Extraction", "Small Models", "Fine-tuning", "Offline", "Open Source"]
 author: 'Andrea Gemelli'

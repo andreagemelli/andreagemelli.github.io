@@ -3,6 +3,8 @@ title: 'From LLMs to Agents'
 date: 2026-05-14
 draft: false
 description: "Seminar notes from the University of Florence: reasoning, tools, and my grandma's secret sauce"
+slides: 'docs/seminar.pdf'
+huggingface: 'https://huggingface.co/spaces/andreagemelli/grandma_secret_sauce'
 ShareButtons: ['linkedin', 'x']
 tags: ["Large Language Models", "Agents", "Tool Calling", "Teaching"]
 author: 'Andrea Gemelli'

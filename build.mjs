@@ -98,6 +98,24 @@ function icon(si) {
   return `<svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="${si.path}"/></svg>`;
 }
 
+// Papers-with-code style: a post's own repo / model, from `github` / `huggingface` front matter.
+const slidesIcon = { path: 'M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z' };
+
+// `slides` is relative to the post folder (docs/seminar.pdf); the list lives elsewhere, so resolve it.
+function codeLinks(p) {
+  return `<span class="code">${[
+    ['GitHub', p.github, icons.siGithub],
+    ['Hugging Face', p.huggingface, icons.siHuggingface],
+    ['Slides', p.slides && p.url + p.slides, slidesIcon],
+  ]
+    .filter((l) => l[1])
+    .map(
+      ([name, url, si]) =>
+        `<a href="${esc(url)}" target="_blank" rel="noopener" title="${name}"><span class="sr-only">${name}</span>${icon(si)}</a>`
+    )
+    .join('')}</span>`.replace('<span class="code"></span>', '');
+}
+
 function socialRow() {
   return `<ul class="social">${SOCIAL.map(
     ([name, url, si]) =>
@@ -177,9 +195,12 @@ function postList(posts) {
     .map(
       (p) => `<li>
     <span class="bullet" aria-hidden="true">~</span>
-    <a href="${p.url}">${esc(p.title)}</a>
     <time datetime="${ymd(p.date)}">${stamp(p.date)}</time>
-    ${p.description ? `<p>${esc(p.description)}</p>` : ''}
+    <div class="main">
+      <a href="${p.url}">${esc(p.title)}</a>
+      ${p.description ? `<p>${esc(p.description)}</p>` : ''}
+    </div>
+    ${codeLinks(p)}
   </li>`
     )
     .join('')}</ul>`;
@@ -201,6 +222,9 @@ function readPosts() {
         date: meta.date ?? '1970-01-01',
         description: meta.description ?? '',
         tags: meta.tags ?? [],
+        github: meta.github,
+        huggingface: meta.huggingface,
+        slides: meta.slides,
         draft: meta.draft === true,
         showToc: meta.ShowToc === true,
         showReadingTime: meta.ShowReadingTime === true,

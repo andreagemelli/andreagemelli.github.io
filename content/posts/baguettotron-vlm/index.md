@@ -3,6 +3,8 @@ title: 'I trained my own Vision-Language Model under 1B parameters'
 date: 2026-04-14
 draft: false
 description: "And now I can see two cats on a couch for about $200"
+github: 'https://github.com/andreagemelli/baguettotron-vlm'
+huggingface: 'https://huggingface.co/collections/andreagemelli/baguettotron-vlm-69de37b4cab1960226e9c1f7'
 ShareButtons: ['linkedin', 'x']
 tags: ["Vision Language Models", "Multimodal", "Small Models", "Open Source"]
 author: 'Andrea Gemelli'
