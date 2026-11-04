@@ -13,7 +13,7 @@ summary: "Where Andrea Gemelli has worked and studied, plus teaching, talks and 
       <span class="timeline-date">2026 - present</span>
     </div>
     <div class="timeline-content">
-      <p>I joined 🔬 <a href="https://www.kleio.ai">Kleio</a>, a Paris-based AI startup building intelligent agent orchestration systems, as an <strong>AI Researcher</strong> in June 2026. My work focuses on designing and evaluating multi-agent architectures, advancing retrieval and orchestration pipelines, and translating the latest research in LLMs and agentic systems into production-ready components.</p>
+      <p>I joined 🔬 <a href="https://www.kleio.ai">Kleio</a>, a startup building intelligent agent orchestration systems, as an <strong>AI Researcher</strong> in June 2026. My work focuses on designing and evaluating multi-agent architectures, advancing retrieval and orchestration pipelines, and translating the latest research in LLMs and agentic systems into production-ready components.</p>
       <div class="timeline-location">
         <span class="location-name">📍 Paris</span> <span class="location-role">(AI Researcher @ Kleio)</span> 🇫🇷 - from 2026
       </div>
@@ -83,4 +83,4 @@ summary: "Where Andrea Gemelli has worked and studied, plus teaching, talks and 
 - Third place 🥉 at the Wacom x Luleå University hackathon with a [handwriting labeling game](https://github.com/andreagemelli/guessmylanguage) @ 4th IAPR TC 10/11 Summer School on Document Analysis and Recognition
 - In 2023, I was entitled [IAPR International Scholar](https://iapr.org/docs/newsletters/2023-Vol-45-No-3.pdf) 🏆
 - 🎸 Wrote and published several songs in the past, on [linktree](https://linktr.ee/andrea.gemelli)
-- 🎮 Peak rating in the top ~5% of [Valorant Europe](https://www.vstats.gg/ranks?cumulative=true) ([profile](https://tracker.gg/valorant/profile/riot/Classic%20Twins%23SOCIO/overview?platform=pc&playlist=competitive&season=8102cd81-43a0-d0d7-bd59-47b8fe9bed1b)), and several games completed at 100% (including Elden Ring, Cuphead and Hollow Knight: Silksong) worth ~$7,500 per year @ University of Silicon Valley [Max Achievement Scholarship](https://usv.edu/max-achievement-scholarship) (Mastery tier)
+- 🎮 Peak rating in the top ~5% of [Valorant Europe](https://www.vstats.gg/ranks?cumulative=true) ([profile](https://tracker.gg/valorant/profile/riot/Classic%20Twins%23SOCIO/overview?platform=pc&playlist=competitive&season=8102cd81-43a0-d0d7-bd59-47b8fe9bed1b))

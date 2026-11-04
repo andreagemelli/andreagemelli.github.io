@@ -256,13 +256,13 @@ function home(posts) {
   architectures and on retrieval and orchestration pipelines underneath them.</p>
 
   <p>I held <a href="https://flore.unifi.it/handle/2158/1353891">PhD in
-  Artificial Intelligence</a> and three years in industry building around post-training and evaluation pipelines for LLM and agentic-based systems.
+  Artificial Intelligence</a> and three years in industry building around fine-tuning and evaluation pipelines for LLM and agentic-based systems.
   <a href="/career/">My career</a>, or <a href="/cv.pdf" target="_blank">CV</a> for the details.</p>
 
   <p>Open contributions:
   <a href="https://github.com/andreagemelli/doc2graph">Doc2Graph</a> framework for several document understanding tasks, 
   <a href="https://huggingface.co/collections/andreagemelli/baguettotron-vlm">Baguettotron-VLM</a>, a sub-1B vision-language
-  model and DocVQA datasets and models available on
+  model, and I contributed to DocVQA datasets and models on
   <a href="https://huggingface.co/letxbe">Hugging Face</a>.</p>
 </section>
 
