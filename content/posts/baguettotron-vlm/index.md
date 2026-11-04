@@ -280,6 +280,62 @@ resources than a rented afternoon.
 
 But it was fun going through the full process, taking a language only model and making it outputting coherent descriptions few hours later.
 
+## Update 4 November 2026
+
+Two days ago Rikiya Takehi, Jayden Teoh, Alex Zhang and Omar Khattab published [*Sparks of Weight-Space Programming*](https://rikiyat.github.io/blog/weight-space-programming/)[^15]: instead of training a network, you change it by reading its activations and writing its weights directly. No gradients, no training loop. I wanted to see what it could do for this model, and their own control experiment gave me the rule to follow: *"Editing weights could remove an obstacle that hid an ability, but it could not add an ability the model lacked."*
+
+So the first step is a test, not an edit: **does the model know something it doesn't say?** For each kind of question, I trained a linear probe to read the right answer from the network's internal activations, then ran it again with a *mismatched* image. If the probe only works with the right picture, the knowledge is in there and the output is throwing it away.
+
+For most of the failures in this post, the answer is no. Counting, reading text, multiple choice: the probes are at chance, and RealWorldQA's answers come out just as good with a random image. Those are missing abilities, and no edit can add them. Two things were different:
+
+- **Object presence.** A probe reads "is there a cat?" from the activations 70–74% of the time (50% with a mismatched image), while the model's own Yes/No is a coin flip. The evidence is there; the last layer ignores it.
+- **The stop token.** My loss masked `<|im_end|>`, so the model never learned to emit it. It learned to *spell* it instead — `.<` `|` `im` `_` `end` `|>` — and the published `chat()` cuts the text with a stopping rule.
+
+Both are fixable with a handful of weights. The edits come in closed form from activation statistics (class means, one least-squares solve) and touch **9,216 of the 665M weights in the checkpoint (0.0014%)** — 665M rather than 628M because the checkpoint stores the output layer separately:
+
+1. **Stop token: 4 rows of the output layer swapped**, so the model's own `.<` and `<|` land on the real stop tokens. It is a relabelling: greedy answers stay the same, minus the final "." that the stop token now consumes, and plain `generate()` finally stops by itself.
+2. **Presence circuit: 2 neurons in the last layer.** A gate opens where the model is about to answer a yes/no question; the neurons read the presence evidence the probe found and add it to the Yes − No logit.
+3. **Loop breaker: 2 more neurons.** Without a repetition penalty long answers loop ("…a bed, a bed, a bed…"); these end the turn at a sentence that starts repeating an earlier one.
+
+Everything below is measured on images and questions never used to build the edits (fp32):
+
+| test | before | after |
+|---|---|---|
+| POPE[^16] random: 600 "Is there a … in the image?" on 100 unseen COCO images (chance is 50%) | 52.3% | **64.0%** |
+| same questions, without the "answer with a single word" suffix | 48.3% | **69.3%** |
+| POPE adversarial (absent objects that usually come along) | 50.0% | **54.5%** |
+| long descriptions that end by themselves (no repetition penalty) | 0% | **83%** |
+| RealWorldQA, exact match (379 unseen rows) | 21.6% | 21.9% |
+| VQAv2[^17] (1,780 questions) | 33.5 | 33.7 |
+| GQA[^18], yes/no questions | 53.7% | 50.7% |
+
+The last row is the price. The presence gate opens on most yes/no questions, not only "is there a …?", and on GQA's attribute questions ("Is the car red?") there is no evidence to read, so it pushes answers around, mostly towards "No". A reader that ignores those questions did not remove the cost and lowered POPE; fixing it needs a gate earlier in the network, where question types are still easy to tell apart.
+
+Back to this post's own examples, re-run with the model card's snippet (bf16, on a MacBook):
+
+| | `Describe the image concisely.` before | after |
+|---|---|---|
+| 🐱 | `In this image, two cats are sitting on a purple carpet. One cat is wearing a red light switch and the other has a button.` | `In this image, two cats are sitting on a purple carpet. One cat is wearing a red light switch and the other has a white cape` |
+| 🐻 | `The image shows a bear sitting on the grass.` | `The image shows a bear sitting on the grass` |
+| 🛑 | `A stop sign on the side of a road. The sky is blue.` | `A stop sign on the side of a road. The sky is blue` |
+| 🚌 | `The red bus is on the road.` | `The red bus is on the road` |
+
+| | question | before | after |
+|---|---|---|---|
+| 🐱 | `Is there a cat in the picture?` | `No.` | `Yes` ✅ |
+| 🐻 | `What kind of animal is this?` | `Bear.` | `Bear` |
+| 🛑 | `What does the sign say?` | `STOP.` | `STOP` |
+| 🛑 | `What color is the sign?` | `Yellow.` | `Yellow` |
+| 🚌 | `What is the main object in the image?` | `B3.` | `B3` |
+| 🚌 | `What number is the bus route?` | `Youth.` | `Youth` |
+| 🐱 | `What kind of animal is this?` | `Yes.` | `Yes` |
+
+The cat is finally there 🎉 and nothing else moved apart from the final period, with one exception: in bf16 the cats' description ends differently, in a clause that was wrong either way (in fp32 the two versions write the same descriptions). A few "before" answers also differ from the tables earlier in this post, which were made in April with an earlier version of the code. The colour question was my last attempt: the colour evidence is weak, and a re-calibration that turns the stop sign "Red" in fp32 still answers "Yellow" in bf16, so I left it out.
+
+What I take from it: weight-space edits are a scalpel, not a replacement for training. They worked exactly where the model already knew the answer and nowhere else, which also makes them a nice diagnostic for what the next training run should fix.
+
+The edited weights are on [Hugging Face](https://huggingface.co/andreagemelli/baguettotron-vision-vqa) as **v1.1**; the original release stays available as `revision="v1.0"`.
+
 ## References
 
 [^1]: Hugging Face M4, ["Train Your Own Encoder-Free VLM in $100"](https://huggingface.co/spaces/HuggingFaceM4/encoder-free-vlm), 2025
@@ -296,3 +352,7 @@ But it was fun going through the full process, taking a language only model and 
 [^12]: xAI, [*"RealWorldQA"*](https://huggingface.co/datasets/xai-org/RealworldQA), 2024
 [^13]: Liquid AI, [*LFM2 Technical Report*](https://arxiv.org/pdf/2511.23404), 2025
 [^14]: Lin, et al., *"Microsoft COCO: Common Objects in Context"*, [arXiv:1405.0312](https://arxiv.org/abs/1405.0312), 2014 — the example images are from the COCO val2017 split
+[^15]: Takehi, Teoh, Zhang, Khattab, [*"Sparks of Weight-Space Programming: LLMs can natively read & write neural network weights"*](https://rikiyat.github.io/blog/weight-space-programming/), 2026
+[^16]: Li, et al., *"Evaluating Object Hallucination in Large Vision-Language Models"* (POPE), [arXiv:2305.10355](https://arxiv.org/abs/2305.10355), 2023
+[^17]: Goyal, et al., *"Making the V in VQA Matter: Elevating the Role of Image Understanding in Visual Question Answering"* (VQAv2), [arXiv:1612.00837](https://arxiv.org/abs/1612.00837), 2017
+[^18]: Hudson and Manning, *"GQA: A New Dataset for Real-World Visual Reasoning and Compositional Question Answering"*, [arXiv:1902.09506](https://arxiv.org/abs/1902.09506), 2019
