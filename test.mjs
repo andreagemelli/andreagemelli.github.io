@@ -68,6 +68,10 @@ assert.match(list, /<span class="code"><a href="https:\/\/github\.com\/andreagem
 assert.match(list, /href="\/posts\/agents\/docs\/seminar\.pdf"/, 'slides link not resolved against the post');
 assert.equal(list.match(/class="code"/g).length, 6, 'unexpected number of posts with code links');
 
+// every publication thumbnail the page references has to ship with the build
+for (const [, f] of read('publications/index.html').matchAll(/src="(\/images\/publications\/[^"]+)"/g))
+  assert.ok(existsSync(`dist${f}`), `missing thumbnail ${f}`);
+
 // URLs that existed before still resolve
 assert.match(read('archives/index.html'), /url=\/posts\//, 'archives redirect broken');
 assert.match(read('about/index.html'), /url=\/career\//, 'about redirect broken');

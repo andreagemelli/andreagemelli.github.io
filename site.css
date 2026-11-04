@@ -753,30 +753,69 @@ th {
 .pubs > ul {
   padding-left: 0;
 }
-.pubs > ul > li::before {
-  display: none;
-}
+/* Papers-with-code style: first-page thumbnail left, text right. The thumbnail is the last
+   paragraph in the markdown (a linked image); grid placement moves it to the left column. */
 .pubs > ul > li {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  grid-template-rows: auto auto auto 1fr;
+  gap: 0 1.5rem;
   padding: 1.25rem 0;
   border-bottom: 1px solid var(--line-soft);
   margin: 0;
 }
-.pubs > ul > li > a:first-child {
-  font-weight: 700;
-  text-decoration: none;
-}
-.pubs > ul > li > a:first-child:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-/* Author line, then venue line. */
-.pubs > ul > li p {
+.pubs > ul > li > p {
+  grid-column: 2;
   margin: 0.4rem 0 0;
   font-size: 0.85rem;
   color: var(--muted);
 }
-.pubs > ul > li p:last-child {
+.pubs > ul > li > p:first-child {
+  margin-top: 0;
+  font-size: 1em;
+}
+.pubs > ul > li > p:first-child a {
+  font-weight: 700;
+  text-decoration: none;
+}
+.pubs > ul > li > p:first-child a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.pubs > ul > li > p:nth-child(3) {
   color: var(--faint);
+}
+.pubs > ul > li > p:has(img) {
+  grid-column: 1;
+  grid-row: 1 / -1;
+  margin: 0;
+}
+.pubs > ul > li:has(img)::before {
+  display: none;
+}
+.pubs > ul > li > p:has(img) a {
+  display: block;
+}
+.pubs > ul > li img {
+  display: block;
+  margin: 0;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: top;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+}
+/* No screenshot yet: an empty tile keeps the columns aligned. */
+.pubs > ul > li:not(:has(img))::before {
+  content: '';
+  display: block;
+  position: static;
+  grid-column: 1;
+  grid-row: 1 / -1;
+  aspect-ratio: 3 / 4;
+  border: 1px dashed var(--line);
+  border-radius: 3px;
 }
 
 /* ---------------------------------------------------------------- responsive */
@@ -805,6 +844,10 @@ th {
   .index li {
     grid-template-columns: 2ch 1fr;
     gap: 0.2rem 1ch;
+  }
+  .pubs > ul > li {
+    grid-template-columns: 5rem 1fr;
+    gap: 0 1rem;
   }
   .index time,
   .index .main,
