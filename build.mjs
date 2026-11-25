@@ -20,7 +20,7 @@ const SITE = {
   title: '@andreagemelli',
   url: 'https://www.andreagemelli.me',
   description:
-    'AI Researcher in Paris. PhD in Artificial Intelligence. Notes on agents, ' +
+    'AI Scientist & Engineer in Paris. PhD in Artificial Intelligence. Notes on agents, ' +
     'retrieval, tokenizers and document understanding.',
   author: 'Andrea Gemelli',
 };
@@ -38,6 +38,7 @@ const SOCIAL = [
   ['github', 'https://github.com/andreagemelli', icons.siGithub],
   ['google scholar', 'https://scholar.google.fr/citations?user=8AeCCO0AAAAJ&hl=it', icons.siGooglescholar],
   ['hugging face', 'https://huggingface.co/andreagemelli', icons.siHuggingface],
+  ['youtube', 'https://www.youtube.com/@andrewtwins', icons.siYoutube],
 ];
 
 // ---------------------------------------------------------------- markdown
@@ -252,7 +253,7 @@ function home(posts) {
   const recent = posts.slice(0, 3);
   const body = `<section class="intro">
   <h1 class="sr-only">Andrea Gemelli</h1>
-  <p>I am an <strong>AI Researcher & Engineer</strong> based in Paris, currently working on multi-agent
+  <p>I am an <strong>AI Scientist & Engineer</strong> based in Paris, currently working on multi-agent
   architectures and on retrieval and orchestration pipelines underneath them.</p>
 
   <p>I held <a href="https://flore.unifi.it/handle/2158/1353891">PhD in

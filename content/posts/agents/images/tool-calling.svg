@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 250" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" role="img" aria-label="The user asks the chat model for an image; the chat model writes a tool call; the image model draws the picture; the chat model returns it to the user.">
+  <style>
+    .t { fill: #1b1a17 } .m { fill: #57534a } .box { fill: #f1eee7; stroke: #b9b3a5; stroke-width: 1.2 }
+    .hot { fill: #f4e5de; stroke: #b4441f; stroke-width: 1.4 } .a { stroke: #57534a; stroke-width: 1.4; fill: none }
+    .ah { fill: #57534a } .c { fill: #b4441f }
+    @media (prefers-color-scheme: dark) {
+      .t { fill: #ded9cd } .m { fill: #aca596 } .box { fill: #1d1b17; stroke: #4a443b }
+      .hot { fill: #2a1f17; stroke: #e0854f } .a { stroke: #aca596 } .ah { fill: #aca596 } .c { fill: #e0854f }
+    }
+  </style>
+  <defs><marker id="h" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" class="ah"/></marker></defs>
+
+  <rect x="20" y="70" width="120" height="60" rx="6" class="box"/>
+  <text x="80" y="105" text-anchor="middle" class="t" font-weight="700">user</text>
+
+  <rect x="300" y="70" width="160" height="60" rx="6" class="hot"/>
+  <text x="380" y="96" text-anchor="middle" class="t" font-weight="700">chat model</text>
+  <text x="380" y="114" text-anchor="middle" class="m">writes text only</text>
+
+  <rect x="620" y="70" width="120" height="60" rx="6" class="box"/>
+  <text x="680" y="96" text-anchor="middle" class="t" font-weight="700">image model</text>
+  <text x="680" y="114" text-anchor="middle" class="m">the tool</text>
+
+  <path d="M140 88H298" class="a" marker-end="url(#h)"/>
+  <text x="220" y="78" text-anchor="middle" class="m">"draw a lamp"</text>
+  <path d="M298 114H142" class="a" marker-end="url(#h)"/>
+  <text x="220" y="132" text-anchor="middle" class="m">the image</text>
+
+  <path d="M460 88H618" class="a" marker-end="url(#h)"/>
+  <text x="540" y="78" text-anchor="middle" class="c">tool call</text>
+  <path d="M618 114H462" class="a" marker-end="url(#h)"/>
+  <text x="540" y="132" text-anchor="middle" class="m">the image</text>
+
+  <text x="380" y="40" text-anchor="middle" class="m">think: "I need the image tool"</text>
+  <path d="M380 46V68" class="a" marker-end="url(#h)"/>
+
+  <text x="380" y="190" text-anchor="middle" class="t">two models, one conversation:</text>
+  <text x="380" y="210" text-anchor="middle" class="m">the chat model decides, the tool draws</text>
+</svg>

@@ -9,7 +9,6 @@ tags: ["Large Language Models", "RAG", "Hallucination"]
 author: 'Andrea Gemelli'
 ShowReadingTime: true
 ShowToc: true
-comments: true
 ---
 
 ## Introduction

@@ -10,7 +10,6 @@ tags: ["Vision Language Models", "Multimodal", "Small Models", "Open Source"]
 author: 'Andrea Gemelli'
 ShowReadingTime: true
 ShowToc: true
-comments: true
 ---
 
 ## Introduction

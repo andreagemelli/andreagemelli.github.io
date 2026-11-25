@@ -8,7 +8,6 @@ tags: ["NLP", "Large Language Models", "Tokenizers"]
 author: 'Andrea Gemelli'
 ShowReadingTime: true
 ShowToc: true
-comments: true
 ---
 
 ## Introduction
@@ -101,7 +100,7 @@ Among others, the most famous are:
 
 1. **Byte Pair Encoding** [^5] (BPE), iteratively merges frequent character pairs to build a vocabulary, starting from a base one of 256. It has been largely popularized by GPT [^6] and more recently adopted by Llama3 [^7] and DeepSeek, to name a few;
 2. **WordPiece** [^8] [^9]  follows a similar approach to BPE but uses likelihood rather than frequency to select the merges. The vocabulary is optimized to maximize the informative aspect of the merges, not simply compressing the entire input text;
-3. **Unigram** (PAPER CITATION) uses probabilistic sampling to optimize a subword vocabulary by maximizing the likelihood of the training data.
+3. **Unigram** [^10] uses probabilistic sampling to optimize a subword vocabulary by maximizing the likelihood of the training data.
 
 If you want to look more into the details of these approaches, the [tokenizer summary](https://huggingface.co/docs/transformers/tokenizer_summary) made by HuggingFace it is perfect!
 
@@ -121,19 +120,6 @@ The ones that I know, have used and suggests are the following:
   - Unlike tiktoken, this code allows you to train your own BPE tokenizer.
   - Training the RegexTokenizer on a large dataset (~100K), you would reproduce the GPT-4 tokenizer.
 
-### Beyond traditional tokenizers
-
-Recently a new paper from Meta laid the foundations for a new adaptive approach beyond traditional tokenizers: The Byte Latent Transformer (BLT) [^1].
-
-Instead of using predefined tokens, it proposes to dynamically groups bytes into patches based on their information content. Citing the paper, "patches are segmented dynamically based on the entropy of the next byte, allocating more compute and model capacity where there is more data complexity". This approach shows promising results, with an efficiency gains of up to 50% and "improved robustness of BLT models to input noise and their awareness of sub-word aspects of input data that token-based llms miss".
-
-![Models mistakes on "simple" questions](images/blt-arch.png)
-*BLT architecture.*
-
-As shown in the image, two lightweight local encoder / decoder are employed to transform bytes into patches dynamically, bypassing the need of a pre-trained fixed vocabulary. Then, the transformer architecture learns to predict the next *patch* given the input context directly within this embedded space.
-
-An [official repository](https://github.com/facebookresearch/blt) is already out, but to see its application at scale we still have to wait!
-
 ## Conclusions
 
 Language model capabilities are bounded by, if not limited by, their tokenizers.
@@ -143,10 +129,9 @@ The choice of tokenization strategy and vocabulary size is as important as pre-t
 - General tokenizers may require adjustments on specific downstream tasks to improve model capabilities, such as in math [^0];
 - The vocabulary size should be carefully chosen w.r.t. model training dimension to avoid under-trained tokens;
 - Non-English languages may share common tokens with english, but special tokens should be added to consider multi-language applications [^7];
-- Emerging approaches like BLT suggest we might move soon beyond traditional tokenization;
+- Tokenizer-free models are emerging: Meta's Byte Latent Transformer (BLT) [^1] groups raw bytes into dynamic patches based on next-byte entropy, with no fixed vocabulary at all ([code](https://github.com/facebookresearch/blt)).
 
-As we continue to improve language models, tokenization remains a critical area for innovation
-The recent success of approaches like BLT's dynamic patching suggests that moving beyond fixed pre-trained vocabularies might be the key to build more efficient and capable models.
+Tokenization remains a critical area for innovation, and approaches like BLT suggest that moving beyond fixed pre-trained vocabularies might be the key to more efficient and capable models.
 
 ## References
 
@@ -160,3 +145,4 @@ The recent success of approaches like BLT's dynamic patching suggests that movin
 [^7]: Meta AI, *"The Llama 3 Herd of Models"*, 2024
 [^8]: Yonghui Wu et al., *"Google’s neural machine translation system: Bridging the gap between human and machine translation."*, 2016
 [^9]: Devlin et al., *"BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding"*, 2019
+[^10]: Kudo, T., *"Subword Regularization: Improving Neural Network Translation Models with Multiple Subword Candidates"*, ACL 2018

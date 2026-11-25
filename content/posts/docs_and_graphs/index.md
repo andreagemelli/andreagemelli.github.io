@@ -9,7 +9,6 @@ tags: ["DocAI", "Graphs"]
 author: 'Andrea Gemelli'
 ShowReadingTime: true
 ShowToc: true
-comments: true
 ---
 
 In our daily life, we are submerged by piles of documents 🫠: bureaucracy, bills, insurances, etc. As humans, we invented this medium to vehicle important information! But how our brain processes documents? 🤔
@@ -22,8 +21,8 @@ This intuitive - yet effective - way of reading documents through relationships 
 
 First proposed by Leonhard Euler in 1736 when solving the famous Seven Bridges of Königsberg problem [^1], a graph is **a collection of objects (nodes) and the relationships between them (edges)**. This elegant mathematical concept first appeared in a Nature paper about *"chemistry and algebra"* [^2] in 1878, but it wasn't until 1936 that graph theory got its foundations with its first textbook [^3].
 
-![Examples of graphs](https://kidscodecs.com/wp-content/uploads/2013/11/puzzles-7-bridges-map-euler.jpg)
-*The problem that started it all: Euler's visualization of the Seven Bridges of Königsberg*
+![The Seven Bridges of Königsberg](images/konigsberg.png)
+*The problem that started it all: the Seven Bridges of Königsberg (img credits [Bogdan Giuşcă, Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Konigsberg_bridges.png), CC BY-SA 3.0)*
 
 The beauty of graphs lies in their natural ability to represent how we see patterns in the world. Think about it - when you look at a molecule, it's not just a bunch of atoms but a structured arrangement of chemical bonds. Similarly, when you use Google Maps, it's a weighted graph that find the best route for you under the hood!
 

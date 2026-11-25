@@ -64,7 +64,7 @@ assert.ok(!/target="_blank"[^>]*target="_blank"/.test(home), 'target applied twi
 
 // code links (front matter github/huggingface) show on the list; posts without them get none
 const list = read('posts/index.html');
-assert.match(list, /<span class="code"><a href="https:\/\/github\.com\/andreagemelli\/scrivano"[^>]*>.*?<a href="https:\/\/huggingface\.co\/andreagemelli\/LFM2\.5/s, 'scrivano code links missing');
+assert.match(list, /<span class="code"><a href="https:\/\/github\.com\/andreagemelli\/scrivano"[^>]*>.*?<a href="https:\/\/huggingface\.co\/collections\/andreagemelli\/documents-key-information-extraction/s, 'scrivano code links missing');
 assert.match(list, /href="\/posts\/agents\/docs\/seminar\.pdf"/, 'slides link not resolved against the post');
 assert.equal(list.match(/class="code"/g).length, 6, 'unexpected number of posts with code links');
 

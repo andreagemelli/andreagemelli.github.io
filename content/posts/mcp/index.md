@@ -9,22 +9,15 @@ tags: ["Large Language Models", "MCP", "OpenAPI"]
 author: 'Andrea Gemelli'
 ShowReadingTime: true
 ShowToc: true
-comments: true
 ---
 
 ## Introduction
 
-If you've been following the evolution of API development and AI integration, you've likely encountered two important but fundamentally different approaches: **OpenAPI** and **MCP (Model Context Protocol)** 🤖. While they might seem similar at first glance—both deal with connecting systems and enabling integrations—they serve very different purposes in today's tech landscape.
+We just won 3rd place 🥉 at the Paris AI Hackathon 🏆 with **EasyMCP**, a tool that turns an OpenAPI specification into an MCP server. Before telling you how it went, let me explain why such a bridge is useful, starting from how the two differ.
 
-## OpenAPI vs MCP
+## OpenAPI
 
-### What is OpenAPI? 📋
-
-OpenAPI (formerly known as Swagger) is a specification for describing REST APIs that defines a standard, programming language-agnostic interface description for HTTP APIs. Think of it as a universal language that tells developers exactly how to interact with an API—what endpoints are available, what data to send, and what to expect in return 💬.
-
-The [OpenAPI Initiative](https://www.openapis.org/) maintains this open standard, with comprehensive documentation available at [spec.openapis.org](https://spec.openapis.org/oas/v3.1.1.html) and learning resources at [learn.openapis.org](https://learn.openapis.org/).
-
-Here's a simple OpenAPI specification example:
+OpenAPI (formerly Swagger) is a language-agnostic specification for describing HTTP APIs: which endpoints exist, what they accept, and what they return. It is maintained by the [OpenAPI Initiative](https://www.openapis.org/) ([spec](https://spec.openapis.org/oas/v3.1.1.html), [guides](https://learn.openapis.org/)).
 
 ```yaml
 openapi: 3.0.0
@@ -55,108 +48,68 @@ paths:
                     type: string
 ```
 
-This specification tells any developer (or tool) exactly how to fetch weather data from this API. It's documentation, validation, and a contract all rolled into one ✅.
+From this file a developer, or a code generator, knows exactly how to call the API. It works as documentation, validation schema and contract at once.
 
-### Enter MCP: Model Context Protocol ⚡
+## MCP
 
-MCP represents a newer paradigm designed specifically for AI agents and language models. [Introduced by Anthropic in November 2024](https://www.anthropic.com/news/model-context-protocol), MCP creates a standardized way for AI systems to interact with external tools and data sources. As described in the [official MCP documentation](https://modelcontextprotocol.io/introduction), it serves as "a USB-C port for AI applications" 🔌.
+The [Model Context Protocol](https://modelcontextprotocol.io/introduction), [introduced by Anthropic in November 2024](https://www.anthropic.com/news/model-context-protocol), standardises how an LLM application discovers and calls external tools and data sources. The docs call it "a USB-C port for AI applications" 🔌. OpenAI and Google DeepMind have since adopted it, and the [specification](https://modelcontextprotocol.io/specification/2025-03-26) is public.
 
-The key difference? **OpenAPI describes how humans (or their applications) should call APIs, while MCP describes how AI agents should access and use tools** 🎯.
-
-MCP has gained rapid adoption across the industry, with [major AI providers including OpenAI and Google DeepMind adopting the protocol](https://en.wikipedia.org/wiki/Model_Context_Protocol) 🌟. The [MCP specification](https://modelcontextprotocol.io/specification/2025-03-26) provides comprehensive technical details for implementers.
-
-Here's what an MCP tool definition might look like:
-
-```javascript
-// MCP Server Example
-const server = new MCPServer({
-  name: "weather-tools",
-  version: "1.0.0"
-});
-
-server.addTool({
-  name: "get_weather",
-  description: "Get current weather for a city",
-  inputSchema: {
-    type: "object",
-    properties: {
-      city: {
-        type: "string",
-        description: "City name to get weather for"
-      }
-    },
-    required: ["city"]
-  },
-  handler: async (args) => {
-    // Fetch weather data
-    return {
-      temperature: 22,
-      condition: "sunny",
-      city: args.city
-    };
-  }
-});
-```
-
-### When to Use Which? 🤔
-
-**Choose OpenAPI when:**
-- Building traditional web APIs for human developers
-- Need broad ecosystem support and tooling
-- Working with existing REST-based architectures
-- Requiring detailed API documentation for teams
-
-**Choose MCP when:**
-- Building tools specifically for AI agents
-- Want AI systems to discover and use capabilities dynamically
-- Need context-aware, conversational interactions
-- Developing in AI-first environments
-
-## The Translation Challenge 🌉
-
-Here's where things get interesting for developers: many existing systems have robust OpenAPI specifications, but to leverage AI agents effectively, we need MCP compatibility. This creates a translation problem—how do you bridge these two worlds?
-
-Converting between OpenAPI and MCP isn't just about changing formats; it requires understanding the semantic differences:
+The audience is the difference: **OpenAPI describes an API to a developer, MCP describes a tool to a model**. With the official Python SDK, a tool is a decorated function:
 
 ```python
+from mcp.server.fastmcp import FastMCP
+
+mcp = FastMCP("weather-tools")
+
+@mcp.tool()
+def get_weather(city: str) -> dict:
+    """Get the current weather for a city."""
+    return {"city": city, "temperature": 22, "condition": "sunny"}
+
+if __name__ == "__main__":
+    mcp.run()
+```
+
+The name, docstring and type hints become the schema the model reads, so writing a good tool mostly means writing a good description. If you want to see how a model actually picks and calls a tool, I go through it from scratch in [From LLMs to Agents](https://www.andreagemelli.me/posts/agents/).
+
+In short, reach for OpenAPI when the consumer is a developer or an existing REST toolchain, and for MCP when the consumer is an agent that has to discover and pick tools on its own.
+
+## Translating one into the other
+
+Many companies already have well-specified OpenAPI APIs and now want agents to use them. Converting is more than changing format: an endpoint describes *how* to call something, while a good tool also tells the model *when* to call it.
+
+```text
 # OpenAPI endpoint
 GET /users/{id}/orders?status=pending
 
-# Might become MCP tool
+# As an MCP tool
 {
   "name": "get_user_pending_orders",
-  "description": "Retrieve pending orders for a specific user",
-  "parameters": {
-    "user_id": "string",
-    "include_details": "boolean"
+  "description": "List the pending orders of a user. Use it when the user asks about orders not yet shipped.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {"user_id": {"type": "string"}},
+    "required": ["user_id"]
   }
 }
 ```
 
-The MCP version is more descriptive and context-aware, helping AI agents understand not just *how* to call the function, but *when* and *why* it might be useful 🧠.
+Doing this by hand for every endpoint is slow and easy to get wrong. [EasyMCP](https://github.com/remorses/easymcp) reads an OpenAPI spec and generates the MCP server for you, so an existing API becomes usable by an agent without rewriting it.
 
-### The Community Perspective 💬
+## The hackathon 🏆
 
-The developer community has been actively discussing the implications of these two approaches. As one developer noted in a [DEV Community discussion](https://dev.to/duske/model-context-protocol-mcp-should-i-stay-or-should-i-go-3c9n): *"Having a stateful 1:1 mapped client-server connection like MCP defines it just to get the weather in a certain city is a bit of an overkill. And if it is just a small stateless REST API, providing an OpenAPI runner is good enough. But once you have a more complex use case that involves state or require a deep interaction between the LLM and the application, MCP can be a great fit."*
-
-The conversation on social platforms reflects this pragmatic approach—developers are recognizing that both protocols have their place, with [discussions on LinkedIn](https://www.theproductled.com/p/plg-recap-ai-agents-and-mcp-edition) highlighting how "open, modular protocols like MCP lower friction, speed up experimentation and create the conditions for early network effects."
-
-## Making the Translation Easy 🛠️
-
-Converting between these specifications manually is time-consuming and error-prone. That's why we built **EasyMCP** ([EasyMCP on GitHub](https://github.com/remorses/easymcp)), a tool that automatically translates OpenAPI specifications to MCP format, making it simple for developers to bring their existing APIs into the AI ecosystem 🚀.
-
-Our solution ranked 3rd 🥉 at the Paris AI Hackathon 🏆 organized by [TechEurope](https://blog.techeurope.io/p/hackathon-paris-1) and sponsored by big players such as HuggingFace, Mistral AI and ElevenLabs, demonstrating the real need for this kind of translation layer in today's rapidly evolving AI landscape.
+EasyMCP was born at the Paris AI Hackathon, organized by [TechEurope](https://blog.techeurope.io/p/hackathon-paris-1) and sponsored by big players such as HuggingFace, Mistral AI and ElevenLabs. MCP was barely six months old, and the gap was easy to see: most APIs were described in OpenAPI, and agents could not use them. We spent the hackathon building the bridge, and the jury ranked it 3rd 🥉. Not bad for a hackathon project, and a good sign that the need is real.
 
 ![The amazing team!](images/team.png)
+*The amazing team!*
 
-## Looking Forward 🔮
+Thanks to the organizers and the sponsors, and to my teammates 🤗
 
-Both OpenAPI and MCP will likely coexist, serving their respective ecosystems. OpenAPI continues to be the gold standard for human-to-system API communication, with its [extensive tooling ecosystem](https://openapi.tools/) and mature development practices. Meanwhile, MCP is emerging as the standard for AI-to-system integration, with Microsoft announcing [MCP support in Windows 11](https://blogs.windows.com/windowsexperience/2025/05/19/securing-the-model-context-protocol-building-a-safer-agentic-future-on-windows/) and [Copilot Studio integration](https://www.microsoft.com/en-us/microsoft-copilot/blog/copilot-studio/introducing-model-context-protocol-mcp-in-copilot-studio-simplified-integration-with-ai-apps-and-agents/).
+## Looking forward
 
-The real opportunity lies in creating seamless bridges between these worlds—enabling organizations to leverage their existing OpenAPI investments while unlocking the power of AI-driven automation through MCP 🔗.
+I expect the two to coexist. OpenAPI keeps its role for service-to-service communication, with a [large tooling ecosystem](https://openapi.tools/) behind it. MCP is becoming the default integration layer for agents, with Microsoft adding it to [Windows 11](https://blogs.windows.com/windowsexperience/2025/05/19/securing-the-model-context-protocol-building-a-safer-agentic-future-on-windows/) and [Copilot Studio](https://www.microsoft.com/en-us/microsoft-copilot/blog/copilot-studio/introducing-model-context-protocol-mcp-in-copilot-studio-simplified-integration-with-ai-apps-and-agents/). Tools that bridge the two let teams reuse the APIs they already have 🤗
 
-**Additional Resources:** 📚
-- [OpenAPI Specification](https://spec.openapis.org/oas/v3.1.1.html) - Official specification
-- [Model Context Protocol Documentation](https://modelcontextprotocol.io/) - Complete MCP guide
-- [OpenAPI Tools](https://openapi.tools/) - Comprehensive tooling ecosystem
-- [MCP GitHub Organization](https://github.com/modelcontextprotocol) - SDKs and reference implementations
+**Resources**
+- [OpenAPI Specification](https://spec.openapis.org/oas/v3.1.1.html)
+- [Model Context Protocol documentation](https://modelcontextprotocol.io/)
+- [MCP GitHub organization](https://github.com/modelcontextprotocol): SDKs and reference servers

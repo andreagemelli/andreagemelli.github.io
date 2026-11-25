@@ -1,137 +1,100 @@
 ---
-title: 'Scrivano: reading Italian forms on a laptop, fully offline'
+title: 'Your documents should not leave your laptop'
 date: 2026-09-03
 draft: false
-description: "A 350M model that turns Italian forms into JSON — no API key, no network, 219 MiB of it"
+description: "A 350M model that turns Italian forms into JSON on a CPU, fully offline, and Scrivano, the app that runs it"
 github: 'https://github.com/andreagemelli/scrivano'
-huggingface: 'https://huggingface.co/andreagemelli/LFM2.5-350M-IT-Extract'
+huggingface: 'https://huggingface.co/collections/andreagemelli/documents-key-information-extraction'
 ShareButtons: ['linkedin', 'x']
 tags: ["Document AI", "Key Information Extraction", "Small Models", "Fine-tuning", "Offline", "Open Source"]
 author: 'Andrea Gemelli'
 ShowReadingTime: true
 ShowToc: true
-comments: true
 ---
 
 ## Introduction
 
-Document AI usually means a photo of a form goes to a server, a large model reads it, and structured
-data comes back. It works, but the document — often the most sensitive thing a person owns — has left
-the machine. I wanted the opposite: point at a scanned Italian form, say which fields I want, and get
-JSON out **without anything leaving the laptop**.
+Key information extraction (KIE) usually works like this: a scan of a form goes to a server, a large model reads it, and structured data comes back. The document, often the most sensitive thing a person owns, has left their machine.
 
-That is [**Scrivano**](https://github.com/andreagemelli/scrivano) 📝 — a desktop app for key
-information extraction (KIE) from Italian forms, running fully offline on a CPU. No API key, no
-network, ~280 MB installed. The model that does the reading is 350M parameters, fine-tuned for the
-job, and ships *inside* the app at 219 MiB.
+Identity cards, residency declarations, tax codes, bank details: for these documents I would rather lose a few points of accuracy than send them to someone else's GPU. So the question I started from was a practical one: **how small can a model be and still extract fields well enough to run locally, on a CPU, with nothing leaving the laptop?**
 
-![Scrivano with the sample residency form loaded](images/screenshot-app.png)
-*The app with the sample residency declaration loaded: fields on the left, streamed JSON on the right.*
+To answer it for Italian forms I built two things, both open on Hugging Face 🤗
 
-Everything is open: [app and code](https://github.com/andreagemelli/scrivano),
-[model](https://huggingface.co/andreagemelli/LFM2.5-350M-IT-Extract),
-[GGUF](https://huggingface.co/andreagemelli/LFM2.5-350M-IT-Extract-GGUF) and
-[dataset](https://huggingface.co/datasets/andreagemelli/xfund-kie-it) are on GitHub and Hugging Face 🤗
+- a **dataset**, [xfund-kie-it](https://huggingface.co/datasets/andreagemelli/xfund-kie-it): Italian XFUND converted into a schema-to-JSON extraction task;
+- a **model**, [LFM2.5-350M-IT-Extract](https://huggingface.co/andreagemelli/LFM2.5-350M-IT-Extract): a 350M model fine-tuned on it, also as a 219 MiB [GGUF](https://huggingface.co/andreagemelli/LFM2.5-350M-IT-Extract-GGUF) that needs no GPU, no API key and no network.
 
-## How it works
+## Why local
 
-The flow is deliberately boring, which is the point:
+Running locally is a design decision, not a deployment detail. It sets the constraints for everything else:
 
-- **Read the page.** It accepts `pdf png jpg jpeg webp tif tiff`. PDFs render at 200 DPI; a page's
-  own text layer is used when it yields more than 50 characters, otherwise it falls back to OCR
-  (PP-OCRv5 + Latin recognition[^1], all Rust/ONNX, no Python at runtime).
-- **You declare the fields.** Each field is a `key` + a natural-language `description`. New documents
-  start from a 7-field preset, because the model was fine-tuned on prompts averaging seven fields.
-- **The model extracts.** It streams the JSON, points each value back to where it sits on the page on
-  hover, and flags values that appear *nowhere* on the page as likely inventions. Decoding is
-  configurable; temperature is 0 by default.
+- **the model has to be small**: it must fit inside an installer and answer in seconds on a laptop CPU;
+- **the output has to be structured**: a JSON object the user can check field by field, not free text;
+- **the whole pipeline has to be offline**, OCR included, so that the form, the extracted values and the history stay on the machine.
 
-One honest caveat baked into the design: the published accuracy assumes the model is told which
-fields the document actually contains — *you* supply that by keeping the schema tight. This is a 350M
-model. Read the output, don't trust it.
-
-## The model
-
-The brain is [**LFM2.5-350M-IT-Extract**](https://huggingface.co/andreagemelli/LFM2.5-350M-IT-Extract):
-[`LiquidAI/LFM2.5-350M`](https://huggingface.co/LiquidAI/LFM2.5-350M)[^2] fine-tuned with SFT (TRL[^3])
-to take a document's text plus a field schema and emit a JSON object, omitting fields it can't find.
-For the app it is quantised to Q4_K_M — that is the 219 MiB [GGUF](https://huggingface.co/andreagemelli/LFM2.5-350M-IT-Extract-GGUF)
-that gets bundled and never phones home.
-
-Picking a 350M base was the whole game: small enough to ship inside an installer and run on a CPU,
-big enough to learn the *shape* of the task. As with a lot of small-model work, the model isn't
-learning to read Italian — it's learning to be disciplined: find the value, put it under the right
-key, close the brace.
+A frontier model would score higher. But for personal documents, keeping the data on the device is worth more to me than the gap.
 
 ## The dataset
 
-There was no off-the-shelf Italian KIE dataset shaped like this, so I built one:
-[**xfund-kie-it**](https://huggingface.co/datasets/andreagemelli/xfund-kie-it), a conversion of the
-Italian split of **XFUND**[^4] (a multilingual form-understanding benchmark) into a
-schema-to-JSON extraction task.
+There was no Italian KIE dataset in this shape, so I built one from the Italian split of **XFUND**[^4], a multilingual form-understanding benchmark.
 
-The conversion pipeline starts from 4,882 question→answer links in the Italian XFUND split, maps
-labels to a controlled set of keys (2,757 survive, 56%), then drops multi-answer labels and
-conflicting duplicate keys. What comes out is **199 documents, 1,461 fields,
-37 extraction keys** with natural-language descriptions — things like `codice-fiscale`,
-`nome-completo`, `data-nascita`, `iban` — split **149 train / 50 validation**.
+The conversion starts from 4,882 question→answer links, maps their labels to a controlled set of keys (2,757 survive, 56%), then drops multi-answer labels and conflicting duplicate keys. The result is **199 documents, 1,461 fields and 37 extraction keys**, each with a natural-language description (`codice-fiscale`, `nome-completo`, `data-nascita`, `iban`, ...), split **149 train / 50 validation**.
 
-Small, and I won't pretend otherwise: 149 training documents is a first pass, and it shows.
+Each example pairs a document's text and a field schema with the target JSON. 149 training documents is small, and the results below reflect that.
 
-## Does the fine-tune work?
+## The model
 
-Measured on the 50-document Italian validation split, greedy decoding:
+The base is [`LiquidAI/LFM2.5-350M`](https://huggingface.co/LiquidAI/LFM2.5-350M)[^2], fine-tuned with SFT (TRL[^3]) to take a document's text plus a field schema and emit a JSON object, omitting fields it cannot find.
+
+At this scale the model does not learn Italian or Italian bureaucracy. It learns a discipline: find the value, put it under the right key, close the brace.
+
+## Results
+
+On the 50-document validation split, with greedy decoding:
 
 | Model | Avg F1 | JSON parse failures |
 |---|---|---|
 | `LiquidAI/LFM2.5-350M` (base) | 0.2877 | 6 / 50 |
 | **`LFM2.5-350M-IT-Extract`** | **0.6639** | 10 / 50 |
 | same, Q4_K_M GGUF | 0.6635 | 10 / 50 |
-| same, Q4_K_M on the app's own OCR text | 0.5662 | 10 / 50 |
+| same, Q4_K_M on OCR text | 0.5662 | 10 / 50 |
 
-Three things fall out of this table:
+- **Fine-tuning more than doubles F1** (0.29 → 0.66) with only 149 documents.
+- **Q4_K_M quantisation costs almost nothing** (0.6639 → 0.6635), so the model that ships is the model that was measured.
+- **OCR costs about 0.10 F1.** Clean text shows what the model can do; ~0.57 is the end-to-end number once pixels have to become text first.
+- **Parse failures went up** (6 → 10), something the next round of training data needs to fix.
 
-- **Fine-tuning more than doubles F1** (0.29 → 0.66) on 149 documents.
-- **Quantising to Q4_K_M is essentially free** (0.6639 → 0.6635) — the thing you actually ship is
-  the thing you measured.
-- **OCR costs about 0.10 F1.** The clean-text number is what the model can do; the ~0.57 is what you
-  get end-to-end once the pixels have to become text first.
+These are **upper bounds**: the schema is oracle-filtered (the model is only asked for fields the document contains), parse failures are excluded rather than scored as zero, and the metric double-counts a wrong value. Everything is reproducible with `uv run main.py`.
 
-And the part I insisted on in the README: these are **upper bounds**. The schema is oracle-filtered,
-parse failures are excluded rather than scored zero, and the metric double-counts a wrong value.
-Everything is reproducible with `uv run main.py`.
+## Limitations
 
-## Shortcomings
+- Trained on 149 documents, so it is **very sensitive to the field descriptions**: edit those before blaming the document.
+- Only **single-page Italian** documents are tested.
+- **Valid JSON is not guaranteed**: 10/50 outputs failed strict parsing.
+- A correct-looking value under the *wrong* key is not caught.
 
-It's a beta, and the honest list is short:
+## Trying it: Scrivano
 
-- First fine-tune on 149 documents → **very sensitive to the schema descriptions**. Edit those
-  before blaming the document, and prefer the presets.
-- Only **single-page Italian** extraction is tested.
-- **JSON isn't guaranteed** — 10/50 outputs didn't parse strictly; the app recovers key/value pairs
-  from truncated output rather than crashing.
-- A right-looking value under the *wrong* key isn't flagged.
-- macOS builds are unsigned (clear the quarantine once); history is capped at 50 documents.
+To use the model without writing code, I wrapped it in [Scrivano](https://github.com/andreagemelli/scrivano) 📝, a small desktop app (~280 MB installed) with the model bundled inside. You drop in a PDF or an image, pick or edit the fields you want, and get streamed JSON back, with each value linked to its position on the page. OCR runs locally too (PP-OCRv5[^1]), and values found nowhere on the page are flagged as likely inventions. Builds are on the [releases page](https://github.com/andreagemelli/scrivano/releases/latest).
+
+![Scrivano with the sample residency form loaded](images/screenshot-app.png)
+*The sample residency declaration loaded: fields on the left, streamed JSON on the right.*
 
 ## Conclusions 🎁
 
-Scrivano is small on purpose. The interesting claim isn't the F1 — it's that a *useful* document
-extractor now fits in 219 MiB, runs on a CPU, and never sends your form anywhere. Three take-homes:
-
-1. **Offline is a feature, not a downgrade.** For documents especially, "it never leaves the laptop"
-   is worth more than a few F1 points from a hosted giant.
-2. **Small models learn the shape, not the knowledge.** The model doesn't know Italian tax law; it
-   learned to find a value and put it under the right key. The OCR and the schema do the rest.
-3. **Report upper bounds honestly.** Oracle schema, excluded parse failures, a generous metric — say
-   so, or the number lies for you.
-
-Next on the list: more fine-tuning data, checking multilinguality still holds (Italian stays the
-focus), a PII pipeline, and document classification.
-
-If you want to point it at your own forms, grab a build from the
-[releases](https://github.com/andreagemelli/scrivano/releases/latest) 📝
+1. **Local inference is a feature.** For personal documents, keeping data on the device is worth more than a few points of accuracy.
+2. **A small fine-tuned model is enough for structured extraction.** 350M parameters and 149 documents take F1 from 0.29 to 0.66.
+3. **Report upper bounds as upper bounds.** Oracle schema, excluded parse failures and a lenient metric all inflate the number, so say so.
 
 Happy extracting 🤗
+
+## Update: eight languages and a second task
+
+Since this post I released a second round, all in one [Hugging Face collection](https://huggingface.co/collections/andreagemelli/documents-key-information-extraction):
+
+- **Data and benchmark**: [xfund-docai-xl](https://huggingface.co/datasets/andreagemelli/xfund-docai-xl) extends the dataset to seven XFUND languages plus 350 generated pages, with document classification (12 classes) next to extraction: 2,519 training and 785 validation rows, the latter now also used as the benchmark, English (from FUNSD) included.
+- **Model**: [LFM2.5-350M-Extract-ML-LoRA](https://huggingface.co/andreagemelli/LFM2.5-350M-Extract-ML-LoRA) (also as [GGUF](https://huggingface.co/andreagemelli/LFM2.5-350M-Extract-ML-LoRA-GGUF)), a LoRA fine-tune on it. It reaches **0.75 F1** across eight languages and both tasks, against 0.26 for the base model, with only 3 non-parsing outputs in 785. It now powers Scrivano.
+
+Same size, same laptop, still offline 🔒
 
 ## References
 

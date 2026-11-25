@@ -13,9 +13,9 @@ summary: "Where Andrea Gemelli has worked and studied, plus teaching, talks and 
       <span class="timeline-date">2026 - present</span>
     </div>
     <div class="timeline-content">
-      <p>I joined 🔬 <a href="https://www.kleio.ai">Kleio</a>, a startup building intelligent agent orchestration systems, as an <strong>AI Researcher</strong> in June 2026. My work focuses on designing and evaluating multi-agent architectures, advancing retrieval and orchestration pipelines, and translating the latest research in LLMs and agentic systems into production-ready components.</p>
+      <p>I joined 🔬 <a href="https://www.kleio.ai">Kleio</a>, a startup building intelligent agent orchestration systems, as an <strong>AI Scientist &amp; Engineer</strong> in June 2026. My work focuses on designing and evaluating multi-agent architectures, advancing retrieval and orchestration pipelines, and translating the latest research in LLMs and agentic systems into production-ready components.</p>
       <div class="timeline-location">
-        <span class="location-name">📍 Paris</span> <span class="location-role">(AI Researcher @ Kleio)</span> 🇫🇷 - from 2026
+        <span class="location-name">📍 Paris</span> <span class="location-role">(AI Scientist &amp; Engineer @ Kleio)</span> 🇫🇷 - from 2026
       </div>
     </div>
   </div>
